@@ -1,0 +1,583 @@
+@media all and (max-width: 1199px) {
+    .h1, h1 {
+        font-size: 31px;
+    }
+    .container{
+        max-width: 1280px;
+        width: 100%;
+    }
+    .banner {
+        height: 100%;
+        min-height: 100vh;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    section{
+        margin: 30px 0 0;
+    }
+    .well {
+        background: none;
+        margin-bottom: 0;
+    }
+    .recent-vehicle-list li {
+        margin-bottom: 0;
+    }
+    .bike-comparison {
+        height: auto;
+    }
+    #myCarousel5 .carousel-control.right {
+        right: -25px;
+    }
+    .order-now {
+        padding-top: 50px;
+        margin: 165px 0 70px;
+    }
+    .order-now form{ margin-left: 0}
+
+    .search-main{
+        margin: 0;
+    }
+    .search-main,.img-valign{
+        margin-bottom: 0;
+        background: none;
+    }
+    .order-now {
+        margin-top: 110px;
+    }
+
+    .testimonial-home blockquote{ margin-top: 55px;}
+    .new-bikes{
+        padding: 50px 0;
+    }
+    .new-bikes .order-now {
+        margin-top: 10px;
+    }
+    .navbar-nav>li>a {
+        font-size: 14px;
+        font-weight: normal;
+        padding:6px 10px;
+    }
+
+    .logos a {
+        margin: 15px 30px;
+    }
+    .sec-1 h2{
+        font-size: 32px;
+
+    }
+    #myCarousel5 .carousel-control.left, #myCarousel5 .carousel-control.right{
+        top: 50%;
+    }
+    .banner2 {
+
+        background-size: cover;
+    }
+
+    .popular h1 {
+        margin-top: 0;
+    }
+    #myCarousel .carousel-indicators{
+        bottom:-49px;
+    }
+    .popular h1 {
+        margin-bottom: 22px;
+    }
+    .signup-complete {
+        padding: 50px;
+    }
+    .db-pricing-one ul{ padding: 0}
+    .duration .btn{ width: 300px}
+    .page-section.used-bikes h3 {
+       font-size: 14px;
+     }
+    #myCarousel3{ margin-top: 0}
+    #myCarousel3 .carousel-inner {
+        margin-top: 0;
+    }
+    .mb {
+        margin-top: 0;
+    }
+    .result .panel-heading{
+        padding: 0 15px;
+    }
+    .dealer .featured-ribbon-price{
+        top: 48%;
+        padding: 6px 17px;
+        font-weight: normal;
+        font-size: 15px;
+    }
+    #accordion .panel-heading a{
+        line-height: 42px;
+        height: 42px;
+    }
+    #myCarousel6 .img-valign{
+        height: 150px;
+    }
+    .profile ul li{
+        margin: 5px;
+    }
+    .profile ul li a{
+         font-size: 14px;
+     }
+    .gallerie-control-previous {
+        left: 1%;
+    }
+    .gallerie-control-next{
+        right: 1%;
+    }
+    #myCarouselA .carousel-inner {
+        height: 150px;
+    }
+    #menu1 .grid-view .img-valign {
+        height: 190px;
+    }
+    .profile .btn {
+        margin: 10px 0 80px 0;
+    }
+}
+
+@media all and (max-width:992px) {
+    .blog-grid {
+        margin-bottom: 50px;
+    }
+    .sec-1 h2{ font-size: 25px;}
+    .sec-inner {
+        margin-top: 0;
+    }
+    h1.logo img {
+        width: 110px;
+    }
+    .order-now .btn{
+        float: left;
+    }
+    .popular .item{
+        text-align: center;
+    }
+    #myCarousel {
+        height: 290px;
+        overflow: hidden;
+    }
+    .popular #myCarousel{
+        height: 534px;
+    }
+    .logos a {
+        margin: 15px 10px;
+    }
+    .more-about p {
+        padding: 0;
+    }
+    .popular {
+        margin: 20px 0 10px;
+    }
+    .search-main-wraper{
+        background-size: cover;
+    }
+    #myCarousel5 .carousel-control.right {
+        right: -20px;
+    }
+    .cs-services.box figure {
+        width: 100%;
+        height: auto;
+        margin-left: 15px;
+        margin-bottom: 15px;
+    }
+    .cs-services.box{ padding: 30px;}
+    .top-services{ margin-top: 0}
+    .mt-100 {
+        margin-top: 80px;
+    }
+    .search-main-wraper{ padding: 0}
+    section{ margin: 20px 0 0}
+    .order-now {
+        margin-top: 12px;
+    }
+    .search-main-wraper {
+        height: 500px;
+    }
+    .order-now {
+        padding-top: 0;
+        margin: 0;
+    }
+    .rakshaw{
+        margin-top: 70px;
+    }
+    .signup-complete p {
+        font-size: 16px;
+    }
+    .signup-complete .btn-primary{
+        margin: 35px auto 0;
+    }
+    .create-post{
+        height: auto;
+    }
+    .group-1{ padding: 0 15px; margin: 5px 0}
+    .create-post h1 {
+        margin-top: 0;
+    }
+    .duration .btn{ width: 100%}
+    .duration .btn {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .bike-des .img-valign{
+        height: auto;
+    }
+}
+
+@media all and (max-width:991px) {
+    .navbar-default {
+        background-color: #f8f8f8;
+        border-color: #e7e7e7;
+        border: none;
+        background: none;
+        margin-bottom: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+    }
+    .order-now .btn {
+        top: 0;
+        right: 0;
+        position: relative;
+        margin-top: 15px;
+    }
+    #myCarousel4 .carousel-inner {
+        margin-top: 0;
+    }
+    #myCarousel7 {
+        height: 255px;
+        overflow: hidden;
+    }
+    .carousel-control.left, .carousel-control.right{
+        top: 50%;
+    }
+    #collapseOneA .form-group p a{ margin-top: 0 !important;
+    }
+    .adds-for-posts h3{
+        text-align: left;
+    }
+    .border-class{
+        padding: 15px;
+    }
+    .profile ul {
+        margin-top: 0;
+    }
+    .card-img-top{
+        margin-bottom: 15px;
+    }
+    .card{
+        padding-bottom: 15px;
+    }
+    #menu1 .grid-view .img-valign {
+        height:auto;
+    }
+}
+@media (min-width: 768px) {
+    #myModal6 .modal-dialog,#myModal7 .modal-dialog,#myModal8 .modal-dialog{ width: 100% !important;}
+    #myModal6 .modal-dialog img,#myModal7 .modal-dialog img,#myModal8 .modal-dialog img{ width: 100% !important;}
+
+}
+    @media all and (max-width:768px) {
+    .used-bikes img{
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
+    .used-bikes .pull-left{
+        width: 100%;
+    }
+    .page-section.used-bikes h3{
+        margin-top: 15px;
+    }
+    .bike-comparison {
+        height: 215px;
+    }
+    .signup{ left:0}
+    .used-bikes .lhr{
+        display: inline-block;
+        margin-right: 0;
+        width: 100%;
+    }
+    .mt-100 {
+        margin-top: 50px;
+    }
+
+}
+@media all and (max-width: 767px)  {
+    .featured-ribbon {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+    .viewall small{
+        width: 100%;
+        float: left;
+        text-align: left;
+    }
+    .used-bikes .lhr{
+        height: auto;
+    }
+    .order-now .btn{ width: 100%}
+    .well.p10 {
+        float: left;
+        width: 100%;
+        margin-top: 22px;
+        text-align: center;
+    }
+    .well.p10 img{
+        display: inline-block;
+    }
+    #myCarousel4 .carousel-inner{
+        height: 250px;
+    }
+    .carsure-marketing-banner img{ width: 100%}
+    h1{ font-size: 25px !important;}
+    h2{ font-size: 22px !important;}
+    .views {
+        font-size: 18px !important;
+        padding: 10px 5px;
+    }
+    .img-valign{
+        height: auto;
+    }
+    #myCarousel4 .carousel-inner {
+        height: 220px;
+    }
+    .img-box{ margin-bottom: 15px;}
+    .navbar-nav {
+        float: right;
+        margin: 0;
+        background: #000;
+        z-index: 150;
+        position: relative;
+        top:0;
+        border: 1px solid #ccc;
+        padding: 0;
+        right: 16px;
+        width: 215px;
+    }
+    .navbar-nav .dropdown-menu{
+        position: relative;
+    }
+    .container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header{
+        overflow: visible;
+    }
+    .navbar-nav>li>.dropdown-menu {
+        top: 0;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a{
+        color: #fff;
+    }
+    .testimonial-home .fa-quote-left{
+        left: -30px;
+    }
+    .banner2{ padding-top: 0;
+    padding-bottom: 50px;
+    }
+    .popular img{
+        margin: 0 auto;
+        display: block;
+    }
+    .logos a {
+        margin: 11px 0;
+        width: 16%;
+        float: left;
+    }
+    .more-about img{
+    }
+    .more-about .col-xs-12{
+         margin-bottom: 30px;
+     }
+    .cs-services.box figure img{
+        width: 100%;
+    }
+    .adds-for-posts .btn{
+        width: 100%;
+    }
+    .order-now {
+        margin: 0;
+    }
+    .popular h1{
+        margin-bottom: 30px;
+    }
+    .order-now .col-md-3{
+        padding: 0 15px;
+    }
+    .search-main-wraper{
+        height: auto;
+        padding-bottom: 50px;
+    }
+    .order-now .btn {
+        width: 96%;
+        position: relative;
+        top: 20px;
+        left: 15px;
+        padding: 0 15px;
+    }
+    .rakshaw{
+        margin-top: 70px;
+    }
+    #myCarousel4 .carousel-indicators {
+        bottom: -44px;
+    }
+    #myCarousel5 .carousel-control.right {
+        right: 0;
+    }
+    .modal-backdrop{
+        position: relative;
+    }
+    .signup-complete .btn-primary {
+        width: 100%;
+        height: 40px;
+        line-height: 25px;
+        font-size: 20px;
+    }
+    .signup-complete{
+        padding: 20px;
+    }
+    .signup-complete i{ font-size: 30px;}
+    #myCarousel5{ height: 240px; overflow: hidden;}
+    #myCarousel7 {
+        height: 400px;
+        overflow: hidden;
+    }
+    #myCarousel6 .img-valign {
+        height: auto;
+    }
+    .profile ul {
+        padding: 0;
+    }
+    .profile h2 span {
+        margin-top: 0;
+    }
+    .inbox_people,.mesgs{
+        width: 100%;
+        float: left;
+        margin-bottom: 15px;
+        border:1px solid #ccc;
+    }
+    .received_msg,.received_withd_msg,.sent_msg,.chat_ib{ width: 100%}
+    .incoming_msg_img{ width: 20%}
+    .chat_img {
+        width: 50px;
+        float: none;
+        text-align: center;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    .messaging {
+        padding: 0 0 20px 0;
+    }
+    .time_date{ margin: 8px 0}
+    #menu1 .grid-view .img-valign {
+        height: auto;
+    }
+}
+
+@media all and (max-width: 480px)  {
+    #myCarousel4 .carousel-inner {
+        height: 180px;
+    }
+    .order-now{ padding: 0 0 30px 0 }
+    #myCarousel3 .list-unstyled{ width: 50%}
+    #myCarousel3 .carousel-inner {
+        height: 100px;
+    }
+    #myCarousel4 .carousel-inner {
+        height: 116px;
+    }
+    .comparison {
+        margin: 20px 0 20px 0;
+    }
+    .bike-comparison {
+        height: 133px;
+    }
+
+    .testimonial-home blockquote{
+        padding: 15px 34px;
+    }
+    .testimonial-home blockquote p{
+        line-height: 25px;
+    }
+    .mb5{
+        font-size: 16px;
+        line-height: 23px;
+    }
+    h2 {
+        font-size: 20px !important;
+    }
+    h3{ font-size: 18px !important;}
+    .page-section.used-bikes .col-md-4 {
+        text-align: center;
+    }
+    .used-bikes .pull-left {
+        width: 100%;
+        text-align: center;
+        display: block;
+    }
+    .used-bikes .lhr {
+        display: inline-block;
+        margin-right: 0;
+        text-align: center;
+        float: none;
+    }
+    #myCarousel {
+        height: 150px;
+    }
+.popular #myCarousel{
+        height: 330px;
+    }
+    .popular p {
+        font-size: 14px;
+        line-height: 22px;
+        margin-top: 0;
+    }
+    .popular h1 {
+        margin-bottom: 15px;
+    }
+    .popular img{
+        width: auto;
+        margin-bottom: 10px;
+    }
+    .logos a {
+        width:50%;
+    }
+    #myCarousel5 .carousel-control.right{ right: 0}
+    #myCarousel4 .carousel-inner {
+        height: 110px;
+    }
+    #myCarousel .pic, .pic{
+        width: 100%;
+    }
+    .popular {
+        margin: 20px 0 0;
+    }
+    .img-wraper {
+        margin: 0 auto 15px;
+    }
+    .discuss{
+        margin-top: 50px;
+    }
+    #myCarousel4 .carousel-indicators {
+        bottom: -20px;
+    }
+    #myCarousel7 {
+        height: 256px;
+    }
+    .order-now .btn{ width: 93%}
+    .viewall small{
+        margin-bottom: 15px;
+    }
+    .article img{ width: 100%; margin: 0}
+}
+@media all and (max-width: 320px){
+    #myCarousel7 {
+        height: 158px;
+        margin-bottom: 15px;
+    }
+    .used-bikes img{
+        height: 100px;
+    }
+}

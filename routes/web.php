@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +11,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@showMain');
+Route::get('order-info', function () {
+    return view('user/order-information');
 });
+Route::get('home', function () {
+    return back();
+});
+Auth::routes();
+
+Route::resource('/{user}/accessories','AccessoriesController');
+Route::resource('/{user}/orders','OrdersController');
+Route::resource('fav_ads','FavAdsController');
+Route::resource('/{user}/bikes','BikeController');
+Route::resource('{bike}/cart','CartController');
+
+Route::get('/profile' ,'HomeController@showProfile');
+Route::get('bikes/search', 'BikeController@filter');
+Route::get('accessories/search', 'AccessoriesController@filter');
