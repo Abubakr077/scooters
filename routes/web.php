@@ -22,8 +22,11 @@ Auth::routes();
 
 Route::resource('/{user}/accessories','AccessoriesController');
 Route::resource('/{user}/orders','OrdersController');
-Route::resource('fav_ads','FavAdsController');
+Route::resource('{bike}/fav_ads','FavAdsController');
+Route::get('{accessory}/fav_accessory','FavAdsController@storeAccessory');
 Route::resource('/{user}/bikes','BikeController');
+Route::get('/{user}/used', 'BikeController@usedBikes');
+Route::get('/{user}/auto_parts', 'AccessoriesController@autoParts');
 Route::resource('{bike}/cart','CartController');
 
 Route::get('/profile' ,'HomeController@showProfile');

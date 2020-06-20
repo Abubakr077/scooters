@@ -8,10 +8,18 @@
                 <div class="col-md-12 group-1">
                     <h1>Create post</h1>
 
+                    <div class="form-group">
+                        <label>Type</label>
+                        <select class="form-control " name="type" required>
+                            <option value="" > --- Please Select --- </option>
+                            <option value="Accessory">Accessory</option>
+                            <option value="Auto Parts">Auto Parts</option>
+                        </select>
+                    </div>
                         <div class="form-group">
-
-                            <select class="form-control select " name="category" required>
-                                <option>Select Category</option>
+                            <label>Category</label>
+                            <select class="form-control " name="category" required>
+                                <option value="" > --- Please Select --- </option>
                                 <option value="Body Parts">Body Parts</option>
                                 <option value="Wheels, Tyres and Rims">Wheels, Tyres and Rims</option>
                                 <option value="Engine and Engine Parts">Engine and Engine Parts</option>
@@ -59,33 +67,30 @@
                 </div>
 
                 <div class="row group-1">
-                    <div class="col-md-4  text-field">
+                    <div class="col-md-4 ">
                         <label>Brand</label>
-                        <input class="form-control" required type="text" list="rabbit-brand" placeholder="Brand" name="brand">
-                        <datalist id="rabbit-brand">
-                            <option value="Honda">
-                            <option value="Yamaha">
-                            <option value="Suzuki">
-                            <option value="Super Power">
-                            <option value="United">
-                            <option value="Unique">
-                            <option value="Kawasaki">
-                            <option value="Other">
-                        </datalist>
+                        <select class="form-control" name="brand" required >
+                            <option value="" > --- Please Select --- </option>
+                            @foreach((array)config('constants.BRANDS') as $brand)
+                                <option value="{{$brand}}">
+                                    {{$brand}}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="col-md-4 text-field">
+                    <div class="col-md-4">
                         <label>Color</label>
-                        <input class="form-control" type="text" required  id="default" list="rabbit-color" placeholder="Color" name="color">
-                        <datalist id="rabbit-color">
-                            <option value="Red">
-                            <option value="Black">
-                            <option value="White">
-                            <option value="Green">
-                            <option value="Blue">
-                            <option value="Orange">
-                            <option value="Yellow">
-                            <option value="Multi">
-                        </datalist>
+                        <select class="form-control" name="color" required >
+                            <option value="" > --- Please Select --- </option>
+                            <option value="Red">Red</option>
+                            <option value="Black">Black</option>
+                            <option value="White">White</option>
+                            <option value="Green">Green</option>
+                            <option value="Blue">Blue</option>
+                            <option value="Orange">Orange</option>
+                            <option value="Yellow">Yellow</option>
+                            <option value="Multi">Multi</option>
+                        </select>
                     </div>
                     <div class="col-md-4 amount">
                         <label><input type="checkbox"> &nbsp; Would you like to set a minimum Amount?</label>
@@ -168,13 +173,13 @@
                         <p class="col-md-10">{{auth()->user()->name.' '.auth()->user()->phone}}</p>
                         <a class="pull-right" style="color:#ef4416; font-size: 20px" href="#"><i class="fa fa-edit"></i> Edit</a>
                     </div>
-                    <div class="col-md-4  text-field amount">
-                        <label>Dealer Type</label>
-                        <input class="form-control" required type="text" list="rabbit-dealer" placeholder="Dealer Type" name="dealer">
-                        <datalist id="rabbit-dealer">
-                            <option value="Dealer">
-                            <option value="Individual">
-                        </datalist>
+                    <div class="col-md-4  amount">
+                        <label>Seller Type</label>
+                        <select class="form-control" name="dealer" required >
+                            <option value="" > --- Please Select --- </option>
+                            <option value="Dealer">Dealer</option>
+                            <option value="Individual">Individual</option>
+                        </select>
                     </div>
                 </div>
                 <div class="group-1">
@@ -184,31 +189,28 @@
                             <label>Address</label>
                             <input type="text" name="address" id="city_area" class="form-control" required placeholder="Address">
                         </div>
-                        <div class="col-md-4  text-field">
+                        <div class="col-md-4 ">
                             <label>City</label>
-                            <input class="form-control" required type="text" list="rabbit-cities" placeholder="City" name="city">
-                            <datalist id="rabbit-cities">
-                                <option value="Lahore">
-                                <option value="Karachi">
-                                <option value="Islamabad">
-                                <option value="Multan">
-                                <option value="Bwp">
-                                <option value="Rawalpindi">
-                                <option value="Peshawar">
-                                <option value="Quetta">
-                            </datalist>
+                            <select class="form-control" name="city" required >
+                                <option value="" > --- Please Select --- </option>
+                                @foreach((array)config('constants.CITIES') as $city)
+                                    <option value="{{$city}}">
+                                        {{$city}}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="col-md-4  text-field">
+                        <div class="col-md-4 ">
                             <label>Province</label>
-                            <input class="form-control" type="text" required list="rabbit-province" placeholder="Province" name="province">
-                            <datalist id="rabbit-province">
-                                <option value="Punjab">
-                                <option value="Sindh">
-                                <option value="KPK">
-                                <option value="Balochistan">
-                                <option value="Azad Kashmir">
-                                <option value="Federally Administered Tribal Areas">
-                            </datalist>
+                            <select class="form-control" name="province" required >
+                                <option value="" > --- Please Select --- </option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Sindh">Sindh</option>
+                                <option value="KPK">KPK</option>
+                                <option value="Balochistan">Balochistan</option>
+                                <option value="Azad Kashmir">Azad Kashmir</option>
+                                <option value="Federally Administered Tribal Areas">Federally Administered Tribal Areas</option>
+                            </select>
                         </div>
 
                     </div>

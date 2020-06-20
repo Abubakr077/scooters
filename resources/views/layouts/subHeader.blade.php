@@ -1,9 +1,9 @@
 <ul class="nav navbar-nav">
-    <li><a href="/0/bikes">Used Bikes</a></li>
+    <li><a href="/0/used">Used Bikes</a></li>
     <li ><a class="{{ (request()->is('bikes')) ? 'active' : '' }}" href="/0/bikes">New Bikes</a></li>
 
     <li ><a class="{{ (request()->is('accessories')) ? 'active' : '' }}" href="/0/accessories">Accessories </a></li>
-    <li ><a  href="/0/accessories">Auto Parts</a></li>
+    <li ><a  href="/0/auto_parts">Auto Parts</a></li>
 
     <!--                                    <li class="dropdown">-->
     <!--                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"-->

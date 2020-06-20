@@ -34,9 +34,28 @@ class AccessoriesController extends Controller
             'category'=>'',
             'minPrice'    => '',
             'maxPrice'    => '',
+            'dealer'=>''
         ];
-        $accessories = Accessories::paginate(8);
+        $accessories = Accessories::where('type', '=', 'Accessory')->paginate(8);
         return view('user/accessories', compact('accessories','filters'));
+    }
+    public function autoParts(){
+        $filters = [
+            'keyword' => '',
+            'city' => '',
+            'brand' => '',
+            'province' => '',
+            'color'    => '',
+            'condition'=>'',
+            'offer'=>'',
+            'price_type'=>'',
+            'category'=>'',
+            'minPrice'    => '',
+            'maxPrice'    => '',
+            'dealer'=>''
+        ];
+        $accessories = Accessories::where('type', '=', 'Auto Parts')->paginate(8);
+        return view('user/autoparts', compact('accessories','filters'));
     }
 
     /**
@@ -69,6 +88,7 @@ class AccessoriesController extends Controller
             'category'=>'',
             'minPrice'    => '',
             'maxPrice'    => '',
+            'dealer'=>''
         ];
         $accessory = new Accessories($request->except(['picture']));
         $user->accessories()->save($accessory);
@@ -82,8 +102,16 @@ class AccessoriesController extends Controller
                 ]);
             }
         }
-        $accessories = Accessories::paginate(8);
-        return view('user/accessories', compact('accessories','filters'));
+
+        if ($accessory->type == 'Accessory'){
+            $accessories = Accessories::where('type', '=', 'used')->paginate(8);
+            return view('user/accessories', compact('accessories','filters'));
+        } else
+        {
+            $accessories = Accessories::where('type', '=', 'Auto Parts')->paginate(8);
+            return view('user/autoparts', compact('accessories','filters'));
+        }
+
     }
     public function filter()
     {
@@ -100,6 +128,7 @@ class AccessoriesController extends Controller
             'category'=>Input::get('category'),
             'minPrice'    => Input::get('minPrice'),
             'maxPrice'    => Input::get('maxPrice'),
+            'dealer'=>Input::get('dealer')
         ];
         $accessories = Accessories::where(function ($query) use ($filters) {
             if ($filters['keyword'] ) {
@@ -127,6 +156,9 @@ class AccessoriesController extends Controller
             }
             if ($filters['condition']) {
                 $query->where('condition', '=', $filters['condition']);
+            }
+            if ($filters['dealer']) {
+                $query->where('dealer', '=', $filters['dealer']);
             }
             if ($filters['offer']) {
                 $query->where('offer', '=', $filters['offer']);

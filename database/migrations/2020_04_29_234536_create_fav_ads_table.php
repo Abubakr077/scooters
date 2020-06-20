@@ -16,9 +16,11 @@ class CreateFavAdsTable extends Migration
         Schema::create('fav_ads', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('bikes_id')->unsigned();
-            $table->foreign('bikes_id')->references('id')->on('bikes')->onDelete('cascade');;
+            $table->foreign('bikes_id')->references('id')->on('bikes');
+            $table->integer('accessories_id')->unsigned();
+            $table->foreign('accessories_id')->references('id')->on('accessories');
             $table->timestamps();
         });
     }

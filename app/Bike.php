@@ -12,6 +12,7 @@ class Bike extends Model
         'name',
         'city',
         'province',
+        'condition',
 'brand',
 'city_area',
 'registration_city',

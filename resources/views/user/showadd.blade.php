@@ -52,13 +52,14 @@
 
                     <div class="col-md-12">
                             <h2 class="mt-4">{{$bike->brand.' '. $bike->body_type.' '. $bike->engine_type}}</h2>
-                        <h3> {{$bike->price}} RS</h3>
+                        <h3><i class="fa fa-money" aria-hidden="true"></i> {{$bike->price}} RS</h3>
                         <h3><i class="fa fa-map-marker"></i> {{$bike->city_area.', '.$bike->city.', '.$bike->province}}</h3>
                         <h3><i class="fa fa-cogs" aria-hidden="true"></i> {{$bike->engine_type.', '.$bike->engine_capacity}}</h3>
                         <h3><i class="fa fa-motorcycle" aria-hidden="true"></i> {{$bike->body_type}}</h3>
                         <h3><i class="fa fa-paint-brush" aria-hidden="true"></i> {{$bike->color}}</h3>
-                        <h4> {{$bike->mileage}} per hour mileage</h4>
-                        <h4> Registered in {{$bike->registration_city}}</h4>
+                        <h3> <i class="fa fa-tachometer" aria-hidden="true"></i> {{$bike->mileage.' Km'}}</h3>
+                        <h3> Registered in {{$bike->registration_city}}</h3>
+                        <h3> Description</h3>
                         <p>{{$bike->description}}</p>
                         <hr>
                     </div>

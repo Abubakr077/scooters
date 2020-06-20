@@ -20,10 +20,10 @@
                                         <li><a href="#">All Ads (0)</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Messages</a></li>
-                                <li><a href="#">Search alerts</a></li>
-                                <li><a href="#">Profile settings</a></li>
-                                <li><a class="active" href="#">View my full profile</a></li>
+{{--                                <li><a href="#">Messages</a></li>--}}
+{{--                                <li><a href="#">Search alerts</a></li>--}}
+{{--                                <li><a href="#">Profile settings</a></li>--}}
+{{--                                <li><a class="active" href="#">View my full profile</a></li>--}}
                             </ul>
                         </div>
                     </div>
@@ -74,7 +74,40 @@
                             </div>
                             <div class="card">
                                 <h2>Favorite Ads</h2>
-
+                                <div class="add-area">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        @foreach($favBikes as $item)
+                                            @if($item)
+                                                <div class="col-md-12">
+                                                    <div class="cs-services box right">
+                                                        <figure> <img class="img-responsive" src="{{url($item->photos()->first()->getPicture())}}"></figure>
+                                                        <div class="heading"><h5>
+                                                                <a href="{{url()->current().'/'.$item->id}}">{{$item->name}}</a>
+                                                            </h5>
+                                                            <p>{{$item->price}}</p>
+                                                            <p>{{$item->description}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                        @foreach($favAccessories as $item)
+                                                @if($item)
+                                                    <div class="col-md-12">
+                                                <div class="cs-services box right">
+                                                    <figure> <img class="img-responsive" src="{{url($item->photos()->first()->getPicture())}}"></figure>
+                                                    <div class="heading"><h5>
+                                                            <a href="{{url()->current().'/'.$item->id}}">{{$item->name}}</a>
+                                                        </h5>
+                                                        <p>{{$item->price}}</p>
+                                                        <p>{{$item->description}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                @endif
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

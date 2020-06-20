@@ -11,7 +11,7 @@
                         <h1 class="">Sell Your Bike</h1>
 
                         <h3>Bike Information</h3>
-                            <div class="col-md-12 cities">
+                            <div class="col-md-12 cities row">
                                 <label>Title</label>
                                 <input type="text" name="name" id="name" class="form-control" required placeholder="Title">
                             </div>
@@ -19,59 +19,51 @@
                                 <label>Address</label>
                                 <input type="text" name="city_area" id="city_area" class="form-control" placeholder="Address">
                             </div>
-                        <div class="col-md-12 cities text-field">
-                            <label>City</label>
-                            <input class="form-control" required type="text" list="rabbit-cities" placeholder="City" name="city">
-                            <datalist id="rabbit-cities">
-                                <option value="Lahore">
-                                <option value="Karachi">
-                                <option value="Islamabad">
-                                <option value="Multan">
-                                <option value="Bwp">
-                                    <option value="Rawalpindi">
-                                    <option value="Peshawar">
-                                    <option value="Quetta">
-                            </datalist>
-                        </div>
-                            <div class="col-md-12 cities text-field">
+                            <div class="col-md-12 cities ">
+                                <label>City</label>
+                                <select class="form-control" name="city" required >
+                                    <option value="" > --- Please Select --- </option>
+                                    @foreach((array)config('constants.CITIES') as $city)
+                                        <option value="{{$city}}">
+                                            {{$city}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-12 cities ">
                                 <label>Province</label>
-                                <input class="form-control" type="text" required list="rabbit-province" placeholder="Province" name="province">
-                                <datalist id="rabbit-province">
-                                    <option value="Punjab">
-                                    <option value="Sindh">
-                                    <option value="KPK">
-                                    <option value="Balochistan">
-                                    <option value="Azad Kashmir">
-                                    <option value="Federally Administered Tribal Areas">
-                                </datalist>
+                                <select class="form-control" name="province" required >
+                                    <option value="" > --- Please Select --- </option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Sindh">Sindh</option>
+                                    <option value="KPK">KPK</option>
+                                    <option value="Balochistan">Balochistan</option>
+                                    <option value="Azad Kashmir">Azad Kashmir</option>
+                                    <option value="Federally Administered Tribal Areas">Federally Administered Tribal Areas</option>
+                                </select>
                             </div>
-                            <div class="col-md-12 cities text-field">
+
+                            <div class="col-md-12 cities ">
                                 <label>Registration City</label>
-                                <input class="form-control" type="text"  required id="default" list="rabbit-cities4" placeholder="City" name="registration_city">
-                                <datalist id="rabbit-cities4">
-                                    <option value="Lahore">
-                                    <option value="Karachi">
-                                    <option value="Islamabad">
-                                    <option value="Multan">
-                                    <option value="Bwp">
-                                    <option value="Rawalpindi">
-                                    <option value="Peshawar">
-                                    <option value="Quetta">
-                                </datalist>
+                                <select class="form-control" name="registration_city" required >
+                                    <option value="" > --- Please Select --- </option>
+                                    @foreach((array)config('constants.CITIES') as $city)
+                                        <option value="{{$city}}">
+                                            {{$city}}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="col-md-12 cities text-field">
+                            <div class="col-md-12 cities ">
                                 <label>Brand</label>
-                                <input class="form-control" required type="text" list="rabbit-brand" placeholder="Brand" name="brand">
-                                <datalist id="rabbit-brand">
-                                    <option value="Honda">
-                                    <option value="Yamaha">
-                                    <option value="Suzuki">
-                                    <option value="Super Power">
-                                    <option value="United">
-                                    <option value="Unique">
-                                    <option value="Kawasaki">
-                                    <option value="Other">
-                                </datalist>
+                                <select class="form-control" name="brand" required >
+                                    <option value="" > --- Please Select --- </option>
+                                    @foreach((array)config('constants.BRANDS') as $brand)
+                                        <option value="{{$brand}}">
+                                            {{$brand}}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
 {{--                        <div class="col-md-12 cities text-field">--}}
 {{--                            <label>Bike Information</label>--}}
@@ -139,56 +131,56 @@
                                 <label>Date of manufacture</label>
                                 <input class="form-control" required  type="date" id="default" list="rabbit-cities5" placeholder="Date of manufacture" name="date">
                             </div>
-                        <div class="col-md-12 cities text-field">
+                        <div class="col-md-12 cities ">
                             <label>Engine Type</label>
-                            <input class="form-control" type="text" required  id="default" list="rabbit-cities6" placeholder="Stroke" name="engine_type">
-                            <datalist id="rabbit-cities6">
-                                <option value="4 Stroke">
-                                <option value="2 Stroke">
-                                <option value="Electric">
-                            </datalist>
+                            <select class="form-control" name="engine_type" required >
+                                <option value="" > --- Please Select --- </option>
+                                <option value="4 Stroke">4 Stroke</option>
+                                <option value="2 Stroke">2 Stroke</option>
+                                <option value="Electric">Electric</option>
+                            </select>
                         </div>
-                            <div class="col-md-12 cities text-field">
+                            <div class="col-md-12 cities ">
                                 <label>Engine Capacity</label>
-                                <input class="form-control" type="number" required  id="default" list="rabbit-capacity" placeholder="Engine Capacity" name="engine_capacity">
-                                <datalist id="rabbit-capacity">
-                                    <option value="70">
-                                    <option value="110">
-                                    <option value="125">
-                                    <option value="150">
-                                    <option value="200">
-                                    <option value="660">
-                                </datalist>
+                                <select class="form-control" name="engine_capacity" required >
+                                    <option value="" > --- Please Select --- </option>
+                                    <option value="70">70</option>
+                                    <option value="110">110</option>
+                                    <option value="125">125</option>
+                                    <option value="150">150</option>
+                                    <option value="200">200</option>
+                                    <option value="660">660</option>
+                                </select>
                             </div>
 
-                            <div class="col-md-12 cities text-field">
+                            <div class="col-md-12 cities ">
                                 <label>Body Type</label>
-                                <input class="form-control" type="text"  required id="default" list="rabbit-body" placeholder="Body Type" name="body_type">
-                                <datalist id="rabbit-body">
-                                    <option value="ATV">
-                                    <option value="Cruiser">
-                                    <option value="Scooter">
-                                    <option value="Sports">
-                                    <option value="Standard">
-                                    <option value="Tourer">
-                                    <option value="Trail">
-                                    <option value="Others">
-                                </datalist>
+                                <select class="form-control" name="body_type" required >
+                                    <option value="" > --- Please Select --- </option>
+                                    <option value="ATV">ATV</option>
+                                    <option value="Cruiser">Cruiser</option>
+                                    <option value="Scooter">Scooter</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Standard">Standard</option>
+                                    <option value="Tourer">Tourer</option>
+                                    <option value="Trail">Trail</option>
+                                    <option value="Others">Others</option>
+                                </select>
                             </div>
 
-                            <div class="col-md-12 cities text-field">
+                            <div class="col-md-12 cities">
                                 <label>Color</label>
-                                <input class="form-control" type="text" required  id="default" list="rabbit-color" placeholder="Color" name="color">
-                                <datalist id="rabbit-color">
-                                    <option value="Red">
-                                    <option value="Black">
-                                    <option value="White">
-                                    <option value="Green">
-                                    <option value="Blue">
-                                    <option value="Orange">
-                                    <option value="Yellow">
-                                    <option value="Multi">
-                                </datalist>
+                                <select class="form-control" name="color" required >
+                                    <option value="" > --- Please Select --- </option>
+                                    <option value="Red">Red</option>
+                                    <option value="Black">Black</option>
+                                    <option value="White">White</option>
+                                    <option value="Green">Green</option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="Orange">Orange</option>
+                                    <option value="Yellow">Yellow</option>
+                                    <option value="Multi">Multi</option>
+                                </select>
                             </div>
                         <div class="col-md-12 cities ">
                             <label>Price</label>
@@ -201,6 +193,13 @@
                                 <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" required rows="10" name="description"></textarea>
                             </div>
                         </div>
+                            <div class="col-md-12 cities row">
+                                    <h3>Condition</h3>
+                                    <label>
+                                        <input type="radio" name="condition" value="new"/>New</label>
+                                    <label>
+                                        <input type="radio" name="condition" value="used"/>Used</label>
+                            </div>
                         <div class="col-md-12 cities">
                             <h3>Additional Information</h3>
                             <h4>Feature</h4>
@@ -209,10 +208,23 @@
                             <div class="col-md-6"><label><input type="checkbox"> Led Light </label></div>
                             <div class="col-md-6"><label><input type="checkbox"> Wind Shield </label></div>
                         </div>
-                        <div class="col-md-12 cities">
-                            <h3>upload Photos</h3>
-                            <input multiple="multiple" type="file" required class="form-control" name="picture[]">
-                        </div>
+                            <div class="row group-1">
+                                <div class="col-md-12 duration">
+                                    <h3>Pictures</h3>
+                                    <div class="row">
+                                        <div class="box col-md-12">
+                                            <article>
+                                                <div class="upload-btn-wrapper">
+                                                    <button class="btn">Add Pictures</button>
+                                                    <input id="files" type="file" multiple name="picture[]"/>
+                                                    <output id="result" />
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                         <div class="col-md-12 cities">
                             <h3>Contact Information</h3>
                             <input type="text" name="seller_name" required  id="seller_name" value="{{Auth::user()->name}}" class="form-control" placeholder="Seller Name">
@@ -229,5 +241,56 @@
         </div>
     </section>
     @include('layouts.footer')
+    <script>
+        window.onload = function(){
 
+            //Check File API support
+            if(window.File && window.FileList && window.FileReader)
+            {
+                var filesInput = document.getElementById("files");
+
+                filesInput.addEventListener("change", function(event){
+
+                    var files = event.target.files; //FileList object
+                    var output = document.getElementById("result");
+
+                    for(var i = 0; i< files.length; i++)
+                    {
+                        var file = files[i];
+
+                        //Only pics
+                        if(!file.type.match('image'))
+                            continue;
+
+                        var picReader = new FileReader();
+
+                        picReader.addEventListener("load",function(event){
+
+                            var picFile = event.target;
+
+                            var div = document.createElement("div");
+
+                            div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+                                "title='" + picFile.name + "'/> <a href='#' class='remove_pict'>X</a>";
+
+                            output.insertBefore(div,null);
+                            div.children[1].addEventListener("click", function(event){
+                                div.parentNode.removeChild(div);
+                            });
+
+                        });
+
+                        //Read the image
+                        picReader.readAsDataURL(file);
+                    }
+
+                });
+            }
+            else
+            {
+                console.log("Your browser does not support File API");
+            }
+        }
+
+    </script>
 @endsection

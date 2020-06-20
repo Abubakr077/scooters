@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Bike;
 use App\BikePhotos;
 use App\Helpers\FileHelper;
@@ -22,7 +21,7 @@ class BikeController extends Controller
      */
     public function index()
     {
-        $bikes = Bike::paginate(8);
+        $bikes = Bike::where('condition', '=', 'new')->paginate(8);
         $filters = [
             'keyword' => '',
             'city' => '',
@@ -42,6 +41,28 @@ class BikeController extends Controller
             'bodyType'    => '',
         ];
         return view('user/newbikes', compact('bikes','filters'));
+    }
+    public function usedBikes(){
+        $bikes = Bike::where('condition', '=', 'used')->paginate(8);
+        $filters = [
+            'keyword' => '',
+            'city' => '',
+            'brand' => '',
+            'province' => '',
+            'minYear' => '',
+            'maxYear' => '',
+            'minPrice'    => '',
+            'maxPrice'    => '',
+            'regCity'    => '',
+            'color'    => '',
+            'minMileage'    => '',
+            'maxMileage'    => '',
+            'minCapacity'    => '',
+            'maxCapacity'    => '',
+            'type'    => '',
+            'bodyType'    => '',
+        ];
+        return view('user/usedbikes', compact('bikes','filters'));
     }
 
     /**
@@ -172,8 +193,14 @@ class BikeController extends Controller
                 ]);
             }
         }
-        $bikes = Bike::paginate(8);
-        return view('user/newbikes', compact('bikes','filters'));
+        if ($bike->condition == 'new'){
+            $bikes = Bike::where('condition', '=', 'new')->paginate(8);
+            return view('user/newbikes', compact('bikes','filters'));
+        } else
+            {
+                $bikes = Bike::where('condition', '=', 'used')->paginate(8);
+                return view('user/usedbikes', compact('bikes','filters'));
+        }
     }
 
     /**

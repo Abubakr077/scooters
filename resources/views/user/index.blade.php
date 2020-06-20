@@ -14,166 +14,23 @@
                             <input type="text" placeholder="Bike model Or Make" class="cities" name="keyword">
                         </div>
                         <div class="col-md-3 col-sm-4 col-xs-12 col-sm-6 col-xs-12">
-                            <select name="brand">
+                            <select  name="brand">
                                 <option value=""> --- Please Select Brand --- </option>
-                                <option value="Honda">Honda</option>
-                                <option value="Yamaha">Yamaha</option>
-                                <option value="Suzuki">Suzuki</option>
-                                <option value="Super Power">Super Power</option>
-                                <option value="Unique">Unique</option>
-                                <option value="United">United</option>
-                                <option value="Kawasaki">Kawasaki</option>
-                                <option value="Road Prince">Road Prince</option>
-                                <option value="Aprilia">Aprilia</option>
-                                <option value="Asia Hero">Asia Hero</option>
-                                <option value="BML">BML</option>
-                                <option value="BMW">BMW</option>
-                                <option value="BSA">BSA</option>
-                                <option value="Benelli">Benelli</option>
-                                <option value="Blue Star">Blue Star</option>
-                                <option value="Can-am spyder">Can-am spyder</option>
-                                <option value="Crown">Crown</option>
-                                <option value="DYL">DYL</option>
-                                <option value="Derbi">Derbi</option>
-                                <option value="Diamond">Diamond</option>
-                                <option value="Ducati">Ducati</option>
-                                <option value="Eagle">Eagle</option>
-                                <option value="FUEGO">FUEGO</option>
-                                <option value="Ghani">Ghani</option>
-                                <option value="Habib">Habib</option>
-                                <option value="Davidson">Davidson</option>
-                                <option value="Hero">Hero</option>
-                                <option value="Hi Speed">Hi Speed</option>
-                                <option value="KEEWAY">KEEWAY</option>
-                                <option value="Lifan">Lifan</option>
-                                <option value="Loncin">Loncin</option>
-                                <option value="Metro">Metro</option>
-                                <option value="OVERDRIVE">OVERDRIVE</option>
-                                <option value="Pak Hero">Pak Hero</option>
-                                <option value="Power">Power</option>
-                                <option value="Prince">Prince</option>
-                                <option value="QINGQI">QINGQI</option>
-                                <option value="Ravi">Ravi</option>
-                                <option value="Razy Motors">Razy Motors</option>
-                                <option value="">Sigma</option>
-                                <option value="Sohrab">Sohrab</option>
-                                <option value="Super Asia">Super Asia</option>
-                                <option value="Super Speed">Super Speed</option>
-                                <option value="Super Star">Super Star</option>
-                                <option value="Supreme">Supreme</option>
-                                <option value="Toyo">Toyo</option>
-                                <option value="Treet">Treet</option>
-                                <option value="Triumph">Triumph</option>
-                                <option value="U.M">U.M</option>
-                                <option value="Union Star">Union Star</option>
-                                <option value="Vespa">Vespa</option>
-                                <option value="ZXMXO">ZXMCO</option>
-                                <option value="Zongshen">Zongshen</option>
-                                <option value="Other">Other</option>
+                                @foreach((array)config('constants.BRANDS') as $brand)
+                                    <option value="{{$brand}}">
+                                        {{$brand}}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-3 col-sm-4 col-xs-12 col-sm-6 col-xs-12">
-                            <select name="city">
+                            <select  name="city">
                                 <option value=""> --- Please Select City --- </option>
-                                <option value="Lahore">Lahore</option>
-                                <option value="Karachi">Karachi</option>
-                                <option value="Islamabad">Islamabad</option>
-                                <option value="Multan">Multan</option>
-                                <option value="Bahawalpur">Bahawalpur</option>
-                                <option value="Rawalpindi">Rawalpindi</option>
-                                <option value="Peshawar">Peshawar</option>
-                                <option value="Quetta">Quetta</option>
-                                 <option value="Abdul Hakeem">Abdul Hakeem</option>
-                                <option value="Abottabad">Abottabad</option>
-                                <option value="Ahmed Pur East">Ahmed Pur East</option>
-                                <option value="Arifwala">Arifwala</option>
-                                <option value="Attock">Attock</option>
-                                <option value="Bahawal Nagar">Bahawal Nagar</option>
-                                <option value="Balakot">Balakot</option>
-                                <option value="Bannu">Bannu</option>
-                                <option value="Bhakkar">Bhakkar</option>
-                                <option value="Bhalwal">Bhalwal</option>
-                                <option value="Bhimber">Bhimber</option>
-                                <option value="Burewala">Burewala</option>
-                                <option value="Chakwal">Chakwal</option>
-                                <option value="Charsadda">Charsadda</option>
-                                <option value="Chichawatni">Chichawatni</option>
-                                <option value="Chiniot">Chiniot</option>
-                                <option value="D.G.Khan">D.G.Khan</option>
-                                <option value="Dadyal Ak">Dadyal Ak</option>
-                                <option value="Daska">Daska</option>
-                                <option value="Depal pur">Depal pur</option>
-                                <option value="Dera ismail khan">Dera ismail khan</option>
-                                <option value="Dina">Dina</option>
-                                <option value="Dinga">Dinga</option>
-                                <option value="Faisalabad">Faisalabad</option>
-                                <option value="Fateh Jang">Fateh Jang</option>
-                                <option value="Gojra">Gojra</option>
-                                <option value="Gujar Khan">Gujar Khan</option>
-                                <option value="Gujranwala">Gujranwala</option>
-                                <option value="Gujrat">Gujrat</option>
-                                <option value="Hafizabad">Hafizabad</option>
-                                <option value="Hangu">Hangu</option>
-                                <option value="Hari pur">Hari pur</option>
-                                <option value="Haroonabad">Haroonabad</option>
-                                <option value="Hassan abdal"> Hassan abdal</option>
-                                <option value="Hyderabad">Hyderabad</option>
-                                <option value="Jahaniya">Jahaniya</option>
-                                <option value="Jalalpur Jattan">Jalalpur Jattan</option>
-                                <option value="Jauharabad">Jauharabad</option>
-                                <option value="Jehlum">Jehlum</option>
-                                <option value="Jhang">Jhang</option>
-                                <option value="Kahuta">Kahuta</option>
-                                <option value="Kallur kot">Kallur kot</option>
-                                <option value="Kamra">Kamra</option>
-                                <option value="Karak">Karak</option>
-                                <option value="Kashmir">Kashmir</option>
-                                <option value="Kasur">Kasur</option>
-                                <option value="Khairpur">Khairpur</option>
-                                <option value="Khanewal">Khanewal</option>
-                                <option value="kherian">Kharian</option>
-                                <option value="Khusab">Khushab</option>
-                                <option value="Kohat">Kohat</option>
-                                <option value="Kotla arab ali khan">Kotla arab ali khan</option>
-                                <option value="Lala musa">Lala musa</option>
-                                <option value="Larkana">Larkana</option>
-                                <option value="Layyah">Layyah</option>
-                                <option value="Mandi bahauddin">Mandi bahauddin</option>
-                                <option value="Mansahra">Mansahra</option>
-                                <option value="Mardan">Mardan</option>
-                                <option value="Mian Channu">Mian Channu</option>
-                                <option value="Mian Wali">Mian Wali</option>
-                                <option value="Mirpur A.K.">Mirpur A.K.</option>
-                                <option value="Muzaffar Gargh">Muzaffar Gargh</option>
-                                <option value="Muzaffarabad">Muzaffarabad</option>
-                                <option value="Nankana sahib">Nankana sahib</option>
-                                <option value="Narowal">Narowal</option>
-                                <option value="Nawabshah">Nawabshah</option>
-                                <option value="Nowshera">Nowshera</option>
-                                <option value="Okara">Okara</option>
-                                <option value="Pattoki">Pattoki</option>
-                                <option value="Phalia">Phalia</option>
-                                <option value="Pind Dadan Khan">Pind Dadan Khan</option>
-                                <option value="Quaid Abad">Quaid Abad</option>
-                                <option value="Rahim Yar Khan">Rahim Yar Khan</option>
-                                <option value="Rawala kot">Rawala kot</option>
-                                <option value="Sadiqabad">Sadiqabad</option>
-                                <option value="Sahiwal">Sahiwal</option>
-                                <option value="Sargodha">Sargodha</option>
-                                <option value="Sawabi">Sawabi</option>
-                                <option value="Shahdara">Shahdara</option>
-                                <option value="Shaikhupura">Shaikhupura</option>
-                                <option value="Shiekhopura">Shiekhopura</option>
-                                <option value="Sialkot">Sialkot</option>
-                                <option value="Sillanwali">Sillanwali</option>
-                                <option value="Sukkur">Sukkur</option>
-                                <option value="Swat">Swat</option>
-                                <option value="Talagang">Talagang</option>
-                                <option value="Tando adam">Tando adam</option>
-                                <option value="Taxila">Taxila</option>
-                                <option value="Toba Tek Singh">Toba Tek Singh</option>
-                                <option value="Vehari">Vehari</option>
-                                <option value="Wah cantt">Wah cantt</option>
+                                @foreach((array)config('constants.CITIES') as $city)
+                                    <option value="{{$city}}">
+                                        {{$city}}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-3 col-sm-4 col-xs-12 col-sm-6 col-xs-12">
@@ -181,52 +38,61 @@
                                 <div class="btn-group">
                                     <button id="min-max-price-range" class="form-control selectpicker select-btn  dropdown-toggle searchParams" href="#" data-toggle="dropdown" tabindex="6">
                                             <span class="filter-option pull-left span_price">
-                                                <span id="price_range1"> </span> - <span id="price_range2">Price Range</span> </span>
+                                                <span id="price_range1"> </span> - <span id="price_range2">Price</span> </span>
                                         <span class="bs-caret" style="float: right;"><span class="caret"></span></span>
                                     </button>
 
                                     <div class="dropdown-menu ddRange" role="menu" style="width: 295px;">
                                         <div class="rangemenu">
                                             <div class="freeformPrice">
-                                                <div class="col-md-5" style="padding-right: 0">
-                                                    <input name="minPrice" type="text" class="min_input form-control" placeholder="Min Price">
-                                                </div>
-                                                <div class="col-md-2 "><span class="arrow"></span></div>
-                                                <div class="col-md-5" style="padding-left: 0">
-                                                    <input name="maxPrice" type="text" class="max_input form-control" placeholder="Max Price">
-                                                </div>
-                                                <div class="col-md-12 text-center clear"><a href="#">Clear</a></div>
-                                            </div>
-
-                                            <div class="price_Ranges rangesMax col-md-5">
-                                                <a class="max_value" value="" href="javascript:void(0)">Any Max</a>
-                                                <a class="max_value" value="15000" href="javascript:void(0)">15000 </a>
-                                                <a class="max_value" value="20000" href="javascript:void(0)">20000</a>
-                                                <a class="max_value" value="25000" href="javascript:void(0)">25000</a>
-                                                <a class="max_value" value="30000" href="javascript:void(0)">30000</a>
-                                                <a class="max_value" value="35000" href="javascript:void(0)">35000</a>
-                                                <a class="max_value" value="40000" href="javascript:void(0)">40000</a>
-                                                <a class="max_value" value="450000" href="javascript:void(0)">45000</a>
-                                                <a class="max_value" value="50000" href="javascript:void(0)">50000</a>
-                                                <a class="max_value" value="55000" href="javascript:void(0)">55000</a>
-                                                <a class="max_value" value="60000" href="javascript:void(0)">60000</a>
-                                            </div>
-                                            <div class="col-md-2"> </div>
-
-                                            <div class="price_Ranges rangesMin col-md-5">
-                                                <a class="min_value" value="" href="javascript:void(0)">Any Min</a>
-                                                <a class="min_value" value="15000" href="javascript:void(0)">15000 </a>
-                                                <a class="min_value" value="20000" href="javascript:void(0)">20000</a>
-                                                <a class="min_value" value="25000" href="javascript:void(0)">25000</a>
-                                                <a class="min_value" value="30000" href="javascript:void(0)">30000</a>
-                                                <a class="min_value" value="35000" href="javascript:void(0)">35000</a>
-                                                <a class="min_value" value="40000" href="javascript:void(0)">40000</a>
-                                                <a class="min_value" value="450000" href="javascript:void(0)">45000</a>
-                                                <a class="min_value" value="50000" href="javascript:void(0)">50000</a>
-                                                <a class="min_value" value="55000" href="javascript:void(0)">55000</a>
-                                                <a class="min_value" value="60000" href="javascript:void(0)">60000</a>
+                                            <section class="range-slider">
+                                                <span class="rangeValues"></span>
+                                                <input value="0" min="0" max="999999" step="1000" type="range" name="minPrice">
+                                                <input value="999999" min="0" max="999999" step="5000" type="range" name="maxPrice">
+                                            </section>
                                             </div>
                                         </div>
+{{--                                        <div class="rangemenu">--}}
+{{--                                            <div class="freeformPrice">--}}
+{{--                                                <div class="col-md-5" style="padding-right: 0">--}}
+{{--                                                    <input name="minPrice" type="text" class="min_input form-control" placeholder="Min Price">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-md-2 "><span class="arrow"></span></div>--}}
+{{--                                                <div class="col-md-5" style="padding-left: 0">--}}
+{{--                                                    <input name="maxPrice" type="text" class="max_input form-control" placeholder="Max Price">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="col-md-12 text-center clear"><a href="#">Clear</a></div>--}}
+{{--                                            </div>--}}
+
+{{--                                            <div class="price_Ranges rangesMax col-md-5">--}}
+{{--                                                <a class="max_value" value="" href="javascript:void(0)">Any Max</a>--}}
+{{--                                                <a class="max_value" value="15000" href="javascript:void(0)">15000 </a>--}}
+{{--                                                <a class="max_value" value="20000" href="javascript:void(0)">20000</a>--}}
+{{--                                                <a class="max_value" value="25000" href="javascript:void(0)">25000</a>--}}
+{{--                                                <a class="max_value" value="30000" href="javascript:void(0)">30000</a>--}}
+{{--                                                <a class="max_value" value="35000" href="javascript:void(0)">35000</a>--}}
+{{--                                                <a class="max_value" value="40000" href="javascript:void(0)">40000</a>--}}
+{{--                                                <a class="max_value" value="450000" href="javascript:void(0)">45000</a>--}}
+{{--                                                <a class="max_value" value="50000" href="javascript:void(0)">50000</a>--}}
+{{--                                                <a class="max_value" value="55000" href="javascript:void(0)">55000</a>--}}
+{{--                                                <a class="max_value" value="60000" href="javascript:void(0)">60000</a>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="col-md-2"> </div>--}}
+
+{{--                                            <div class="price_Ranges rangesMin col-md-5">--}}
+{{--                                                <a class="min_value" value="" href="javascript:void(0)">Any Min</a>--}}
+{{--                                                <a class="min_value" value="15000" href="javascript:void(0)">15000 </a>--}}
+{{--                                                <a class="min_value" value="20000" href="javascript:void(0)">20000</a>--}}
+{{--                                                <a class="min_value" value="25000" href="javascript:void(0)">25000</a>--}}
+{{--                                                <a class="min_value" value="30000" href="javascript:void(0)">30000</a>--}}
+{{--                                                <a class="min_value" value="35000" href="javascript:void(0)">35000</a>--}}
+{{--                                                <a class="min_value" value="40000" href="javascript:void(0)">40000</a>--}}
+{{--                                                <a class="min_value" value="450000" href="javascript:void(0)">45000</a>--}}
+{{--                                                <a class="min_value" value="50000" href="javascript:void(0)">50000</a>--}}
+{{--                                                <a class="min_value" value="55000" href="javascript:void(0)">55000</a>--}}
+{{--                                                <a class="min_value" value="60000" href="javascript:void(0)">60000</a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
 
 
                                     </div>
@@ -987,5 +853,36 @@
                 scrollTop : 0                       // Scroll to top of body
             }, 500);
         });
+    </script>
+    <script>
+        function getVals(){
+            // Get slider values
+            var parent = this.parentNode;
+            var slides = parent.getElementsByTagName("input");
+            var slide1 = parseFloat( slides[0].value );
+            var slide2 = parseFloat( slides[1].value );
+            // Neither slider will clip the other, so make sure we determine which is larger
+            if( slide1 > slide2 ){ var tmp = slide2; slide2 = slide1; slide1 = tmp; }
+
+            var displayElement = parent.getElementsByClassName("rangeValues")[0];
+            displayElement.innerHTML = "RS. " + slide1 + " - Rs." + slide2 + "";
+            document.getElementById('price_range1').innerHTML = "RS. " + slide1;
+            document.getElementById('price_range2').innerHTML =  " Rs. " + slide2 + " Price";
+        }
+
+        window.onload = function(){
+            // Initialize Sliders
+            var sliderSections = document.getElementsByClassName("range-slider");
+            for( var x = 0; x < sliderSections.length; x++ ){
+                var sliders = sliderSections[x].getElementsByTagName("input");
+                for( var y = 0; y < sliders.length; y++ ){
+                    if( sliders[y].type ==="range" ){
+                        sliders[y].oninput = getVals;
+                        // Manually trigger event first time to display values
+                        sliders[y].oninput();
+                    }
+                }
+            }
+        }
     </script>
 @endsection

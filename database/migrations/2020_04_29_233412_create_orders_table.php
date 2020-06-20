@@ -30,7 +30,7 @@ class CreateOrdersTable extends Migration
             $table->string('postcode');
             $table->string('address');
             $table->string('picture');
-            $table->text('comment');
+            $table->text('comment')->nullable();
             $table->integer('accessories_id')->unsigned();
             $table->foreign('accessories_id')->references('id')->on('accessories')->onDelete('cascade');;
             $table->timestamps();

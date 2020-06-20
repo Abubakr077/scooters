@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Config;
 class Accessories extends Model
 {
     protected $fillable = [
-        'name',
+        'name','type',
         'dealer',
         'condition','brand','offer','color',
         'category','description','price','price_type','address','city','province'

@@ -17,6 +17,7 @@ class CreateAccessoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('category');
+            $table->string('type');
             $table->text('description');
             $table->bigInteger('price');
             $table->string('price_type');

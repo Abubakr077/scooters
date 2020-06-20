@@ -41,6 +41,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Bike::class);
     }
+    public function favAds()
+    {
+        return $this->hasMany(FavAds::class);
+    }
     public function orders()
     {
         return $this->hasMany(Orders::class);

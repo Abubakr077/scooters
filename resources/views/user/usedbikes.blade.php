@@ -1,490 +1,386 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Scooters</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
+@extends('layouts/layout')
 
-</head>
-<body>
-<a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a>
-    <div class="wraper">
-        <div class="menu-bar">
-            <div class="container">
-                <div class="row">
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <h1 class="navbar-brand logo"><a href="index.blade.php"><img class="img-responsive"
-                                                                                             src="images/wheel.png">
-                                </a></h1>
-                            </div>
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                           aria-haspopup="true" aria-expanded="false">Used Bikes <span
-                                                class="caret"></span> <span class="sr-only">(current)</span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="usedbikes.blade.php">used bikes</a></li>
-                                            <li><a href="#">Another action</a></li>
-                                            <li><a href="#">Something else here</a></li>
+@section('content')
+    <section class="page-section text-left">
+        <div class="container sec-1">
+            <div class="row">
+                <h2>Used Bikes</h2>
+                <p>See used bikes selling in your area. Find a bike close to home</p>
+            </div>
+        </div>
+        <div class="container bikes-sec">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-12 result">
+                    <h4 class="show">Show Results by:</h4>
+                    <form role="form" method="get" action="/bikes/search" enctype="multipart/form-data">
+                        @csrf
+                    <ul>
+                            <input type="text" name="keyword" id="keyword" value="{{$filters['keyword']}}" class="form-control" placeholder="Search">
+                        <li>
+                            <h4>Brand</h4>
+                            <select class="form-control" name="brand">
+                                <option value=""> --- Please Select --- </option>
+                                @foreach((array)config('constants.BRANDS') as $brand)
+                                    <option value="{{$brand}}"
+                                        {{ $filters['brand'] == $brand ? 'selected' : '' }}>
+                                        {{$brand}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </li>
+                        <li>
+                            <h4>Date </h4>
+                            <section class="range-slider">
+                                <div class="range-slider-year">
+                                <span class="rangeValuesYear"></span>
+                                <input value="{{ $filters['minYear'] != '' ? $filters['minYear'] : '1900' }}" min="1900" max="2021" step="1" type="range" name="minYear">
+                                <input value="{{ $filters['maxYear'] != '' ? $filters['maxYear'] : '2021' }}" min="1900" max="2021" step="1" type="range" name="maxYear">
+                                </div>
+                            </section>
+                        </li>
+                        <li>
+                            <h4>Price </h4>
+                            <section class="range-slider">
+                                <div class="range-slider-price">
+                                <span class="rangeValuesPrice"></span>
+                                <input value="{{ $filters['minPrice'] != '' ? $filters['minPrice'] : '0' }}" min="0" max="999999" step="0" type="range" name="minPrice">
+                                <input value="{{ $filters['maxPrice'] != '' ? $filters['maxPrice'] : '999999' }}" min="0" max="999999" step="500" type="range" name="maxPrice">
+                                </div>
+                            </section>
+                        </li>
+                        <li>
+                            <h4>Registration City</h4>
+                            <select class="form-control" name="regCity">
+                                <option value=""> --- Please Select --- </option>
+                                @foreach((array)config('constants.CITIES') as $city)
+                                    <option value="{{$city}}"
+                                        {{ $filters['regCity'] == $city ? 'selected' : '' }}>
+                                        {{$city}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </li>
+                        <li>
+                            <h4>City</h4>
+                            <select class="form-control" name="city">
+                                <option value=""> --- Please Select --- </option>
+                                @foreach((array)config('constants.CITIES') as $city)
+                                    <option value="{{$city}}"
+                                        {{ $filters['city'] == $city ? 'selected' : '' }}>
+                                        {{$city}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </li>
+                        <li>
+                            <h4>Province</h4>
+                            <select class="form-control" name="province">
+                                <option value=""> --- Please Select --- </option>
+                                <option value="Punjab" {{ $filters['province']=='Punjab' ? 'selected' : ''  }}>Punjab</option>
+                                <option value="Sindh" {{ $filters['province']=='Sindh' ? 'selected' : ''  }}>Sindh</option>
+                                <option value="KPK" {{ $filters['province']=='KPK' ? 'selected' : ''  }}>KPK</option>
+                                <option value="Balochistan" {{ $filters['province']=='Balochistan' ? 'selected' : ''  }}>Balochistan</option>
+                                <option value="Azad Kashmir" {{ $filters['province']=='Azad Kashmir' ? 'selected' : ''  }}>Azad Kashmir</option>
+                                <option value="Federally Administered Tribal Areas" {{ $filters['province']=='Federally Administered Tribal Areas' ? 'selected' : ''  }}>Federally Administered Tribal Areas</option>
+                            </select>
+                        </li>
+                        <li>
+                            <h4>Color</h4>
+                            <select class="form-control" name="color">
+                                <option value=""> --- Please Select --- </option>
+                                <option value="Red" {{ $filters['color']=='Red' ? 'selected' : '' }}>Red</option>
+                                <option value="Black" {{ $filters['color']=='Black' ? 'selected' : '' }}>Black</option>
+                                <option value="White" {{ $filters['color']=='White' ? 'selected' : '' }}>White</option>
+                                <option value="Green" {{ $filters['color']=='Green' ? 'selected' : '' }}>Green</option>
+                                <option value="Blue" {{ $filters['color']=='Blue' ? 'selected' : '' }}>Blue</option>
+                                <option value="Orange" {{ $filters['color']=='Orange' ? 'selected' : '' }}>Orange</option>
+                                <option value="Yellow" {{ $filters['color']=='Yellow' ? 'selected' : '' }}>Yellow</option>
+                                <option value="Multi" {{ $filters['color']=='Multi' ? 'selected' : '' }}>Multi</option>
+                            </select>
+                        </li>
+                        <li>
+                            <h4>Mileage </h4>
+                            <section class="range-slider">
+                                <div class="range-slider-mileage">
+                                <span class="rangeValuesMileage"></span>
+                                <input value="{{ $filters['minMileage'] != '' ? $filters['minMileage'] : '15' }}" min="15" max="200" step="5" type="range" name="minMileage">
+                                <input value="{{ $filters['maxMileage'] != '' ? $filters['maxMileage'] : '200' }}" min="15" max="200" step="5" type="range" name="maxMileage">
+                                </div>
+                            </section>
+                        </li>
+                        <li>
+                            <h4>Engine Type</h4>
+                            <select class="form-control" name="type">
+                                <option value=""> --- Please Select --- </option>
+                                <option value="4 Stroke" {{ $filters['type']=='4 Stroke' ? 'selected' : '' }}>4 Stroke</option>
+                                <option value="2 Stroke" {{ $filters['type']=='2 Stroke' ? 'selected' : '' }}>2 Stroke</option>
+                                <option value="Electric" {{ $filters['type']=='Electric' ? 'selected' : '' }}>Electric</option>
+                            </select>
+                        </li>
+                        <li>
+                            <h4>Engine Capacity</h4>
+                            <section class="range-slider">
+                                <div class="range-slider-capacity">
+                                <span class="rangeValuesCapacity"></span>
+                                <input value="{{ $filters['minCapacity'] != '' ? $filters['minCapacity'] : '50' }}" min="50" max="5000" step="10" type="range" name="minCapacity">
+                                <input value="{{ $filters['maxCapacity'] != '' ? $filters['maxCapacity'] : '5000' }}" min="50" max="5000" step="10" type="range" name="maxCapacity">
+                                </div>
+                            </section>
+                        </li>
+                        <li>
+                            <h4>Body Type</h4>
+                            <select class="form-control" name="bodyType">
+                                <option value=""> --- Please Select --- </option>
+                                <option value="ATV" {{ $filters['bodyType']=='ATV' ? 'selected' : '' }}>ATV</option>
+                                <option value="Cruiser" {{ $filters['bodyType']=='Cruiser' ? 'selected' : '' }}>Cruiser</option>
+                                <option value="Scooter" {{ $filters['bodyType']=='Scooter' ? 'selected' : '' }}>Scooter</option>
+                                <option value="Sports" {{ $filters['bodyType']=='Sports' ? 'selected' : '' }}>Sports</option>
+                                <option value="Standard" {{ $filters['bodyType']=='Standard' ? 'selected' : '' }}>Standard</option>
+                                <option value="Tourer" {{ $filters['bodyType']=='Tourer' ? 'selected' : '' }}>Tourer</option>
+                                <option value="Trail" {{ $filters['bodyType']=='Trail' ? 'selected' : '' }}>Trail</option>
+                                <option value="Others" {{ $filters['bodyType']=='Others' ? 'selected' : '' }}>Others</option>
+                            </select>
+                        </li>
 
-                                        </ul>
-                                    </li>
-
-                                    <li><a href="newbikes.blade.php">New bikes</a></li>
-
-                                    <li><a href="accessories.blade.php">Accessories </a></li>
-                                    <li><a href="autoparts.blade.php">Auto Parts</a></li>
-                                    <li><a href="dealer.blade.php">Dealers</a></li>
-
-
-                                    <li><a href="#" class=" dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="rakshaw.blade.php">Rikshaw</a></li>
-                                            <li><a href="#">Blog</a></li>
-                                            <li><a href="#">Forum</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li><a href="#" class=" dropdown-toggle add-post" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post an add <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="sellbike.blade.php">sell bike</a></li>
-                                            <li><a href="addposting.blade.php">Post an add</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-toggle="dropdown" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Signin <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#" data-toggle="modal" data-target="#myModal"  role="button"><i class="fa fa-user"></i> signup</a></li>
-                                        </ul>
-                                        <div id="myModal" class="modal fade" role="dialog">
-                                            <div class="modal-dialog">
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div id="loginbox" class="mainbox">
-                                                            <div class="panel panel-info" >
-                                                                <div class="panel-heading">
-                                                                    <div class="panel-title">Sign In</div>
-                                                                    <div style="float:right; font-size: 80%; position: relative; top:-23px"><a href="#">Forgot password?</a></div>
-                                                                </div>
-
-                                                                <div style="padding-top:30px" class="panel-body" >
-
-                                                                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-
-                                                                    <form id="loginform" class="form-horizontal" role="form">
-
-                                                                        <div style="margin-bottom: 25px" class="input-group">
-                                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                                            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">
-                                                                        </div>
-
-                                                                        <div style="margin-bottom: 25px" class="input-group">
-                                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                                                            <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
-                                                                        </div>
-
-                                                                        <div class="input-group">
-                                                                            <div class="checkbox">
-                                                                                <label>
-                                                                                    <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div style="margin-top:10px" class="form-group">
-                                                                            <!-- Button -->
-                                                                            <div class="col-sm-12 controls">
-                                                                                <a id="btn-login" href="#" class="btn btn-primary">Login  </a>
-                                                                                <a id="btn-fblogin" href="signup-complete.blade.php" class="btn btn-primary">Login with Facebook</a>
-
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <div class="col-md-12 control">
-                                                                                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                                                                    Don't have an account!
-                                                                                    <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
-                                                                                        Sign Up Here
-                                                                                    </a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div id="signupbox" style="display:none;" class="mainbox">
-                                                            <div class="panel panel-info">
-                                                                <div class="panel-heading">
-
-                                                                    <div style=" font-size: 85%; position: relative;"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
-                                                                </div>
-                                                                <div class="panel-body" >
-                                                                    <form id="signupform" class="form-horizontal" role="form">
-                                                                        <div id="signupalert" style="display:none" class="alert alert-danger">
-                                                                            <p>Error:</p>
-                                                                            <span></span>
-                                                                        </div>
-
-                                                                        <div class="form-group">
-                                                                            <label for="email" class="col-md-3 control-label">Email</label>
-                                                                            <div class="col-md-9">
-                                                                                <input type="text" class="form-control" name="email" placeholder="Email Address">
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="form-group">
-                                                                            <label for="firstname" class="col-md-3 control-label">First Name</label>
-                                                                            <div class="col-md-9">
-                                                                                <input type="text" class="form-control" name="firstname" placeholder="First Name">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="lastname" class="col-md-3 control-label">Last Name</label>
-                                                                            <div class="col-md-9">
-                                                                                <input type="text" class="form-control" name="lastname" placeholder="Last Name">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="password" class="col-md-3 control-label">Password</label>
-                                                                            <div class="col-md-9">
-                                                                                <input type="password" class="form-control" name="passwd" placeholder="Password">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="icode" class="col-md-3 control-label">Invitation Code</label>
-                                                                            <div class="col-md-9">
-                                                                                <input type="text" class="form-control" name="icode" placeholder="">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <!-- Button -->
-                                                                            <div class="col-md-offset-3 col-md-9">
-                                                                                <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
-                                                                                <span style="margin:0 8px;">or</span>
-                                                                                <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i>   Sign Up with Facebook</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                </ul>
+                        <button class="btn btn-default" type="submit">Submit</button>
+                    </ul>
+                    </form>
+                </div>
+                <div class="col-md-9 col-sm-8 col-xs-12">
+                    @foreach($bikes as $item)
+                    <div class="col-md-12">
+                        <div class="cs-services box right">
+                            <figure> <img class="img-responsive" src="{{url($item->photos()->first()->getPicture())}}">
+                                <div class=" heart-o">
+                                    <a href="#"><i class="fa fa-heart-o" ></i></a>
+                                    <div class=" heart-i">
+                                        <a href="{{'/'.$item->id.'/fav_ads'}}" ><i class="fa fa-heart"></i></a>
+                                    </div>
+                                </div>
+                            </figure>
+                            <div class="heading"><h5>
+                                    <a href="{{'/0/bikes/'.$item->id}}" >{{$item->name}}</a>
+                                </h5>
+                                <p>PKR {{$item->price}}</p>
+                                <p>{{$item->description}}</p>
                             </div>
                         </div>
-                    </nav>
+                    </div>
+                    @endforeach
+                        {!! $bikes->links() !!}
                 </div>
             </div>
         </div>
+    </section>
 
-            <main class="wow fadeInDown" style="visibility: visible; animation-name: fadeInDown;">
-                <section class="page-section">
-                    <div class="container sec-1">
-                        <div class="row">
-                            <div class="col-md-12">
-                            <h2>Latest News</h2>
-                            <p>See who's selling in your area. Find a bike close to home.</p>
-                        </div>
-                        </div>
-                    </div>
+    <section class="page-section">
+        <div class="container sec-1 happy-customers">
+{{--            <div class="row">--}}
+{{--                <h2>Happy Customers</h2>--}}
+{{--                <p>See which frenchise is selling in your area. Find a bike close to home.</p>--}}
 
-                    <div class="container sec-inner">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="blog-grid">
-                                    <div class="col-md-5 col-sm-5 col-xs-12" style="padding: 0"><img class="img-responsive" src="images/news1.jpg"></div>
-                                    <div class="col-md-7 col-sm-7 col-xs-12">
-                                        <p><i class="fa fa-user"></i> &nbsp; Admin </p>
-                                        <h2>Need something ?</h2>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the </p>
-                                        <ul class="pull-left">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-                                        <small class="pull-right">Dated: July 15,218</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="blog-grid">
-                                    <div class="col-md-5 col-sm-5 col-xs-12" style="padding: 0"><img class="img-responsive" src="images/news2.jpg"></div>
-                                    <div class="col-md-7 col-sm-7 col-xs-12">
-                                        <p><i class="fa fa-user"></i> &nbsp; Admin </p>
-                                        <h2>Need something ?</h2>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the </p>
-                                        <ul class="pull-left">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-                                        <small class="pull-right">Dated: July 15,218</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="blog-grid">
-                                    <div class="col-md-5 col-sm-5 col-xs-12" style="padding: 0"><img class="img-responsive" src="images/news3.jpg"></div>
-                                    <div class="col-md-7 col-sm-7 col-xs-12">
-                                        <p><i class="fa fa-user"></i> &nbsp; Admin </p>
-                                        <h2>Need something ?</h2>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the </p>
-                                        <ul class="pull-left">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-                                        <small class="pull-right">Dated: July 15,218</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="blog-grid">
-                                    <div class="col-md-5 col-sm-5 col-xs-12" style="padding: 0"><img class="img-responsive" src="images/news1.jpg"></div>
-                                    <div class="col-md-7 col-sm-7 col-xs-12">
-                                        <p><i class="fa fa-user"></i> &nbsp; Admin </p>
-                                        <h2>Need something ?</h2>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the </p>
-                                        <ul class="pull-left">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-                                        <small class="pull-right">Dated: July 15,218</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- row -->
-                    </div>
-                </section>
+{{--                <div class="col-md-6 col-sm-6 col-xs-12">--}}
+{{--                    <h3><strong>Testimonial</strong></h3>--}}
+{{--                    <div class="seprator"></div>--}}
+{{--                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">--}}
+{{--                        <!-- Wrapper for slides -->--}}
+{{--                        <div class="carousel-inner">--}}
+{{--                            <div class="item active">--}}
+{{--                                <div class="row" style="padding: 20px">--}}
+{{--                                    <button style="border: none;"><i class="fa fa-quote-left testimonial_fa" aria-hidden="true"></i></button>--}}
+{{--                                    <p class="testimonial_para">Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo en.</p><br>--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-sm-2">--}}
+{{--                                            <img src="http://demos1.showcasedemos.in/jntuicem2017/html/v1/assets/images/jack.jpg" class="img-responsive" style="width: 80px">--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-sm-10">--}}
+{{--                                            <h4><strong>Jack Andreson</strong></h4>--}}
+{{--                                            <p class="testimonial_subtitle"><span>Chlinical Chemistry Technologist</span><br>--}}
+{{--                                                <span>Officeal All Star Cafe</span>--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="item">--}}
+{{--                                <div class="row" style="padding: 20px">--}}
+{{--                                    <button style="border: none;"><i class="fa fa-quote-left testimonial_fa" aria-hidden="true"></i></button>--}}
+{{--                                    <p class="testimonial_para">Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo en.</p><br>--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-sm-2">--}}
+{{--                                            <img src="http://demos1.showcasedemos.in/jntuicem2017/html/v1/assets/images/kiara.jpg" class="img-responsive" style="width: 80px">--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-sm-10">--}}
+{{--                                            <h4><strong>Kiara Andreson</strong></h4>--}}
+{{--                                            <p class="testimonial_subtitle"><span>Chlinical Chemistry Technologist</span><br>--}}
+{{--                                                <span>Officeal All Star Cafe</span>--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="controls testimonial_control pull-right">--}}
+{{--                        <a class="left fa fa-chevron-left btn btn-default testimonial_btn" href="#carousel-example-generic"--}}
+{{--                           data-slide="prev"></a>--}}
 
-                <section class="page-section testimonial-home" style="background: #dfdfeb">
-                    <div class="container">
-                        <div class="row">
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <blockquote>
-                                        <i class="fa fa-quote-left"></i>
-                                        <p>I thought I would never be able to find a good vehicle. Anyhow I took a look at the bikes posted by.
-                                        I was looking for a bike due to some personal and domestic issues.
-                                            I found a bike.</p>
+{{--                        <a class="right fa fa-chevron-right btn btn-default testimonial_btn" href="#carousel-example-generic"--}}
+{{--                           data-slide="next"></a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-6 col-sm-6 col-xs-12">--}}
+{{--                    <h3><strong>Testimonial</strong></h3>--}}
+{{--                    <div class="seprator"></div>--}}
+{{--                    <div id="carousel-example-generic2" class="carousel slide" data-ride="carousel">--}}
+{{--                        <!-- Wrapper for slides -->--}}
+{{--                        <div class="carousel-inner">--}}
+{{--                            <div class="item active">--}}
+{{--                                <div class="row" style="padding: 20px">--}}
+{{--                                    <button style="border: none;"><i class="fa fa-quote-left testimonial_fa" aria-hidden="true"></i></button>--}}
+{{--                                    <p class="testimonial_para">Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo en.</p><br>--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-sm-2">--}}
+{{--                                            <img src="http://demos1.showcasedemos.in/jntuicem2017/html/v1/assets/images/jack.jpg" class="img-responsive" style="width: 80px">--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-sm-10">--}}
+{{--                                            <h4><strong>Jack Andreson</strong></h4>--}}
+{{--                                            <p class="testimonial_subtitle"><span>Chlinical Chemistry Technologist</span><br>--}}
+{{--                                                <span>Officeal All Star Cafe</span>--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="item">--}}
+{{--                                <div class="row" style="padding: 20px">--}}
+{{--                                    <button style="border: none;"><i class="fa fa-quote-left testimonial_fa" aria-hidden="true"></i></button>--}}
+{{--                                    <p class="testimonial_para">Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo en.</p><br>--}}
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-sm-2">--}}
+{{--                                            <img src="http://demos1.showcasedemos.in/jntuicem2017/html/v1/assets/images/kiara.jpg" class="img-responsive" style="width: 80px">--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-sm-10">--}}
+{{--                                            <h4><strong>Kiara Andreson</strong></h4>--}}
+{{--                                            <p class="testimonial_subtitle"><span>Chlinical Chemistry Technologist</span><br>--}}
+{{--                                                <span>Officeal All Star Cafe</span>--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="controls testimonial_control pull-right">--}}
+{{--                        <a class="left fa fa-chevron-left btn btn-default testimonial_btn" href="#carousel-example-generic2"--}}
+{{--                           data-slide="prev"></a>--}}
 
-                                        <h3> Daniel Croft</h3>
+{{--                        <a class="right fa fa-chevron-right btn btn-default testimonial_btn" href="#carousel-example-generic2"--}}
+{{--                           data-slide="next"></a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+        </div>
+    </section>
+    <main class="wow fadeInDown page-section" style="visibility: visible; animation-name: fadeInDown;">
+        @include('layouts.footer')
+    </main>
 
-                                    </blockquote>
-                                </div>
-                                <div class="col-md-2">
-                                </div>
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                <img class="img-responsive" src="images/img-a.jpg">
-                            </div>
-                            </div>
-
-                    </div>
-                </section>
-                <section class="page-section get-in-touch">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4 col-sm-6 col-xs-12 sec-inner">
-                                <h4>COME AND VISIT</h4>
-                                <p>1st Floor Royal London Buildings 42-46 Baldwin Street Bristol BS1 1PN</p>
-
-                                <ul class="pull-left">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12 sec-inner">
-                                <h4>GET IN TOUCH</h4>
-                                <p>Telephone : +012 345 6789</p>
-                                <p>E-mail : noreply@info.com</p>
-                                <ul class="pull-left">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12 sec-inner">
-                                <h4>STAY INFORMED</h4>
-                                <p>We may send you information about related events, products and services which we
-                                    information about related believe.</p>
-                                <form>
-                                <div class="form-group pull-left">
-                                    <input type="text" class="form-control" id="" placeholder="email address">
-                                </div>
-                                    <label>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </label>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="footer">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                <ul class="nomargin footer-links list-unstyled" id="footer-Make">
-                                    <li><h5>About us </h5></li>
-                                    <li><a href="#" id="footer_Toyota"
-                                           title="Toyota Bikes for Sale">Toyota Bikes for Sale</a></li>
-                                    <li><a href="#" id="footer_Suzuki"
-                                           title="Suzuki Bikes for Sale">Suzuki Bikes for Sale</a></li>
-                                    <li><a href="#" id="footer_Honda"
-                                           title="Honda Bikes for Sale">Honda Bikes for Sale</a></li>
-
-                                    <li><a href="#" id="footer_Daihatsu"
-                                           title="Daihatsu Bikes for Sale">Daihatsu Bikes for Sale</a></li>
-                                    <li><a href="#" id="footer_Mitsubishi"
-                                           title="Mitsubishi Bikes for Sale">Mitsubishi Bikes for Sale</a></li>
-
-                                </ul>
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                <ul class="nomargin footer-links list-unstyled" id="footer-City">
-                                    <li><h5>About scooter.pk</h5></li>
-                                    <li><a href="#" id="footer_Lahore"
-                                           title="Bikes for Sale in Lahore">Bikes in Lahore</a></li>
-                                    <li><a href="#" id="footer_Karachi"
-                                           title="Bikes for Sale in Karachi">Bikes in Karachi</a></li>
-                                    <li><a href="#" id="footer_Islamabad"
-                                           title="Bikes for Sale in Islamabad">Bikes in Islamabad</a></li>
-
-                                    <li><a href="#" id="footer_Gujranwala"
-                                           title="Bikes for Sale in Gujranwala">Bikes in Gujranwala</a></li>
-                                    <li><a href="#" id="footer_Faisalabad"
-                                           title="Bikes for Sale in Faisalabad">Bikes in Faisalabad</a></li>
-
-                                </ul>
-                            </div>
-
-                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                <ul class="nomargin footer-links list-unstyled">
-                                    <li><h5>Our Products</h5></li>
-
-                                    <li><a href="#" title="Used Bikes">Used Bikes</a></li>
-
-                                    <li><a href="#" title="Used Bikes">Used Bikes</a></li>
-
-                                    <li><a href="#" title="New Bikes">New Bikes</a></li>
-
-                                    <li><a href="#" rel="nofollow" title="Scooters Autoshow">Autoshow</a></li>
-
-                                    <li><a href="#" title="Sitemap">Sitemap</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                <ul class="nomargin footer-links list-unstyled">
-
-                                    <li><h5>Advertise with us</h5></li>
-
-                                    <li><a href="#" rel="nofollow" title="About Scooters.com">About
-                                        Scooters.com</a></li>
-
-                                    <li><a href="#" rel="nofollow" title="Our Products">Our Products</a>
-                                    </li>
-
-                                    <li><a href="#" rel="nofollow" title="Advertise With Us">Advertise
-                                        With Us</a></li>
-
-                                    <li><a href="#" rel="nofollow"
-                                           title="How To Pay">How To Pay</a></li>
-
-                                    <li><a href="#" rel="nofollow" title="Contact Us">Contact Us</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <div class="col-md-6 col-sm-12 col-xs-12 footer-social">
-                                <h5>Follow Us</h5>
-                                <ul class="list-unstyled list-inline networks">
-                                    <li>
-                                        <a href="#" class="twitter" rel="nofollow"
-                                           target="_blank" title="Follow Us On Twitter"><i
-                                                class="fa fa-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="facebook" rel="nofollow"
-                                           target="_blank" title="Follow Us On Facebook"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="googleplus"
-                                           rel="me" target="_blank" title="Follow Us On Google Plus"><i
-                                                class="fa fa-google-plus"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="pinterest" rel="nofollow"
-                                           target="_blank" title="Follow Us On Pinterest"><i
-                                                class="fa fa-pinterest"></i></a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-
-  <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/wow.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
-        </div>
-<script>
-    // ===== Scroll to Top ====
-    $(window).scroll(function() {
-        if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
-            $('#return-to-top').fadeIn(200);    // Fade in the arrow
-        } else {
-            $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+    <script>
+        function getValsYear(){
+            // Get slider values
+            var parent = this.parentNode;
+            var slides = parent.getElementsByTagName("input");
+            var slide1 = parseFloat( slides[0].value );
+            var slide2 = parseFloat( slides[1].value );
+            // Neither slider will clip the other, so make sure we determine which is larger
+            if( slide1 > slide2 ){ var tmp = slide2; slide2 = slide1; slide1 = tmp; }
+            var displayElement = parent.getElementsByClassName("rangeValuesYear")[0];
+            displayElement.innerHTML = "Year " + slide1 + " - Year " + slide2 + "";
+
         }
-    });
-    $('#return-to-top').click(function() {      // When arrow is clicked
-        $('body,html').animate({
-            scrollTop : 0                       // Scroll to top of body
-        }, 500);
-    });
-</script>
-</body>
-</html>
+        function getValsPrice(){
+            // Get slider values
+            var parent = this.parentNode;
+            var slides = parent.getElementsByTagName("input");
+            var slide1 = parseFloat( slides[0].value );
+            var slide2 = parseFloat( slides[1].value );
+            // Neither slider will clip the other, so make sure we determine which is larger
+            if( slide1 > slide2 ){ var tmp = slide2; slide2 = slide1; slide1 = tmp; }
+            var displayElement = parent.getElementsByClassName("rangeValuesPrice")[0];
+            displayElement.innerHTML = "RS. " + slide1 + " - RS. " + slide2 + "";
+
+        }
+        function getValsMileage(){
+            // Get slider values
+            var parent = this.parentNode;
+            var slides = parent.getElementsByTagName("input");
+            var slide1 = parseFloat( slides[0].value );
+            var slide2 = parseFloat( slides[1].value );
+            // Neither slider will clip the other, so make sure we determine which is larger
+            if( slide1 > slide2 ){ var tmp = slide2; slide2 = slide1; slide1 = tmp; }
+            var displayElement = parent.getElementsByClassName("rangeValuesMileage")[0];
+            displayElement.innerHTML = "Km " + slide1 + " - Km " + slide2 + "";
+
+        }
+        function getValsCapacity(){
+            // Get slider values
+            var parent = this.parentNode;
+            var slides = parent.getElementsByTagName("input");
+            var slide1 = parseFloat( slides[0].value );
+            var slide2 = parseFloat( slides[1].value );
+            // Neither slider will clip the other, so make sure we determine which is larger
+            if( slide1 > slide2 ){ var tmp = slide2; slide2 = slide1; slide1 = tmp; }
+            var displayElement = parent.getElementsByClassName("rangeValuesCapacity")[0];
+            displayElement.innerHTML = "CC " + slide1 + " - CC " + slide2 + "";
+
+        }
+
+        window.onload = function(){
+            // Initialize Sliders
+            var sliderSectionsYear = document.getElementsByClassName("range-slider-year");
+            for( var x = 0; x < sliderSectionsYear.length; x++ ){
+                var sliders1 = sliderSectionsYear[x].getElementsByTagName("input");
+                for( var y = 0; y < sliders1.length; y++ ){
+                    if( sliders1[y].type ==="range" ){
+                        sliders1[y].oninput = getValsYear;
+                        sliders1[y].oninput();
+                    }
+                }
+            }
+            var sliderSectionsPrice = document.getElementsByClassName("range-slider-price");
+            for( var x = 0; x < sliderSectionsPrice.length; x++ ){
+                var sliders2 = sliderSectionsPrice[x].getElementsByTagName("input");
+                for( var y = 0; y < sliders2.length; y++ ){
+                    if( sliders2[y].type ==="range" ){
+                        sliders2[y].oninput = getValsPrice;
+                        sliders2[y].oninput();
+                    }
+                }
+            }
+            var sliderSectionsMileage = document.getElementsByClassName("range-slider-mileage");
+            for( var x = 0; x < sliderSectionsMileage.length; x++ ){
+                var sliders3 = sliderSectionsMileage[x].getElementsByTagName("input");
+                for( var y = 0; y < sliders3.length; y++ ){
+                    if( sliders3[y].type ==="range" ){
+                        sliders3[y].oninput = getValsMileage;
+                        sliders3[y].oninput();
+                    }
+                }
+            }
+            var sliderSectionsCapacity = document.getElementsByClassName("range-slider-capacity");
+            for( var x = 0; x < sliderSectionsCapacity.length; x++ ){
+                var sliders4 = sliderSectionsCapacity[x].getElementsByTagName("input");
+                for( var y = 0; y < sliders4.length; y++ ){
+                    if( sliders4[y].type ==="range" ){
+                        sliders4[y].oninput = getValsCapacity;
+                        sliders4[y].oninput();
+                    }
+                }
+            }
+        }
+    </script>
+@endsection

@@ -27,6 +27,7 @@ class CreateBikesTable extends Migration
             $table->bigInteger('engine_capacity');
             $table->string('body_type');
             $table->string('color');
+            $table->string('condition');
             $table->bigInteger('price');
             $table->text('description');
             $table->integer('user_id')->unsigned();

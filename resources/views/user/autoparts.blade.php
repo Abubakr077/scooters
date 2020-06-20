@@ -1,591 +1,191 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Scooters</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
+@extends('layouts/layout')
+@section('content')
 
-</head>
-<body>
-    <div class="wraper">
-        <div class="menu-bar">
-            <div class="container">
-                <div class="row">
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                            <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <h1 class="navbar-brand logo"><a href="index.blade.php"><img class="img-responsive"
-                                                                                             src="images/wheel.png">
-                                </a></h1>
-                            </div>
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                           aria-haspopup="true" aria-expanded="false">Used Bikes <span
-                                                class="caret"></span> <span class="sr-only">(current)</span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="usedbikes.blade.php">used bikes</a></li>
-                                            <li><a href="#">Another action</a></li>
-                                            <li><a href="#">Something else here</a></li>
-
-                                        </ul>
-                                    </li>
-
-                                    <li><a href="newbikes.blade.php">New bikes</a></li>
-
-                                    <li><a href="accessories.blade.php">Accessories </a></li>
-                                    <li><a href="autoparts.html">Auto Parts</a></li>
-                                    <li><a href="dealer.blade.php">Dealers</a></li>
-
-
-                                    <li><a href="#" class=" dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="rakshaw.blade.php">Rikshaw</a></li>
-                                            <li><a href="#">Blog</a></li>
-                                            <li><a href="#">Forum</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li><a href="#" class=" dropdown-toggle add-post" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Post an add <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="sellbike.blade.php">sell bike</a></li>
-                                            <li><a href="addposting.blade.php">Post an add</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-toggle="dropdown" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Signin <span class="caret"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#" data-toggle="modal" data-target="#myModal"  role="button"><i class="fa fa-user"></i> signup</a></li>
-                                        </ul>
-                                        <div id="myModal" class="modal fade" role="dialog">
-                                            <div class="modal-dialog">
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div id="loginbox" class="mainbox">
-                                                            <div class="panel panel-info" >
-                                                                <div class="panel-heading">
-                                                                    <div class="panel-title">Sign In</div>
-                                                                    <div style="float:right; font-size: 80%; position: relative; top:-23px"><a href="#">Forgot password?</a></div>
-                                                                </div>
-
-                                                                <div style="padding-top:30px" class="panel-body" >
-
-                                                                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-
-                                                                    <form id="loginform" class="form-horizontal" role="form">
-
-                                                                        <div style="margin-bottom: 25px" class="input-group">
-                                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                                            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">
-                                                                        </div>
-
-                                                                        <div style="margin-bottom: 25px" class="input-group">
-                                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                                                            <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
-                                                                        </div>
-
-                                                                        <div class="input-group">
-                                                                            <div class="checkbox">
-                                                                                <label>
-                                                                                    <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
-                                                                                </label>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div style="margin-top:10px" class="form-group">
-                                                                            <!-- Button -->
-                                                                            <div class="col-sm-12 controls">
-                                                                                <a id="btn-login" href="#" class="btn btn-primary">Login  </a>
-                                                                                <a id="btn-fblogin" href="signup-complete.blade.php" class="btn btn-primary">Login with Facebook</a>
-
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <div class="col-md-12 control">
-                                                                                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                                                                    Don't have an account!
-                                                                                    <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
-                                                                                        Sign Up Here
-                                                                                    </a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div id="signupbox" style="display:none;" class="mainbox">
-                                                            <div class="panel panel-info">
-                                                                <div class="panel-heading">
-
-                                                                    <div style=" font-size: 85%; position: relative;"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
-                                                                </div>
-                                                                <div class="panel-body" >
-                                                                    <form id="signupform" class="form-horizontal" role="form">
-                                                                        <div id="signupalert" style="display:none" class="alert alert-danger">
-                                                                            <p>Error:</p>
-                                                                            <span></span>
-                                                                        </div>
-
-                                                                        <div class="form-group">
-                                                                            <label for="email" class="col-md-3 control-label">Email</label>
-                                                                            <div class="col-md-9">
-                                                                                <input type="text" class="form-control" name="email" placeholder="Email Address">
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="form-group">
-                                                                            <label for="firstname" class="col-md-3 control-label">First Name</label>
-                                                                            <div class="col-md-9">
-                                                                                <input type="text" class="form-control" name="firstname" placeholder="First Name">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="lastname" class="col-md-3 control-label">Last Name</label>
-                                                                            <div class="col-md-9">
-                                                                                <input type="text" class="form-control" name="lastname" placeholder="Last Name">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="password" class="col-md-3 control-label">Password</label>
-                                                                            <div class="col-md-9">
-                                                                                <input type="password" class="form-control" name="passwd" placeholder="Password">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="icode" class="col-md-3 control-label">Invitation Code</label>
-                                                                            <div class="col-md-9">
-                                                                                <input type="text" class="form-control" name="icode" placeholder="">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <!-- Button -->
-                                                                            <div class="col-md-offset-3 col-md-9">
-                                                                                <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
-                                                                                <span style="margin:0 8px;">or</span>
-                                                                                <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i>   Sign Up with Facebook</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
+    <section class="page-section" style="margin-bottom: 60px;">
+        <div class="container sec-1">
+            <div class="row">
+                <h2>Auto Parts</h2>
+                <p>It's the fastest and simplest way to sell your automobile Accessory!</p>
             </div>
         </div>
-        <section class="page-section" style="margin-bottom: 60px">
-            <div class="container sec-1">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="text-left">Autoparts</h2>
-                        <p class="text-left">It's the fastest and simplest way to sell your automobile Autoparts. <a class="btn btn-default pull-right" href="#"> Sell Parts</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="container bikes-sec">
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12 result">
-                        <h4 class="show">Bike Autoparts</h4>
+        <div class="container bikes-sec">
+            <div class="row">
+                <div class="col-md-3 col-sm-4 col-xs-12 result">
+                    <h4 class="show">Show Results by:</h4>
+                    <form role="form" method="get" action="/accessories/search" enctype="multipart/form-data">
+                        @csrf
                         <ul>
+                            <input type="text" name="keyword" id="keyword" value="{{$filters['keyword']}}" class="form-control" placeholder="Search">
                             <li>
-                                <h4>Brand</h4>
-                                <select class="form-control">
-                                    <option value="">Suzuki</option>
-                                    <option value="">Honda</option>
-                                    <option value="">Yamaha</option>
-                                </select>
-                            </li>
-                            <li>
-                                <h4>Year</h4>
-                                <select class="form-control">
-                                    <option value="">2018</option>
-                                    <option value="">2017</option>
-                                    <option value="">2016</option>
-                                </select>
-                            </li>
-                            <li>
-                                <h4>Province</h4>
-                                <select class="form-control">
-                                    <option value="">Punjab</option>
-                                    <option value="">Sindh</option>
-                                    <option value="">Balochistan</option>
+                                <h4>Category</h4>
+                                <select class="form-control" name="category">
+                                    <option value=""> --- Please Select --- </option>
+                                    <option value="Body Parts" {{ $filters['category']=='Body Parts' ? 'selected' : '' }}>Body Parts</option>
+                                    <option value="Wheels, Tyres and Rims" {{ $filters['category']=='Wheels, Tyres and Rims' ? 'selected' : '' }}>Wheels, Tyres and Rims</option>
+                                    <option value="Engine and Engine Parts" {{ $filters['category']=='Engine and Engine Parts' ? 'selected' : '' }}>Engine and Engine Parts</option>
+                                    <option value="Wrecking" {{ $filters['category']=='Wrecking' ? 'selected' : '' }}>Wrecking</option>
+                                    <option value="Brakes and Suspensions" {{ $filters['category']=='Brakes and Suspensions' ? 'selected' : '' }}>Brakes and Suspensions</option>
+                                    <option value="Oil, Liquids" {{ $filters['category']=='Oil, Liquids' ? 'selected' : '' }}>Oil, Liquids</option>
+                                    <option value="Other Parts" {{ $filters['category']=='Other Parts' ? 'selected' : '' }}>Other Parts</option>
                                 </select>
                             </li>
                             <li>
                                 <h4>City</h4>
-                                <select class="form-control">
-                                    <option value="">Lahore</option>
-                                    <option value="">Islamabad</option>
-                                    <option value="">Karachi</option>
+                                <select class="form-control" name="city">
+                                    <option value=""> --- Please Select --- </option>
+                                    @foreach((array)config('constants.CITIES') as $city)
+                                        <option value="{{$city}}"
+                                            {{ $filters['city'] == $city ? 'selected' : '' }}>
+                                            {{$city}}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </li>
                             <li>
-                                <h4>Price Range</h4>
+                                <h4>Province</h4>
+                                <select class="form-control" name="province">
+                                    <option value=""> --- Please Select --- </option>
+                                    <option value="Punjab" {{ $filters['province']=='Punjab' ? 'selected' : ''  }}>Punjab</option>
+                                    <option value="Sindh" {{ $filters['province']=='Sindh' ? 'selected' : ''  }}>Sindh</option>
+                                    <option value="KPK" {{ $filters['province']=='KPK' ? 'selected' : ''  }}>KPK</option>
+                                    <option value="Balochistan" {{ $filters['province']=='Balochistan' ? 'selected' : ''  }}>Balochistan</option>
+                                    <option value="Azad Kashmir" {{ $filters['province']=='Azad Kashmir' ? 'selected' : ''  }}>Azad Kashmir</option>
+                                    <option value="Federally Administered Tribal Areas" {{ $filters['province']=='Federally Administered Tribal Areas' ? 'selected' : ''  }}>Federally Administered Tribal Areas</option>
+                                </select>
+                            </li>
+                            <li>
+                                <h4>Price</h4>
                                 <section class="range-slider">
-                                    <span class="rangeValues">RS. 8000 - Rs.250000</span>
-                                    <input value="500" min="8000" max="250000" step="8000" type="range">
-                                    <input value="250000" min="8000" max="250000" step="500" type="range">
+                                    <span class="rangeValues"></span>
+                                    <input value="{{ $filters['minPrice'] != '' ? $filters['minPrice'] : '1000' }}" min="1000" max="250000" step="1000" type="range" name="minPrice">
+                                    <input value="{{ $filters['maxPrice'] != '' ? $filters['maxPrice'] : '250000' }}" min="1000" max="250000" step="5000" type="range" name="maxPrice">
                                 </section>
-
                             </li>
                             <li>
-                                <h4>Make</h4>
-                                <select class="form-control">
-                                    <option value="">Suzuki</option>
-                                    <option value="">Honda</option>
-                                    <option value="">Yamaha</option>
+                                <h4>Price Type</h4>
+                                <select class="form-control" name="price_type">
+                                    <option value=""> --- Please Select --- </option>
+                                    <option value="amount" {{ $filters['price_type']=='amount' ? 'selected' : '' }}>Amount</option>
+                                    <option value="negotiable" {{ $filters['price_type']=='negotiable' ? 'selected' : '' }}>Negotiable</option>
+                                    <option value="free" {{ $filters['price_type']=='free' ? 'selected' : '' }}>Free</option>
+                                    <option value="swap/trade" {{ $filters['price_type']=='swap/trade' ? 'selected' : '' }}>Swap/Trade</option>
                                 </select>
                             </li>
-                            <li class="colors">
+                            <li>
+                                <h4>Brand</h4>
+                                <select class="form-control" name="brand">
+                                    <option value=""> --- Please Select --- </option>
+                                    @foreach((array)config('constants.BRANDS') as $brand)
+                                        <option value="{{$brand}}"
+                                            {{ $filters['brand'] == $brand ? 'selected' : '' }}>
+                                            {{$brand}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </li>
+                            <li>
                                 <h4>Color</h4>
-                                <form action="">
-                                    <label><input type="radio" name="gender" value="male"> Red<br></label>
-                                    <label><input type="radio" name="gender" value="female"> Blue<br></label>
-                                    <label><input type="radio" name="gender" value="other"> Gray</label>
-                                </form>
-                            </li>
-                            <li>
-                                <h4>Transmission</h4>
-                                <select class="form-control">
-                                    <option value="">Auto</option>
-                                    <option value="">Self</option>
-                                    <option value="">Manual</option>
-                                    <option value="">Modified</option>
+                                <select class="form-control" name="color">
+                                    <option value=""> --- Please Select --- </option>
+                                    <option value="Red" {{ $filters['color']=='Red' ? 'selected' : '' }}>Red</option>
+                                    <option value="Black" {{ $filters['color']=='Black' ? 'selected' : '' }}>Black</option>
+                                    <option value="White" {{ $filters['color']=='White' ? 'selected' : '' }}>White</option>
+                                    <option value="Green" {{ $filters['color']=='Green' ? 'selected' : '' }}>Green</option>
+                                    <option value="Blue" {{ $filters['color']=='Blue' ? 'selected' : '' }}>Blue</option>
+                                    <option value="Orange" {{ $filters['color']=='Orange' ? 'selected' : '' }}>Orange</option>
+                                    <option value="Yellow" {{ $filters['color']=='Yellow' ? 'selected' : '' }}>Yellow</option>
+                                    <option value="Multi" {{ $filters['color']=='Multi' ? 'selected' : '' }}>Multi</option>
                                 </select>
                             </li>
-
-                            <a class="btn btn-default" href="#">Submit</a>
+                            <li>
+                                <h4>Condition</h4>
+                                <select class="form-control" name="condition">
+                                    <option value=""> --- Please Select --- </option>
+                                    <option value="new" {{ $filters['condition']=='new' ? 'selected' : '' }}>New</option>
+                                    <option value="old" {{ $filters['condition']=='old' ? 'selected' : '' }}>Old</option>
+                                </select>
+                            </li>
+                            <li>
+                                <h4>Offer Type</h4>
+                                <select class="form-control" name="offer">
+                                    <option value=""> --- Please Select --- </option>
+                                    <option value="offer" {{ $filters['offer']=='offer' ? 'selected' : '' }}>Offer</option>
+                                    <option value="wanted" {{ $filters['offer']=='wanted' ? 'selected' : '' }}>Wanted</option>
+                                </select>
+                            </li>
+                            <li>
+                                <h4>Seller Type</h4>
+                                <select class="form-control" name="dealer">
+                                    <option value=""> --- Please Select --- </option>
+                                    <option value="Dealer" {{ $filters['dealer']=='Dealer' ? 'selected' : '' }}>Dealer</option>
+                                    <option value="Individual" {{ $filters['dealer']=='Individual' ? 'selected' : '' }}>Individual</option>
+                                </select>
+                            </li>
+                            <button class="btn btn-default" type="submit">Submit</button>
                         </ul>
-                    </div>
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <div class="col-md-4">
-                            <div class="cs-services bag">
-                                <figure> <img class="img-responsive" src="images/q1.jpg">
-                                         <div class=" heart-o">
-                            <a href="#"><i class="fa fa-heart-o"></i></a>
-                            <div class=" heart-i">
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                            </div>
-                        </div>
-                                </figure>
-                                <div class="heading"><h5><a href="#">Bag</a></h5>
-                                    <p>PKR 850</p>
-                                    <small>Free Shipping</small>
-                                </div>
-                                <div class="h-over">
-                                    <a class="btn btn-default" href="#">Buy Now</a>
-                                    <a class="btn btn-default" href="#">View</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="cs-services bag">
-                                <figure> <img class="img-responsive" src="images/q2.jpg">
-                                         <div class=" heart-o">
-                            <a href="#"><i class="fa fa-heart-o"></i></a>
-                            <div class=" heart-i">
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                            </div>
-                        </div>
-                                </figure>
-                                <div class="heading"><h5><a href="#">Bag</a></h5>
-                                    <p>PKR 850</p>
-                                    <small>Free Shipping</small>
-                                </div>
-                                <div class="h-over">
-                                    <a class="btn btn-default" href="#">Buy Now</a>
-                                    <a class="btn btn-default" href="#">View</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="cs-services bag">
-                                <figure> <img class="img-responsive" src="images/q3.jpg">
-                                         <div class=" heart-o">
-                            <a href="#"><i class="fa fa-heart-o"></i></a>
-                            <div class=" heart-i">
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                            </div>
-                        </div>
-                                </figure>
-                                <div class="heading"><h5><a href="#">Bag</a></h5>
-                                    <p>PKR 850</p>
-                                    <small>Free Shipping</small>
-                                </div>
-                                <div class="h-over">
-                                    <a class="btn btn-default" href="#">Buy Now</a>
-                                    <a class="btn btn-default" href="#">View</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="cs-services bag">
-                                <figure> <img class="img-responsive" src="images/q1.jpg">
-                                         <div class=" heart-o">
-                            <a href="#"><i class="fa fa-heart-o"></i></a>
-                            <div class=" heart-i">
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                            </div>
-                        </div>
-                                </figure>
-                                <div class="heading"><h5><a href="#">Bag</a></h5>
-                                    <p>PKR 850</p>
-                                    <small>Free Shipping</small>
-                                </div>
-                                <div class="h-over">
-                                    <a class="btn btn-default" href="#">Buy Now</a>
-                                    <a class="btn btn-default" href="#">View</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="cs-services bag">
-                                <figure> <img class="img-responsive" src="images/q2.jpg">
-                                         <div class=" heart-o">
-                            <a href="#"><i class="fa fa-heart-o"></i></a>
-                            <div class=" heart-i">
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                            </div>
-                        </div>
-                                </figure>
-                                <div class="heading"><h5><a href="#">Bag</a></h5>
-                                    <p>PKR 850</p>
-                                    <small>Free Shipping</small>
-                                </div>
-                                <div class="h-over">
-                                    <a class="btn btn-default" href="#">Buy Now</a>
-                                    <a class="btn btn-default" href="#">View</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="cs-services bag">
-                                <figure> <img class="img-responsive" src="images/q3.jpg">
-                                         <div class=" heart-o">
-                            <a href="#"><i class="fa fa-heart-o"></i></a>
-                            <div class=" heart-i">
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                            </div>
-                        </div>
-                                </figure>
-                                <div class="heading"><h5><a href="#">Bag</a></h5>
-                                    <p>PKR 850</p>
-                                    <small>Free Shipping</small>
-                                </div>
-                                <div class="h-over">
-                                    <a class="btn btn-default" href="#">Buy Now</a>
-                                    <a class="btn btn-default" href="#">View</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="cs-services bag">
-                                <figure> <img class="img-responsive" src="images/q1.jpg">
-                                         <div class=" heart-o">
-                            <a href="#"><i class="fa fa-heart-o"></i></a>
-                            <div class=" heart-i">
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                            </div>
-                        </div>
-                                </figure>
-                                <div class="heading"><h5><a href="#">Bag</a></h5>
-                                    <p>PKR 850</p>
-                                    <small>Free Shipping</small>
-                                </div>
-                                <div class="h-over">
-                                    <a class="btn btn-default" href="#">Buy Now</a>
-                                    <a class="btn btn-default" href="#">View</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="cs-services bag">
-                                <figure> <img class="img-responsive" src="images/q2.jpg">
-                                         <div class=" heart-o">
-                            <a href="#"><i class="fa fa-heart-o"></i></a>
-                            <div class=" heart-i">
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                            </div>
-                        </div>
-                                </figure>
-                                <div class="heading"><h5><a href="#">Bag</a></h5>
-                                    <p>PKR 850</p>
-                                    <small>Free Shipping</small>
-                                </div>
-                                <div class="h-over">
-                                    <a class="btn btn-default" href="#">Buy Now</a>
-                                    <a class="btn btn-default" href="#">View</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="cs-services bag">
-                                <figure> <img class="img-responsive" src="images/q3.jpg">
-                                         <div class=" heart-o">
-                            <a href="#"><i class="fa fa-heart-o"></i></a>
-                            <div class=" heart-i">
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                            </div>
-                        </div>
-                                </figure>
-                                <div class="heading"><h5><a href="#">Bag</a></h5>
-                                    <p>PKR 850</p>
-                                    <small>Free Shipping</small>
-                                </div>
-                                <div class="h-over">
-                                    <a class="btn btn-default" href="#">Buy Now</a>
-                                    <a class="btn btn-default" href="#">View</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    </form>
                 </div>
-            </div>
-        </section>
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-12">
-                        <ul class="nomargin footer-links list-unstyled" id="footer-Make">
-                            <li><h5>About us </h5></li>
-                            <li><a href="#" id="footer_Toyota"
-                                   title="Toyota Bikes for Sale">Toyota Bikes for Sale</a></li>
-                            <li><a href="#" id="footer_Suzuki"
-                                   title="Suzuki Bikes for Sale">Suzuki Bikes for Sale</a></li>
-                            <li><a href="#" id="footer_Honda"
-                                   title="Honda Bikes for Sale">Honda Bikes for Sale</a></li>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                    @foreach($accessories as $item)
+                        <div class="col-md-4">
 
-                            <li><a href="#" id="footer_Daihatsu"
-                                   title="Daihatsu Bikes for Sale">Daihatsu Bikes for Sale</a></li>
-                            <li><a href="#" id="footer_Mitsubishi"
-                                   title="Mitsubishi Bikes for Sale">Mitsubishi Bikes for Sale</a></li>
+                            <div class="cs-services bag">
+                                <figure> <img class="img-responsive" src="{{url($item->photos()->first()->getPicture())}}">
+                                    <div class=" heart-o">
+                                        <a href="#" ><i class="fa fa-heart-o" ></i></a>
+                                        <div class=" heart-i">
+                                            <a href="{{'/'.$item->id.'/fav_accessory'}}" ><i class="fa fa-heart"></i></a>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <div  class="heading"><h5 style="overflow: hidden;height:20px;"><a href="#">{{$item->name}}</a></h5>
+                                    <p>PKR {{$item->price}}</p>
+                                    <small>{{$item->category}}</small>
+                                </div>
+                                <div class="h-over">
+                                    <a class="btn btn-default" href="#">Buy Now</a>
+                                    <a class="btn btn-default" href="#">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
 
-                        </ul>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-12">
-                        <ul class="nomargin footer-links list-unstyled" id="footer-City">
-                            <li><h5>About scooter.pk</h5></li>
-                            <li><a href="#" id="footer_Lahore"
-                                   title="Bikes for Sale in Lahore">Bikes in Lahore</a></li>
-                            <li><a href="#" id="footer_Karachi"
-                                   title="Bikes for Sale in Karachi">Bikes in Karachi</a></li>
-                            <li><a href="#" id="footer_Islamabad"
-                                   title="Bikes for Sale in Islamabad">Bikes in Islamabad</a></li>
-
-                            <li><a href="#" id="footer_Gujranwala"
-                                   title="Bikes for Sale in Gujranwala">Bikes in Gujranwala</a></li>
-                            <li><a href="#" id="footer_Faisalabad"
-                                   title="Bikes for Sale in Faisalabad">Bikes in Faisalabad</a></li>
-
-                        </ul>
-                    </div>
-
-                    <div class="col-md-3 col-sm-3 col-xs-12">
-                        <ul class="nomargin footer-links list-unstyled">
-                            <li><h5>Our Products</h5></li>
-
-                            <li><a href="#" title="Used Bikes">Used Bikes</a></li>
-
-                            <li><a href="#" title="Used Bikes">Used Bikes</a></li>
-
-                            <li><a href="#" title="New Bikes">New Bikes</a></li>
-
-                            <li><a href="#" rel="nofollow" title="Scooters Autoshow">Autoshow</a></li>
-
-                            <li><a href="#" title="Sitemap">Sitemap</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-12">
-                        <ul class="nomargin footer-links list-unstyled">
-
-                            <li><h5>Advertise with us</h5></li>
-
-                            <li><a href="#" rel="nofollow" title="About Scooters.com">About
-                                Scooters.com</a></li>
-
-                            <li><a href="#" rel="nofollow" title="Our Products">Our Products</a>
-                            </li>
-
-                            <li><a href="#" rel="nofollow" title="Advertise With Us">Advertise
-                                With Us</a></li>
-
-                            <li><a href="#" rel="nofollow"
-                                   title="How To Pay">How To Pay</a></li>
-
-                            <li><a href="#" rel="nofollow" title="Contact Us">Contact Us</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-sm-12 col-xs-12 footer-social">
-                        <h5>Follow Us</h5>
-                        <ul class="list-unstyled list-inline networks">
-                            <li>
-                                <a href="#" class="twitter" rel="nofollow"
-                                   target="_blank" title="Follow Us On Twitter"><i
-                                        class="fa fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="facebook" rel="nofollow"
-                                   target="_blank" title="Follow Us On Facebook"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="googleplus"
-                                   rel="me" target="_blank" title="Follow Us On Google Plus"><i
-                                        class="fa fa-google-plus"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="pinterest" rel="nofollow"
-                                   target="_blank" title="Follow Us On Pinterest"><i
-                                        class="fa fa-pinterest"></i></a>
-                            </li>
-
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-  <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="js/wow.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-        </div>
-</body>
-</html>
+    <main class="wow fadeInDown page-section" style="visibility: visible; animation-name: fadeInDown;">
+        @include('layouts.footer')
+    </main>
+
+    <script>
+        function getVals(){
+            // Get slider values
+            var parent = this.parentNode;
+            var slides = parent.getElementsByTagName("input");
+            var slide1 = parseFloat( slides[0].value );
+            var slide2 = parseFloat( slides[1].value );
+            // Neither slider will clip the other, so make sure we determine which is larger
+            if( slide1 > slide2 ){ var tmp = slide2; slide2 = slide1; slide1 = tmp; }
+
+            var displayElement = parent.getElementsByClassName("rangeValues")[0];
+            displayElement.innerHTML = "RS. " + slide1 + " - Rs." + slide2 + "";
+        }
+
+        window.onload = function(){
+            // Initialize Sliders
+            var sliderSections = document.getElementsByClassName("range-slider");
+            for( var x = 0; x < sliderSections.length; x++ ){
+                var sliders = sliderSections[x].getElementsByTagName("input");
+                for( var y = 0; y < sliders.length; y++ ){
+                    if( sliders[y].type ==="range" ){
+                        sliders[y].oninput = getVals;
+                        // Manually trigger event first time to display values
+                        sliders[y].oninput();
+                    }
+                }
+            }
+        }
+    </script>
+@endsection
