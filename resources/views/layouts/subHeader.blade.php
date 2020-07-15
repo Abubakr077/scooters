@@ -163,9 +163,9 @@
         <li>
             <a href="#" data-toggle="dropdown" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="/profile">Profile</a></li>
+                <li><a href="/profile">Home</a></li>
                 <li ><a  href="/1/cart">Show Cart</a></li>
-                <li ><a  href="{{'/'.auth()->user()->id.'/orders'}}">Orders History</a></li>
+{{--                <li ><a  href="{{'/'.auth()->user()->id.'/orders'}}">Orders History</a></li>--}}
                 <li><a href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

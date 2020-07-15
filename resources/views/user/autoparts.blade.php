@@ -5,7 +5,7 @@
         <div class="container sec-1">
             <div class="row">
                 <h2>Auto Parts</h2>
-                <p>It's the fastest and simplest way to sell your automobile Accessory!</p>
+                <p>It's the fastest and simplest way to sell your automobile Parts!</p>
             </div>
         </div>
         <div class="container bikes-sec">

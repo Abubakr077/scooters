@@ -94,24 +94,22 @@ class AccessoriesController extends Controller
         $user->accessories()->save($accessory);
         foreach ($request->picture as $file) {
             if ($file) {
-                $filename = $file->getClientOriginalName();
-                FileHelper::saveFile($file, 'Image', $filename);
-                AccessoryPhotos::create([
-                    'accessories_id' => $accessory->id,
-                    'name' => strtolower(trim($filename))
-                ]);
+                $filename = strtolower(trim($file->getClientOriginalName()));
+                $picname =FileHelper::saveFile($file, 'Image', $filename);
+                if ($picname) {
+                    AccessoryPhotos::create([
+                        'accessories_id' => $accessory->id,
+                        'name' => $filename
+                    ]);
+                }
             }
         }
-
         if ($accessory->type == 'Accessory'){
-            $accessories = Accessories::where('type', '=', 'used')->paginate(8);
-            return view('user/accessories', compact('accessories','filters'));
+            return redirect(''.auth()->user()->id.'/accessories')->with('message', 'Accessory saved correctly!!!');
         } else
         {
-            $accessories = Accessories::where('type', '=', 'Auto Parts')->paginate(8);
-            return view('user/autoparts', compact('accessories','filters'));
+            return redirect(''.auth()->user()->id.'/auto_parts')->with('message', 'Auto Part saved correctly!!!');
         }
-
     }
     public function filter()
     {

@@ -64,56 +64,6 @@
                         <hr>
                     </div>
 
-                    <div class="col-md-12">
-                        <h2 class="mt-4">Similar Adds</h2>
-                        <div id="myCarousel7" class="carousel slide" data-ride="carousel">
-
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner">
-                                <div class="item">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <img class="img-responsive" src="{{asset('images/light.jpg')}}" alt="Los Angeles">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <img class="img-responsive" src="{{asset('images/green.jpg')}}" alt="Los Angeles">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <img class="img-responsive" src="{{asset('images/blue.jpg')}}" alt="Los Angeles">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item active">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <img class="img-responsive" src="{{asset('images/light.jpg')}}" alt="Los Angeles">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <img class="img-responsive" src="{{asset('images/green.jpg')}}" alt="Los Angeles">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <img class="img-responsive" src="{{asset('images/blue.jpg')}}" alt="Los Angeles">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <img class="img-responsive" src="{{asset('images/light.jpg')}}" alt="Los Angeles">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <img class="img-responsive" src="{{asset('images/green.jpg')}}" alt="Los Angeles">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <img class="img-responsive" src="{{asset('images/blue.jpg')}}" alt="Los Angeles">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- Sidebar Widgets Column -->
                 <div class="col-md-4 col-sm-4 col-xs-12 bikes">

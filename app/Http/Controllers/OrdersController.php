@@ -62,8 +62,9 @@ class OrdersController extends Controller
             $user->orders()->save($order);
         }
         Cart::destroy();
-        $orders=auth()->user()->orders()->get();
-        return view('user/order-history',compact('orders'));
+
+        return redirect(''.auth()->user()->id.'/orders')->with('message', 'Order Placed successfully!!!');
+
     }
 
     /**

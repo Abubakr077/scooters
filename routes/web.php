@@ -26,7 +26,7 @@ Route::resource('{bike}/fav_ads','FavAdsController');
 Route::get('{accessory}/fav_accessory','FavAdsController@storeAccessory');
 Route::resource('/{user}/bikes','BikeController');
 Route::get('/{user}/used', 'BikeController@usedBikes');
-Route::get('/{user}/auto_parts', 'AccessoriesController@autoParts');
+Route::get('/{user}/auto_parts', 'AccessoriesController@autoParts')->name('accessories.autoParts');
 Route::resource('{bike}/cart','CartController');
 
 Route::get('/profile' ,'HomeController@showProfile');

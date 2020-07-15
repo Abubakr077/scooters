@@ -185,12 +185,14 @@ class BikeController extends Controller
         foreach ($request->picture as $file) {
 //            $file = $request->file('picture');
             if ($file) {
-                $filename = $file->getClientOriginalName();
+                $filename = strtolower(trim($file->getClientOriginalName()));
                 $picname = FileHelper::saveFile($file, 'Image', $filename);
-                BikePhotos::create([
-                    'bike_id' => $bike->id,
-                    'name' => strtolower(trim($filename))
-                ]);
+                if ($picname){
+                    BikePhotos::create([
+                        'bike_id' => $bike->id,
+                        'name' => $filename
+                    ]);
+                }
             }
         }
         if ($bike->condition == 'new'){
