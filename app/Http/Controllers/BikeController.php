@@ -94,6 +94,7 @@ class BikeController extends Controller
             'minCapacity'    => Input::get('minCapacity'),
             'maxCapacity'    => Input::get('maxCapacity'),
             'type'    => Input::get('type'),
+            'condition'    => Input::get('condition'),
             'bodyType'    => Input::get('bodyType'),
         ];
         $bikes = Bike::where(function ($query) use ($filters) {
@@ -150,7 +151,11 @@ class BikeController extends Controller
             }
         })->paginate(8);
 
-        return view('user/newbikes', compact('bikes','filters'));
+        if ($filters['condition'] === 'new'){
+            return view('user/newbikes', compact('bikes','filters'));
+        } else {
+            return view('user/usedbikes', compact('bikes','filters'));
+        }
     }
 
     /**

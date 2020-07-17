@@ -6,18 +6,17 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                            <h2><span><a href="#"> View Profile</a></span></h2>
+                            <h2><span><a href="#"> Profile Settings</a></span></h2>
                         </div>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <ul class="pull-right">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage adds<span class="caret"></span> <span class="sr-only">(current)</span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">All Ads (0)</a></li>
-                                        <li><a href="#">Current Ads (0)</a></li>
-                                        <li><a href="#">Expired Ads (0)</a></li>
-                                        <li><a href="#">Pending Ads (0)</a></li>
-                                        <li><a href="#">All Ads (0)</a></li>
+                                        <li><a href="/profile?ads=all">Manage Ads</a></li>
+                                        <li><a href="#">Pending Ads</a></li>
+                                        <li><a href="/profile?ads=fav">Favorite Ads</a></li>
+                                        <li><a href="{{'/'.auth()->user()->id.'/orders'}}">Orders History</a></li>
                                     </ul>
                                 </li>
 {{--                                <li><a href="#">Messages</a></li>--}}
@@ -39,6 +38,7 @@
                             </div>
                         </div>
                         <div class="col-md-8 col-sm-8 col-xs-12">
+                            @if($bikes)
                             <div class="card">
                                 <h2>Live ads</h2>
                                 <div class="add-area">
@@ -72,6 +72,8 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                                @if($favBikes)
                             <div class="card">
                                 <h2>Favorite Ads</h2>
                                 <div class="add-area">
@@ -109,6 +111,7 @@
                                     </div>
                                 </div>
                             </div>
+                                @endif
                         </div>
                     </div>
                 </div>

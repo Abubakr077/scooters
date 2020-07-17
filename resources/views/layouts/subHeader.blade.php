@@ -163,8 +163,7 @@
         <li>
             <a href="#" data-toggle="dropdown" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="/profile">Home</a></li>
-                <li ><a  href="/1/cart">Show Cart</a></li>
+                <li><a href="/profile?ads=all">Home</a></li>
 {{--                <li ><a  href="{{'/'.auth()->user()->id.'/orders'}}">Orders History</a></li>--}}
                 <li><a href="{{ route('logout') }}"
                        onclick="event.preventDefault();
@@ -176,6 +175,12 @@
                 </li>
             </ul>
         </li>
+        <span id="group">
+                 <a type="button" href="/1/cart" class="btn btn-info">
+                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                 </a>
+                 <span class="badge badge-light">{{Cart::count()}}</span>
+               </span>
     @endif
 
 </ul>

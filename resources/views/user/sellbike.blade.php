@@ -129,7 +129,8 @@
                         </div>
                             <div class="col-md-12 cities">
                                 <label>Date of manufacture</label>
-                                <input class="form-control" required  type="date" id="default" list="rabbit-cities5" placeholder="Date of manufacture" name="date">
+                                <input class="form-control date" required  type="date" pattern="dd/mm/yyyy" value="{{ date("dd-mm-YYYY")}}"
+                                       list="rabbit-cities5" placeholder="Date of manufacture" name="date">
                             </div>
                         <div class="col-md-12 cities ">
                             <label>Engine Type</label>

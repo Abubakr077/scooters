@@ -436,7 +436,7 @@
                                 <div class="item active">
                                     <ul class="make-list list-unstyled">
                                         <li class="heading">
-                                            <a href="/bikes/search?brand=Hero" id="amk_toyota4" title="Toyota Bikes in Pakistan">
+                                            <a href="/bikes/search?brand=Hero&condition=new" id="amk_toyota4" title="Toyota Bikes in Pakistan">
                                                 <div class="pw-make-80 toyota"></div>
                                                 <h3 class="nomargin">Hero</h3>
 
@@ -445,7 +445,7 @@
                                     </ul>
                                     <ul class="make-list list-unstyled">
                                         <li class="heading">
-                                            <a href="/bikes/search?brand=Honda" id="amk_honda1" title="Honda Bikes in Pakistan">
+                                            <a href="/bikes/search?brand=Honda&condition=new" id="amk_honda1" title="Honda Bikes in Pakistan">
                                                 <div class="pw-make-80 honda"></div>
                                                 <h3 class="nomargin">Honda</h3>
                                             </a>
@@ -453,7 +453,7 @@
                                     </ul>
                                     <ul class="make-list list-unstyled">
                                         <li class="heading">
-                                            <a href="/bikes/search?brand=Suzuki" id="amk_suzuki2" title="Suzuki Bikes in Pakistan">
+                                            <a href="/bikes/search?brand=Suzuki&condition=new" id="amk_suzuki2" title="Suzuki Bikes in Pakistan">
                                                 <div class="pw-make-80 suzuki"></div>
                                                 <h3 class="nomargin">Suzuki</h3>
 
@@ -463,7 +463,7 @@
                                     </ul>
                                     <ul class="make-list list-unstyled">
                                         <li class="heading">
-                                            <a href="/bikes/search?brand=Yamaha" id="amk_bmw3" title="BMW Bikes in Pakistan">
+                                            <a href="/bikes/search?brand=Yamaha&condition=new" id="amk_bmw3" title="BMW Bikes in Pakistan">
                                                 <div class="pw-make-80 yamaha"></div>
                                                 <h3 class="nomargin">Yamaha</h3>
 
@@ -476,7 +476,7 @@
                                 <div class="item">
                                     <ul class="make-list list-unstyled">
                                         <li class="heading">
-                                            <a href="/bikes/search?brand=Super+Power" id="amk_toyota5" title="Toyota Bikes in Pakistan">
+                                            <a href="/bikes/search?brand=Super+Power&condition=new" id="amk_toyota5" title="Toyota Bikes in Pakistan">
                                                 <div class="pw-make-80 toyota"></div>
                                                 <h3 class="nomargin">Super Power</h3>
 
@@ -485,7 +485,7 @@
                                     </ul>
                                     <ul class="make-list list-unstyled">
                                         <li class="heading">
-                                            <a href="/bikes/search?brand=United" id="amk_honda6" title="Honda Bikes in Pakistan">
+                                            <a href="/bikes/search?brand=United&condition=new" id="amk_honda6" title="Honda Bikes in Pakistan">
                                                 <div class="pw-make-80 honda"></div>
                                                 <h3 class="nomargin">United</h3>
                                             </a>
@@ -493,7 +493,7 @@
                                     </ul>
                                     <ul class="make-list list-unstyled">
                                         <li class="heading">
-                                            <a href="/bikes/search?brand=Unique" id="amk_suzuki7" title="Suzuki Bikes in Pakistan">
+                                            <a href="/bikes/search?brand=Unique&condition=new" id="amk_suzuki7" title="Suzuki Bikes in Pakistan">
                                                 <div class="pw-make-80 suzuki"></div>
                                                 <h3 class="nomargin">Unique</h3>
 
@@ -503,7 +503,7 @@
                                     </ul>
                                     <ul class="make-list list-unstyled">
                                         <li class="heading">
-                                            <a href="/bikes/search?brand=Kawasaki" id="amk_bmw8" title="BMW Bikes in Pakistan">
+                                            <a href="/bikes/search?brand=Kawasaki&condition=new" id="amk_bmw8" title="BMW Bikes in Pakistan">
                                                 <div class="pw-make-80 yamaha"></div>
                                                 <h3 class="nomargin">Kawasaki</h3>
 

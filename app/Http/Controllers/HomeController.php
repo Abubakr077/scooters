@@ -8,6 +8,7 @@ use App\FavAds;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use function Sodium\add;
 
@@ -35,6 +36,7 @@ class HomeController extends Controller
 
     public function showProfile()
     {
+        $ads =  Input::get('ads');
         $bikes=auth()->user()->bikes()->get()->take(5);
         $accessories=auth()->user()->accessories()->get()->take(5);
         $favAds=auth()->user()->favAds()->get();
@@ -51,10 +53,15 @@ class HomeController extends Controller
             $favAccessories[] = $accessory;
         }
 
-
-
-        return view('user/viewprofile',compact('bikes','accessories','favAccessories','favBikes'));
+        if ($ads === 'fav'){
+            $bikes=null;
+            return view('user/viewprofile',compact('favAccessories','favBikes','bikes'));
+        } elseif ($ads === 'all') {
+            $favBikes = null;
+            return view('user/viewprofile',compact('bikes','accessories','favBikes'));
+        }
     }
+
     public function showMain()
     {
 //        $bikes=auth()->user()->bikes()->get()->take(12);
