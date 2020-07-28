@@ -24,6 +24,8 @@ class Bike extends Model
 'color',
 'price',
 'description',
+        'seller_name',
+        'seller_phone',
 'picture'
     ];
     public function user()

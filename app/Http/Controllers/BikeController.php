@@ -201,12 +201,11 @@ class BikeController extends Controller
             }
         }
         if ($bike->condition == 'new'){
-            $bikes = Bike::where('condition', '=', 'new')->paginate(8);
-            return view('user/newbikes', compact('bikes','filters'));
-        } else
+            return redirect()->back()->with('message', 'New Bike saved Successfully!!!');
+        }
+        else
             {
-                $bikes = Bike::where('condition', '=', 'used')->paginate(8);
-                return view('user/usedbikes', compact('bikes','filters'));
+                return redirect()->back()->with('message', 'Used Bike saved Successfully!!!');
         }
     }
 

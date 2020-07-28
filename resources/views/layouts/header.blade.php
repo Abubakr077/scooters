@@ -20,6 +20,12 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         @include('layouts.subHeader')
                     </div>
+                    @if(Session::has('message'))
+                        <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span><em> {!! session('message') !!}</em></div>
+                    @endif
+                    @if(Session::has('error'))
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-remove"></span><em> {!! session('error') !!}</em></div>
+                    @endif
                 </div>
             </nav>
         </div>

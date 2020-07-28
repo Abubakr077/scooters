@@ -105,10 +105,10 @@ class AccessoriesController extends Controller
             }
         }
         if ($accessory->type == 'Accessory'){
-            return redirect(''.auth()->user()->id.'/accessories')->with('message', 'Accessory saved correctly!!!');
+            return redirect()->back()->with('message', 'Accessory saved Successfully!!!');
         } else
         {
-            return redirect(''.auth()->user()->id.'/auto_parts')->with('message', 'Auto Part saved correctly!!!');
+            return redirect()->back()->with('message', 'Auto Part saved Successfully!!!');
         }
     }
     public function filter()

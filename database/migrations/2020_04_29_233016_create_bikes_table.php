@@ -28,6 +28,8 @@ class CreateBikesTable extends Migration
             $table->string('body_type');
             $table->string('color');
             $table->string('condition');
+            $table->string('seller_name');
+            $table->string('seller_phone');
             $table->bigInteger('price');
             $table->text('description');
             $table->integer('user_id')->unsigned();

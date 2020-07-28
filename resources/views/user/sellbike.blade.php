@@ -134,7 +134,7 @@
                             </div>
                         <div class="col-md-12 cities ">
                             <label>Engine Type</label>
-                            <select class="form-control" name="engine_type" required >
+                            <select class="form-control" name="engine_type" required id="engine_type">
                                 <option value="" > --- Please Select --- </option>
                                 <option value="4 Stroke">4 Stroke</option>
                                 <option value="2 Stroke">2 Stroke</option>
@@ -143,15 +143,13 @@
                         </div>
                             <div class="col-md-12 cities ">
                                 <label>Engine Capacity</label>
-                                <select class="form-control" name="engine_capacity" required >
-                                    <option value="" > --- Please Select --- </option>
-                                    <option value="70">70</option>
-                                    <option value="110">110</option>
-                                    <option value="125">125</option>
-                                    <option value="150">150</option>
-                                    <option value="200">200</option>
-                                    <option value="660">660</option>
-                                </select>
+                                <div class="rangemenu">
+                                    <div class="freeformPrice ">
+                                        <section class="range-slider align-content-center">
+                                            <span class="rangeValues"></span>
+                                            <input value="0" min="0" max="5000" step="10" type="range" name="engine_capacity">
+                                        </section>
+                                    </div>
                             </div>
 
                             <div class="col-md-12 cities ">
@@ -244,7 +242,23 @@
     @include('layouts.footer')
     <script>
         window.onload = function(){
+            function getVals(){
+                // Get slider values
+                var parent = this.parentNode;
+                var slides = parent.getElementsByTagName("input");
+                var slide1 = parseFloat( slides[0].value );
 
+                var displayElement = parent.getElementsByClassName("rangeValues")[0];
+                var type = document.getElementById("engine_type").value;
+                console.log('here',type);
+                if(type === 'Electric'){
+                    displayElement.innerHTML = "W " + slide1 ;
+                    // document.getElementById('price_range1').innerHTML = "W " + slide1;
+                }else{
+                    displayElement.innerHTML = "CC " + slide1 ;
+                    // document.getElementById('price_range1').innerHTML = "CC " + slide1;
+                }
+            }
             //Check File API support
             if(window.File && window.FileList && window.FileReader)
             {
@@ -290,6 +304,18 @@
             else
             {
                 console.log("Your browser does not support File API");
+            }
+            // Initialize Sliders
+            var sliderSections = document.getElementsByClassName("range-slider");
+            for( var x = 0; x < sliderSections.length; x++ ){
+                var sliders = sliderSections[x].getElementsByTagName("input");
+                for( var y = 0; y < sliders.length; y++ ){
+                    if( sliders[y].type ==="range" ){
+                        sliders[y].oninput = getVals;
+                        // Manually trigger event first time to display values
+                        sliders[y].oninput();
+                    }
+                }
             }
         }
 

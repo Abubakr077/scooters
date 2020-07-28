@@ -68,23 +68,23 @@
                 <!-- Sidebar Widgets Column -->
                 <div class="col-md-4 col-sm-4 col-xs-12 bikes">
                     <div class="panel panel-default">
-                        <div class="overlay-card">
+                        <div class="overlay-card2">
                             <img src="https://images.unsplash.com/photo-1500397822960-47532107e0e4?auto=format&fit=crop&w=1310&q=80"
                                  class="img-rounded center-block img-responsive">
                             <div class="row text-center">
                                 <h5 style="color: #fff;">{{$bike->user()->first()->name}}</h5>
-                                <a class="btn btn-follow btn-sm text-center" href="#" role="button">Send Message</a>
+{{--                                <a class="btn btn-follow btn-sm text-center" href="#" role="button">Send Message</a>--}}
                             </div>
                         </div>
                         <div class="panel-body text-center">
                             <ul>
                                 @if(auth()->guest())
-                                <li><a class="btn btn-default" href="/0/bikes/create">Signin to buy </a></li>
+                                    <li style="text-align: -webkit-center;"><button class="btn btn-sm btn-default" href="/0/bikes/create">Signin to buy </button></li>
                                 @else
-                                    <li><a class="btn btn-default" href="{{'/'.$bike->id.'/cart'}}"
+                                    <li style="text-align: -webkit-center;"><button class="btn btn-sm btn-default" href="{{'/'.$bike->id.'/cart'}}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('addtocart-form').submit();">
-                                            Add to cart </a></li>
+                                            Add to cart </button></li>
                                     <form id="addtocart-form" action="{{'/'.$bike->id.'/cart'}}" method="POST" style="display: none;">
                                         @csrf
 

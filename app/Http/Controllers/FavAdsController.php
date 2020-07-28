@@ -28,10 +28,10 @@ class FavAdsController extends Controller
         $favAd->accessories_id = 0;
         if (!(FavAds::where('bikes_id', '=', $bike->id)->exists())) {
             $favAd->save();
+            return redirect()->back()->with('message', 'Favourite Added Successfully!!!');
         }else{
-            return \Redirect::back()->withErrors(['message', 'Bike already saved into favourites.']);
+            return redirect()->back()->with('error', 'Bike already saved into favourites.');
         }
-        return redirect()->back();
     }
 
     /**
@@ -61,10 +61,10 @@ class FavAdsController extends Controller
         $favAd->user_id = auth()->user()->id;
         $favAd->accessories_id = $accessory->id;
         if (FavAds::where('accessories_id', '=', $accessory->id)->exists()) {
-            return \Redirect::back()->withErrors(['message', 'Bike already saved into favourites.']);
+            return redirect()->back()->with('error', 'Accessory already saved into favourites.');
         }else{
             $favAd->save();
+            return redirect()->back()->with('message', 'Favourite Added Successfully!!!');
         }
-        return redirect()->back();
     }
 }
