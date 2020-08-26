@@ -168,12 +168,18 @@
                 </div>
 
                 <div class="group-1">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <h3>Contact Details</h3>
-                        <p class="col-md-10">{{auth()->user()->name.' '.auth()->user()->phone}}</p>
-                        <a class="pull-right" style="color:#ef4416; font-size: 20px" href="#"><i class="fa fa-edit"></i> Edit</a>
-                    </div>
-                    <div class="col-md-4  amount">
+{{--                        <p class="col-md-10">{{auth()->user()->name.' '.auth()->user()->phone}}</p>--}}
+                        <div class="col-md-4">
+                            <label>Name</label>
+                            <input type="text" name="seller_name"  value="{{ old('name', auth()->user()->name) }}" class="form-control" required placeholder="Name">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Phone</label>
+                            <input type="text" name="seller_phone" value="{{ old('name', auth()->user()->phone) }}" class="form-control" required placeholder="Phone">
+                        </div>
+                    <div class="col-md-4 ">
                         <label>Seller Type</label>
                         <select class="form-control" name="dealer" required >
                             <option value="" > --- Please Select --- </option>
@@ -181,20 +187,21 @@
                             <option value="Individual">Individual</option>
                         </select>
                     </div>
+                    </div>
                 </div>
                 <div class="group-1">
                     <div class="col-md-12">
                         <h3>Address</h3>
                         <div class="col-md-4">
                             <label>Address</label>
-                            <input type="text" name="address" id="city_area" class="form-control" required placeholder="Address">
+                            <input type="text" name="address" id="city_area" value="{{ old('name', auth()->user()->city_area) }}" class="form-control" required placeholder="Address">
                         </div>
                         <div class="col-md-4 ">
                             <label>City</label>
                             <select class="form-control" name="city" required >
                                 <option value="" > --- Please Select --- </option>
                                 @foreach((array)config('constants.CITIES') as $city)
-                                    <option value="{{$city}}">
+                                    <option value="{{$city}}" {{ auth()->user()->city==$city ? 'selected' : '' }}>
                                         {{$city}}
                                     </option>
                                 @endforeach
@@ -203,13 +210,13 @@
                         <div class="col-md-4 ">
                             <label>Province</label>
                             <select class="form-control" name="province" required >
-                                <option value="" > --- Please Select --- </option>
-                                <option value="Punjab">Punjab</option>
-                                <option value="Sindh">Sindh</option>
-                                <option value="KPK">KPK</option>
-                                <option value="Balochistan">Balochistan</option>
-                                <option value="Azad Kashmir">Azad Kashmir</option>
-                                <option value="Federally Administered Tribal Areas">Federally Administered Tribal Areas</option>
+                                <option value=""> --- Please Select --- </option>
+                                <option value="Punjab" {{ auth()->user()->province=='Punjab' ? 'selected' : ''  }}>Punjab</option>
+                                <option value="Sindh" {{ auth()->user()->province=='Sindh' ? 'selected' : ''  }}>Sindh</option>
+                                <option value="KPK" {{ auth()->user()->province=='KPK' ? 'selected' : ''  }}>KPK</option>
+                                <option value="Balochistan" {{ auth()->user()->province=='Balochistan' ? 'selected' : ''  }}>Balochistan</option>
+                                <option value="Azad Kashmir" {{ auth()->user()->province=='Azad Kashmir' ? 'selected' : ''  }}>Azad Kashmir</option>
+                                <option value="Federally Administered Tribal Areas" {{ auth()->user()->province=='Federally Administered Tribal Areas' ? 'selected' : ''  }}>Federally Administered Tribal Areas</option>
                             </select>
                         </div>
 

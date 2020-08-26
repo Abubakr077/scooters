@@ -15,33 +15,6 @@
                                 <label>Title</label>
                                 <input type="text" name="name" id="name" class="form-control" required placeholder="Title">
                             </div>
-                            <div class="col-md-12 cities">
-                                <label>Address</label>
-                                <input type="text" name="city_area" id="city_area" class="form-control" placeholder="Address">
-                            </div>
-                            <div class="col-md-12 cities ">
-                                <label>City</label>
-                                <select class="form-control" name="city" required >
-                                    <option value="" > --- Please Select --- </option>
-                                    @foreach((array)config('constants.CITIES') as $city)
-                                        <option value="{{$city}}">
-                                            {{$city}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-md-12 cities ">
-                                <label>Province</label>
-                                <select class="form-control" name="province" required >
-                                    <option value="" > --- Please Select --- </option>
-                                    <option value="Punjab">Punjab</option>
-                                    <option value="Sindh">Sindh</option>
-                                    <option value="KPK">KPK</option>
-                                    <option value="Balochistan">Balochistan</option>
-                                    <option value="Azad Kashmir">Azad Kashmir</option>
-                                    <option value="Federally Administered Tribal Areas">Federally Administered Tribal Areas</option>
-                                </select>
-                            </div>
 
                             <div class="col-md-12 cities ">
                                 <label>Registration City</label>
@@ -230,6 +203,31 @@
                             <br />
                             <input type="text"  class="form-control"  required placeholder="Seller Mobile Number" name="seller_phone" id="seller_phone" value="{{Auth::user()->phone}}">
                         </div>
+                                <div class="col-md-12 cities">
+                                    <h3>Address</h3>
+                                        <input type="text" name="city_area" id="city_area" value="{{ old('name', auth()->user()->city_area) }}" class="form-control" placeholder="Address">
+                                    <br />
+                                        <select class="form-control" name="city" required >
+                                            <option value="" > --- Please Select City --- </option>
+                                            @foreach((array)config('constants.CITIES') as $city)
+                                                <option value="{{$city}}" {{ auth()->user()->city==$city ? 'selected' : '' }}>
+                                                    {{$city}}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    <br />
+                                        <select class="form-control" name="province" required >
+                                            <option value=""> --- Please Select Province --- </option>
+                                            <option value="Punjab" {{ auth()->user()->province=='Punjab' ? 'selected' : ''  }}>Punjab</option>
+                                            <option value="Sindh" {{ auth()->user()->province=='Sindh' ? 'selected' : ''  }}>Sindh</option>
+                                            <option value="KPK" {{ auth()->user()->province=='KPK' ? 'selected' : ''  }}>KPK</option>
+                                            <option value="Balochistan" {{ auth()->user()->province=='Balochistan' ? 'selected' : ''  }}>Balochistan</option>
+                                            <option value="Azad Kashmir" {{ auth()->user()->province=='Azad Kashmir' ? 'selected' : ''  }}>Azad Kashmir</option>
+                                            <option value="Federally Administered Tribal Areas" {{ auth()->user()->province=='Federally Administered Tribal Areas' ? 'selected' : ''  }}>Federally Administered Tribal Areas</option>
+                                        </select>
+                                    <br />
+
+                                </div>
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-default submit">Submit</button>
                         </div>

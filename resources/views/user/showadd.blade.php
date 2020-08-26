@@ -72,7 +72,7 @@
                             <img src="https://images.unsplash.com/photo-1500397822960-47532107e0e4?auto=format&fit=crop&w=1310&q=80"
                                  class="img-rounded center-block img-responsive">
                             <div class="row text-center">
-                                <h5 style="color: #fff;">{{$bike->user()->first()->name}}</h5>
+                                <h5 style="color: #fff;">{{$bike->seller_name}}</h5>
 {{--                                <a class="btn btn-follow btn-sm text-center" href="#" role="button">Send Message</a>--}}
                             </div>
                         </div>
@@ -93,7 +93,7 @@
                             </ul>
                             <div id="show-hidden-menu"><i class="fa fa-phone"></i> &nbsp;Phone Number</div>
                             <div class="hidden-menu" style="display: none;">
-                                {{$bike->user()->first()->phone}}
+                                {{$bike->seller_phone}}
                             </div>
                         </div>
                     </div>

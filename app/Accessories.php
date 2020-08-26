@@ -11,7 +11,8 @@ class Accessories extends Model
         'name','type',
         'dealer',
         'condition','brand','offer','color',
-        'category','description','price','price_type','address','city','province'
+        'category','description','price','price_type','address','city','province','seller_name',
+        'seller_phone',
     ];
     public function user()
     {

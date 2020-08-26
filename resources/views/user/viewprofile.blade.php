@@ -6,15 +6,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                            <h2><span><a href="#"> Profile Settings</a></span></h2>
+                            <h2><span><a href="/profile-setting"> Profile Settings</a></span></h2>
                         </div>
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             <ul class="pull-right">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage adds<span class="caret"></span> <span class="sr-only">(current)</span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="/profile?ads=all">Manage Ads</a></li>
-                                        <li><a href="#">Pending Ads</a></li>
+                                        <li><a href="/profile?ads=live">Manage Ads</a></li>
+                                        <li><a href="/profile?ads=pending">Pending Ads</a></li>
                                         <li><a href="/profile?ads=fav">Favorite Ads</a></li>
                                         <li><a href="{{'/'.auth()->user()->id.'/orders'}}">Orders History</a></li>
                                     </ul>
@@ -30,7 +30,7 @@
                     <div class="col-md-12">
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="card">
-                                <h2><figure><img src="images/news2.jpg"> </figure> <span>{{Auth::user()->name}}</span>
+                                <h2><figure><img src="{{Auth::user()->picture}}"> </figure> <span>{{Auth::user()->name}}</span>
                                     <p> <small>{{Auth::user()->email}}</small></p>
                                     <p> <small>{{Auth::user()->phone}}</small></p>
                                 </h2>
@@ -40,7 +40,7 @@
                         <div class="col-md-8 col-sm-8 col-xs-12">
                             @if($bikes)
                             <div class="card">
-                                <h2>Live ads</h2>
+                                <h2 style = "text-transform:capitalize;">{{$ads}} ads</h2>
                                 <div class="add-area">
                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                         @foreach($bikes as $item)

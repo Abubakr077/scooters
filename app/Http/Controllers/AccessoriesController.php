@@ -182,9 +182,21 @@ class AccessoriesController extends Controller
      * @param  \App\Accessories  $accessories
      * @return \Illuminate\Http\Response
      */
-    public function show(Accessories $accessories)
+    public function show($user_id,Accessories $accessory)
     {
-        //
+
+        $bike = $accessory;
+
+        $photos = AccessoryPhotos::where('accessories_id', '=', $accessory->id)->get();
+        return view('user/showaccessory',compact('bike','photos'));
+    }
+    public function showAutoParts($user_id,Accessories $accessory)
+    {
+
+        $bike = $accessory;
+
+        $photos = AccessoryPhotos::where('accessories_id', '=', $accessory->id)->get();
+        return view('user/showautopart',compact('bike','photos'));
     }
 
     /**

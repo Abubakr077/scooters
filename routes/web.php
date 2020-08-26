@@ -27,8 +27,26 @@ Route::get('{accessory}/fav_accessory','FavAdsController@storeAccessory');
 Route::resource('/{user}/bikes','BikeController');
 Route::get('/{user}/used', 'BikeController@usedBikes');
 Route::get('/{user}/auto_parts', 'AccessoriesController@autoParts')->name('accessories.autoParts');
+Route::get('{user}/auto_parts/{accessory} ', 'AccessoriesController@showAutoParts')->name('accessories.autoParts');
+
 Route::resource('{bike}/cart','CartController');
+Route::post('{accessory}/accessory/cart','CartController@storeAccessory');
 
 Route::get('/profile' ,'HomeController@showProfile');
+Route::get('/profile-setting' ,'HomeController@profileSettings');
+Route::post('/profile-update/{user}' ,'HomeController@updateProfile');
 Route::get('bikes/search', 'BikeController@filter');
 Route::get('accessories/search', 'AccessoriesController@filter');
+//Admin routes
+Route::get('admin/login', function () {
+    return view('admin/login');
+});
+Route::get('admin/register', function () {
+    return view('admin/register');
+});
+Route::get('admin/home', function () {
+    return view('admin/home');
+});
+Route::get('/admin_bikes', 'BikeController@allBikes')->name('admin_bikes');
+Route::get('/admin_bikes/{bike}/edit', 'BikeController@edit');
+Route::post('/admin_bikes/{bike}', 'BikeController@update');

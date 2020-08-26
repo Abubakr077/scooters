@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Accessories;
 use App\Bike;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -44,7 +45,7 @@ class CartController extends Controller
 
         Cart::add([
             'id' => $bike->id,
-            'name' => $bike->brand.' '. $bike->body_type.' '. $bike->engine_type,
+            'name' => $bike->name,
             'qty' => 1,
             'price' => $bike->price,
             'weight' => 1,
@@ -54,7 +55,26 @@ class CartController extends Controller
 
             ]
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Added To Cart Successfully!!!');
+    }
+    public function storeAccessory(Request $request,Accessories $accessory)
+    {
+
+        $user_id = auth()->user()->id;
+
+        Cart::add([
+            'id' => $accessory->id,
+            'name' => $accessory->name,
+            'qty' => 1,
+            'price' => $accessory->price,
+            'weight' => 1,
+            'options' => [
+                'picture'=>$accessory->photos()->first()->getPicture(),
+                'accessories_id' => $accessory->id
+
+            ]
+        ]);
+        return redirect()->back()->with('message', 'Added To Cart Successfully!!!');
     }
 
     /**

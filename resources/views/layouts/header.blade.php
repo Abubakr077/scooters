@@ -24,7 +24,16 @@
                         <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span><em> {!! session('message') !!}</em></div>
                     @endif
                     @if(Session::has('error'))
-                        <div class="alert alert-danger"><span class="glyphicon glyphicon-remove"></span><em> {!! session('error') !!}</em></div>
+                        <div class="alert alert-danger"><span class="glyphicon glyphicon-remove"></span><em>
+                                {!! session('error') !!}
+                            </em></div>
+                    @endif
+                    @if(count($errors))
+                    <div class="alert alert-danger"><span class="glyphicon glyphicon-remove"></span><em>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </em></div>
                     @endif
                 </div>
             </nav>

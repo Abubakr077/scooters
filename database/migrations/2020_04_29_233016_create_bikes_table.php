@@ -31,7 +31,9 @@ class CreateBikesTable extends Migration
             $table->string('seller_name');
             $table->string('seller_phone');
             $table->bigInteger('price');
+            $table->boolean('isApproved')->default(false);
             $table->text('description');
+
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

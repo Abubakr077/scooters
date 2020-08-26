@@ -42,41 +42,34 @@
                             <fieldset id="address" class="required">
                                 <div class="form-group">
                                     <label for="input-payment-company" class="control-label">House</label>
-                                    <input type="text" class="form-control" id="input-payment-company" placeholder="House" value="" name="house">
+                                    <input type="text" class="form-control" id="input-payment-company" placeholder="House" required name="house">
                                 </div>
                                 <div class="form-group required">
                                     <label for="input-payment-address-1" class="control-label">Address</label>
-                                    <input type="text" class="form-control" id="input-payment-address-1" placeholder="Address" value="" name="address">
+                                    <input type="text" class="form-control" id="input-payment-address-1" placeholder="Address" value="{{ old('address', auth()->user()->city_area) }}" name="address">
                                 </div>
                                 <div class="form-group required">
                                     <label for="input-payment-zone" class="control-label">City</label>
                                     <select class="form-control" id="input-payment-zone" name="city">
                                         <option value=""> --- Please Select --- </option>
-                                        <option value="bwp">Bahawalpur</option>
-                                        <option value="dgkhan">Dera Ghazi Khan</option>
-                                        <option value="faisalabad">Faisalabad</option>
-                                        <option value="gujranwala">Gujranwala</option>
-                                        <option value="gujraat">Gujraat</option>
-                                        <option value="hyderabad">Hyderabad</option>
-                                        <option value="islamabad">Islamabad</option>
-                                        <option value="karachi">Karachi</option>
-                                        <option value="khanewal">Khanewal</option>
-                                        <option value="lahore">Lahore</option>
-                                        <option value="layyah">Layyah</option>
-                                        <option value="multan">Multan</option>
-                                        <option value="peshawar">Peshawar</option>
-                                        <option value="rajanpur">Rajanpur</option>
-                                        <option value="rawalpindi">Rawalpindi</option>
-                                        <option value="sahiwal">Sahiwal</option>
-                                        <option value="sialkot">Sialkot</option>
-                                        <option value="taunsa shareef">Taunsa Shareef</option>
+                                        @foreach((array)config('constants.CITIES') as $city)
+                                            <option value="{{$city}}" {{ auth()->user()->city==$city ? 'selected' : '' }}>
+                                                {{$city}}
+                                            </option>
+                                        @endforeach
 
                                     </select>
                                 </div>
-                                <div class="form-group required">
-                                    <label for="input-payment-postcode" class="control-label">Post Code</label>
-                                    <input type="text" class="form-control" id="input-payment-postcode" placeholder="Post Code" value="" name="postcode">
-                                </div>
+                                <label class="contact">Province
+                                    <select class="form-control" name="postcode">
+                                        <option value=""> --- Please Select --- </option>
+                                        <option value="Punjab" {{ auth()->user()->province=='Punjab' ? 'selected' : ''  }}>Punjab</option>
+                                        <option value="Sindh" {{ auth()->user()->province=='Sindh' ? 'selected' : ''  }}>Sindh</option>
+                                        <option value="KPK" {{ auth()->user()->province=='KPK' ? 'selected' : ''  }}>KPK</option>
+                                        <option value="Balochistan" {{ auth()->user()->province=='Balochistan' ? 'selected' : ''  }}>Balochistan</option>
+                                        <option value="Azad Kashmir" {{ auth()->user()->province=='Azad Kashmir' ? 'selected' : ''  }}>Azad Kashmir</option>
+                                        <option value="Federally Administered Tribal Areas" {{ auth()->user()->province=='Federally Administered Tribal Areas' ? 'selected' : ''  }}>Federally Administered Tribal Areas</option>
+                                    </select></label>
                                 <div class="form-group required">
                                     <label for="input-payment-country" class="control-label">Country</label>
                                     <select class="form-control" id="input-payment-country" name="country">

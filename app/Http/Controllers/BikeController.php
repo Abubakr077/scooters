@@ -7,6 +7,7 @@ use App\Helpers\FileHelper;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Symfony\Component\HttpFoundation\Response;
 
 class BikeController extends Controller
 {
@@ -21,7 +22,9 @@ class BikeController extends Controller
      */
     public function index()
     {
-        $bikes = Bike::where('condition', '=', 'new')->paginate(8);
+        $bikes = Bike::where([['condition', '=', 'new'],
+            ['isApproved', '=', true]]
+        )->paginate(8);
         $filters = [
             'keyword' => '',
             'city' => '',
@@ -43,7 +46,8 @@ class BikeController extends Controller
         return view('user/newbikes', compact('bikes','filters'));
     }
     public function usedBikes(){
-        $bikes = Bike::where('condition', '=', 'used')->paginate(8);
+        $bikes = Bike::where([['condition', '=', 'used'],
+            ['isApproved', '=', true]])->paginate(8);
         $filters = [
             'keyword' => '',
             'city' => '',
@@ -63,6 +67,11 @@ class BikeController extends Controller
             'bodyType'    => '',
         ];
         return view('user/usedbikes', compact('bikes','filters'));
+    }
+
+    public function allBikes(){
+        $bikes = Bike::where('isApproved', '=', false)->get();
+        return view('admin/bikes', compact('bikes'));
     }
 
     /**
@@ -98,6 +107,8 @@ class BikeController extends Controller
             'bodyType'    => Input::get('bodyType'),
         ];
         $bikes = Bike::where(function ($query) use ($filters) {
+
+            $query->where('isApproved', '=', true);
             if ($filters['keyword'] ) {
                 $query->where('name', 'LIKE', "%{$filters['keyword']}%")->orWhere('brand', 'LIKE', "%{$filters['keyword']}%")
                     ->orWhere('color', 'LIKE', "%{$filters['keyword']}%")
@@ -187,16 +198,18 @@ class BikeController extends Controller
 
         $bike = new Bike($request->except(['picture']));
         $user->bikes()->save($bike);
-        foreach ($request->picture as $file) {
+        if ($request->picture){
+            foreach ($request->picture as $file) {
 //            $file = $request->file('picture');
-            if ($file) {
-                $filename = strtolower(trim($file->getClientOriginalName()));
-                $picname = FileHelper::saveFile($file, 'Image', $filename);
-                if ($picname){
-                    BikePhotos::create([
-                        'bike_id' => $bike->id,
-                        'name' => $filename
-                    ]);
+                if ($file) {
+                    $filename = strtolower(trim($file->getClientOriginalName()));
+                    $picname = FileHelper::saveFile($file, 'Image', $filename);
+                    if ($picname){
+                        BikePhotos::create([
+                            'bike_id' => $bike->id,
+                            'name' => $filename
+                        ]);
+                    }
                 }
             }
         }
@@ -229,7 +242,8 @@ class BikeController extends Controller
      */
     public function edit(Bike $bike)
     {
-        //
+        $product = $bike;
+        return view('admin/editBike', compact('product'));
     }
 
     /**
@@ -241,7 +255,26 @@ class BikeController extends Controller
      */
     public function update(Request $request, Bike $bike)
     {
-        //
+        if (Input::get('submit') == 'approve'){
+            try {
+                $bike->isApproved = true;
+                $bike->update();
+                return redirect()->route('admin_bikes')->with('message', 'Bike approved Successfully!!!');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('error', 'Bike could not approve at this moment.Something wrong happened!!!');
+            }
+        }else if (Input::get('submit') == 'delete'){
+            try {
+                $bike->delete();
+                return redirect()->route('admin_bikes')->with('message', 'Bike deleted Successfully!!!');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('error', 'Bike could not delete at this moment.Something wrong happened!!!');
+            }
+        }else{
+            $input = $request->all();
+            $bike->fill($input)->save();
+            return back()->with('message', 'Bike Updated Successfully!!!');
+        }
     }
 
     /**
@@ -252,6 +285,5 @@ class BikeController extends Controller
      */
     public function destroy(Bike $bike)
     {
-        //
     }
 }

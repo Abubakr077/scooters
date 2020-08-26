@@ -29,6 +29,8 @@ class CreateAccessoriesTable extends Migration
             $table->string('brand');
             $table->string('color');
             $table->string('offer');
+            $table->string('seller_name');
+            $table->string('seller_phone');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->timestamps();

@@ -134,6 +134,7 @@
                                                     <input type="password" id="password" class="form-control" placeholder="Password" name="password_confirmation" required autocomplete="new-password">
                                                 </div>
                                             </div>
+                                            <input type="hidden" value="0" name="user_role">
                                             <div class="form-group">
                                                 <label for="password" class="col-md-3 control-label">Phone</label>
                                                 <div class="col-md-9">
@@ -163,7 +164,7 @@
         <li>
             <a href="#" data-toggle="dropdown" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="/profile?ads=all">Home</a></li>
+                <li><a href="/profile?ads=live">Home</a></li>
 {{--                <li ><a  href="{{'/'.auth()->user()->id.'/orders'}}">Orders History</a></li>--}}
                 <li><a href="{{ route('logout') }}"
                        onclick="event.preventDefault();

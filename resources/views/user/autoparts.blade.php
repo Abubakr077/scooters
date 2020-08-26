@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="h-over">
                                     <a class="btn btn-default" href="#">Buy Now</a>
-                                    <a class="btn btn-default" href="#">View</a>
+                                    <a class="btn btn-default" href="{{'/0/auto_parts/'.$item->id}}">View</a>
                                 </div>
                             </div>
                         </div>
