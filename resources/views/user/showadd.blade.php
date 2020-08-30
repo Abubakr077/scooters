@@ -41,7 +41,7 @@
                                     <li class="col-md-4 col-sm-4 col-xs-6"
                                         data-responsive="img/1-375.jpg 375, img/1-480.jpg 480, img/1.jpg 800"
                                         data-src="images/light.jpg" data-sub-html="">
-                                        <a href="#">
+                                        <a href="{{asset($photo->getPicture())}}">
                                             <img class=" img-responsive" style="width:200%;height:300px;" src="{{asset($photo->getPicture())}}">
                                         </a>
                                     </li>

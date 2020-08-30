@@ -129,406 +129,406 @@
         <!--</section>-->
 
 
-        <!--Featured Used Bikes-->
-        <section class="page-section featured">
-            <div class="container">
-                <h1 class="col-md-12 mb">  <span style="color: #ee4416;">Featured</span> Used Bikes for Sale
-                    <small class="pull-right"><a href="/0/bikes">View all</a></small> </h1>
+        <!-- TODO Featured Used Bikes-->
+{{--        <section class="page-section featured">--}}
+{{--            <div class="container">--}}
+{{--                <h1 class="col-md-12 mb">  <span style="color: #ee4416;">Featured</span> Used Bikes for Sale--}}
+{{--                    <small class="pull-right"><a href="/0/bikes">View all</a></small> </h1>--}}
 
-                @foreach($bikes as $item)
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="img-box">
-                            <div class="featured-ribbon">
-                                <i class="fa fa-star"></i>
-                                FEATURED
-                            </div>
-                            <div class=" heart-o">
-                                <a href="#"><i class="fa fa-heart-o"></i></a>
-                                <div class=" heart-i">
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                </div>
-                            </div>
-
-
-                            <div class="featured-ribbon featured-ribbon-price">
-                                Rs.{{$item->price}}
-                            </div>
-                            <div class="img-content img-valign">
-                                <a href="{{'/0/bikes/'.$item->id}}"><img alt="New" class="lazy-car-slider pic" data-original=""
-                                                 rel="nofollow" src="{{url($item->photos()->first()->getPicture())}}" title=""
-                                                 style="display: inline;">
-                                </a>
-                                <div class="overlay"></div>
-                            </div>
-
-                        </div>
-                        <div class="recent-vehicle-list-content">
-                            <h3 class=" truncate"><a href="{{'/0/bikes/'.$item->id}}" rel="nofollow">{{$item->name}}</a></h3>
-
-                            <div class="generic-grey">{{$item->city}}</div>
-                        </div>
-                    </div>
-                @endforeach
+{{--                @foreach($bikes as $item)--}}
+{{--                    <div class="col-md-3 col-sm-6 col-xs-12">--}}
+{{--                        <div class="img-box">--}}
+{{--                            <div class="featured-ribbon">--}}
+{{--                                <i class="fa fa-star"></i>--}}
+{{--                                FEATURED--}}
+{{--                            </div>--}}
+{{--                            <div class=" heart-o">--}}
+{{--                                <a href="#"><i class="fa fa-heart-o"></i></a>--}}
+{{--                                <div class=" heart-i">--}}
+{{--                                    <a href="#"><i class="fa fa-heart"></i></a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
 
-            </div>
-        </section>
-        <!--sell your bike-->
-        <section class="page-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-12 col-sm-12 col-xs-12 sell-ad-with-panel">
-                            <div class="sell-your-ad mb40 well sell-blue clearfix">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <ul class="list-unstyled nomargin">
-                                                <li>
-                                                    <p class="fs18">
-                                                        <i class="fa fa-check-circle-o generic-red point"></i>
-                                                        <strong class="title">Post an Ad for Free:</strong>
-                                                        Post your bike's ad for free in 30 seconds.
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <p class="fs18">
-                                                        <i class="fa fa-check-circle-o generic-red point"></i>
-                                                        <strong class="title">Thousands of genuine buyers:</strong>
-                                                        Get authentic offers from verified buyers.
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <p class="fs18">
-                                                        <i class="fa fa-check-circle-o generic-red point"></i>
-                                                        <strong class="title">Sell Faster:</strong>
-                                                        Sell your bike faster than others at a better price.
-                                                    </p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-3 col-sm-4 col-xs-12">
-                                            <div class="btn-container">
-                                                <a href="/0/bikes/create">Sell Your Bike</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+{{--                            <div class="featured-ribbon featured-ribbon-price">--}}
+{{--                                Rs.{{$item->price}}--}}
+{{--                            </div>--}}
+{{--                            <div class="img-content img-valign">--}}
+{{--                                <a href="{{'/0/bikes/'.$item->id}}"><img alt="New" class="lazy-car-slider pic" data-original=""--}}
+{{--                                                 rel="nofollow" src="{{url($item->photos()->first()->getPicture())}}" title=""--}}
+{{--                                                 style="display: inline;">--}}
+{{--                                </a>--}}
+{{--                                <div class="overlay"></div>--}}
+{{--                            </div>--}}
 
-                        </div><!-- col-md-10 sell-ad-with-panel -->
+{{--                        </div>--}}
+{{--                        <div class="recent-vehicle-list-content">--}}
+{{--                            <h3 class=" truncate"><a href="{{'/0/bikes/'.$item->id}}" rel="nofollow">{{$item->name}}</a></h3>--}}
 
-                        <!--                    <div class="col-md-3 col-sm-12 col-xs-12">-->
-                        <!--                        <div class="well p10 text-center">-->
-                        <!--                            <div class="suzuki-certified-logo-lg mt15 mb5">-->
-                        <!--                                <img class="img-responsive" src="images/certified.png">-->
-                        <!--                            </div>-->
-                        <!--                            <a class="learn-more views mt20 mb10 show" href="#">View Certified Bikes</a>-->
-                        <!--                        </div>-->
-                        <!--                    </div>-->
-                    </div><!-- row -->
-                </div>
-            </div>
-        </section>
-        <!--Popular used bikes-->
-        <section class="page-section viewall">
-            <div class="container">
-                <h1 class="col-md-12 mb">  <span style="color: #ee4416;">Popular</span> Used Bikes
-                    <small class="pull-right"><a href="/0/bikes">View all</a></small> </h1>
-
-                @foreach($bikes as $item)
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <div class="img-box">
-                        <div class="featured-ribbon">
-                            <i class="fa fa-star"></i>
-                            Popular
-                        </div>
-                        <div class=" heart-o">
-                            <a href="#"><i class="fa fa-heart-o"></i></a>
-                            <div class=" heart-i">
-                                <a href="#"><i class="fa fa-heart"></i></a>
-                            </div>
-                        </div>
-                        <div class="featured-ribbon featured-ribbon-price">
-                            Rs.{{$item->price}}
-                        </div>
-                        <div class="img-content img-valign">
-                            <a href="/0/bikes/{{$item->id}}"><img alt="New" class="lazy-car-slider pic" data-original="" rel="nofollow" src="{{url($item->photos()->first()->getPicture())}}" title="" style="display: inline;">
-                            </a>
-                            <div class="overlay"></div>
-                        </div>
-
-                    </div>
-                    <div class="recent-vehicle-list-content">
-                        <h3 class="nomargin truncate"><a href="#" rel="nofollow">{{$item->name}}</a></h3>
-
-                        <div class="generic-grey">{{$item->city}}</div>
-                    </div>
-                </div>
-                @endforeach
-
-            </div>
-        </section>
-
-        <!--used bikes bt city-->
-        <section class="page-section used-bikes">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="text-left mb" style="padding-left: 15px"> <span style="color: #ee4416;">Used</span> bikes by City</h1>
-
-                        <div class="col-md-3 col-sm-6 col-xs-6 city">
-                            <div class="pull-left">
-                                <a class="lhr" href="/bikes/search?city=Lahore"><img src="images/lhr.jpg"> </a></div>
-                            <div class="pull-left">
-                                <h3>Lahore</h3>
-                                <p>12000+ Used Bikes</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6 city">
-                            <div class="pull-left">
-                                <a class="lhr khi" href="/bikes/search?city=Karachi"><img src="images/khi.jpg"></a></div>
-                            <div class="pull-left">
-                                <h3>karachi</h3>
-                                <p>12000+ Used Bikes</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6 city">
-                            <div class="pull-left">
-                                <a class="lhr isb" href="/bikes/search?city=Islamabad"><img src="images/isb.jpg"></a></div>
-                            <div class="pull-left">
-                                <h3>Islamabad</h3>
-                                <p>12000+ Used Bikes</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6 city">
-                            <div class="pull-left">
-                                <a class="lhr isb" href="/bikes/search?city=Peshawer"><img src="images/peshawer.jpg"></a></div>
-                            <div class="pull-left">
-                                <h3> Peshawer</h3>
-                                <p>12000+ Used Bikes</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6 col-xs-6 city">
-                            <div class="pull-left">
-                                <a class="lhr" href="/bikes/search?city=Faislabad"><img src="images/multan.jpg"></a></div>
-                            <div class="pull-left">
-                                <h3> Faislabad</h3>
-                                <p>12000+ Used Bikes</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6 city">
-                            <div class="pull-left">
-                                <a class="lhr khi" href="/bikes/search?city=Rawalpindi"><img src="images/bwp.jpg"></a></div>
-                            <div class="pull-left">
-                                <h3> Rawalpindi</h3>
-                                <p>12000+ Used Bikes</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6 city">
-                            <div class="pull-left">
-                                <a class="lhr isb" href="/bikes/search?city=Gujranwala"><img src="images/gnw.jpg"></a></div>
-                            <div class="pull-left">
-                                <h3> GNW</h3>
-                                <p>12000+ Used Bikes</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6 city">
-                            <div class="pull-left">
-                                <a class="lhr" href="/bikes/search?city=Sargodha"><img src="images/sialkot.jpg"></a></div>
-                            <div class="pull-left">
-                                <h3> Sargodha</h3>
-                                <p>12000+ Used Bikes</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6 city">
-                            <div class="pull-left">
-                                <a class="lhr khi" href="/bikes/search?city=Sialkot"><img src="images/sukk.jpg"></a></div>
-                            <div class="pull-left">
-                                <h3> Sialkot</h3>
-                                <p>12000+ Used Bikes</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6 city">
-                            <div class="pull-left">
-                                <a class="lhr khi" href="/bikes/search?city=Larkana"><img src="images/lhr.jpg"></a></div>
-                            <div class="pull-left">
-                                <h3> Larkana</h3>
-                                <p>12000+ Used Bikes</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6 city">
-                            <div class="pull-left">
-                                <a class="lhr isb" href="/bikes/search?city=Quetta"><img src="images/sargodha.jpg"></a></div>
-                            <div class="pull-left">
-                                <h3> Quetta</h3>
-                                <p>12000+ Used Bikes</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6 city">
-                            <div class="pull-left">
-                                <a class="lhr" href="/bikes/search?city=Bahawalpur"><img src="images/isb.jpg"></a></div>
-                            <div class="pull-left">
-                                <h3> Bahawalpur</h3>
-                                <p>12000+ Used Bikes</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--Featured New Bikes-->
-        <section class="page-section viewall">
-            <div class="container">
-                <h1 class="col-md-12 mb">  <span style="color: #ee4416;">Featured</span> New Bikes
-                    <small class="pull-right"><a href="/0/bikes">View all</a></small> </h1>
-
-                @foreach($bikes as $item)
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                        <div class="img-box">
-                            <div class="featured-ribbon">
-                                <i class="fa fa-star"></i>
-                                FEATURED
-                            </div>
-                            <div class=" heart-o">
-                                <a href="#"><i class="fa fa-heart-o"></i></a>
-                                <div class=" heart-i">
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                </div>
-                            </div>
+{{--                            <div class="generic-grey">{{$item->city}}</div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
 
 
-                            <div class="featured-ribbon featured-ribbon-price">
-                                Rs.{{$item->price}}
-                            </div>
-                            <div class="img-content img-valign">
-                                <a href="{{'/0/bikes/'.$item->id}}"><img alt="New" class="lazy-car-slider pic" data-original=""
-                                                                         rel="nofollow" src="{{url($item->photos()->first()->getPicture())}}" title=""
-                                                                         style="display: inline;">
-                                </a>
-                                <div class="overlay"></div>
-                            </div>
+{{--            </div>--}}
+{{--        </section>--}}
+        <!--TODO sell your bike-->
+{{--        <section class="page-section">--}}
+{{--            <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-12">--}}
+{{--                        <div class="col-md-12 col-sm-12 col-xs-12 sell-ad-with-panel">--}}
+{{--                            <div class="sell-your-ad mb40 well sell-blue clearfix">--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-md-12">--}}
+{{--                                        <div class="col-md-9 col-sm-9 col-xs-12">--}}
+{{--                                            <ul class="list-unstyled nomargin">--}}
+{{--                                                <li>--}}
+{{--                                                    <p class="fs18">--}}
+{{--                                                        <i class="fa fa-check-circle-o generic-red point"></i>--}}
+{{--                                                        <strong class="title">Post an Ad for Free:</strong>--}}
+{{--                                                        Post your bike's ad for free in 30 seconds.--}}
+{{--                                                    </p>--}}
+{{--                                                </li>--}}
+{{--                                                <li>--}}
+{{--                                                    <p class="fs18">--}}
+{{--                                                        <i class="fa fa-check-circle-o generic-red point"></i>--}}
+{{--                                                        <strong class="title">Thousands of genuine buyers:</strong>--}}
+{{--                                                        Get authentic offers from verified buyers.--}}
+{{--                                                    </p>--}}
+{{--                                                </li>--}}
+{{--                                                <li>--}}
+{{--                                                    <p class="fs18">--}}
+{{--                                                        <i class="fa fa-check-circle-o generic-red point"></i>--}}
+{{--                                                        <strong class="title">Sell Faster:</strong>--}}
+{{--                                                        Sell your bike faster than others at a better price.--}}
+{{--                                                    </p>--}}
+{{--                                                </li>--}}
+{{--                                            </ul>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="col-md-3 col-sm-4 col-xs-12">--}}
+{{--                                            <div class="btn-container">--}}
+{{--                                                <a href="/0/bikes/create">Sell Your Bike</a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                        </div>
-                        <div class="recent-vehicle-list-content">
-                            <h3 class=" truncate"><a href="{{'/0/bikes/'.$item->id}}" rel="nofollow">{{$item->name}}</a></h3>
+{{--                        </div><!-- col-md-10 sell-ad-with-panel -->--}}
 
-                            <div class="generic-grey">{{$item->city}}</div>
-                        </div>
-                    </div>
-                @endforeach
+{{--                        <!--                    <div class="col-md-3 col-sm-12 col-xs-12">-->--}}
+{{--                        <!--                        <div class="well p10 text-center">-->--}}
+{{--                        <!--                            <div class="suzuki-certified-logo-lg mt15 mb5">-->--}}
+{{--                        <!--                                <img class="img-responsive" src="images/certified.png">-->--}}
+{{--                        <!--                            </div>-->--}}
+{{--                        <!--                            <a class="learn-more views mt20 mb10 show" href="#">View Certified Bikes</a>-->--}}
+{{--                        <!--                        </div>-->--}}
+{{--                        <!--                    </div>-->--}}
+{{--                    </div><!-- row -->--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </section>--}}
+        <!--TODO Popular used bikes-->
+{{--        <section class="page-section viewall">--}}
+{{--            <div class="container">--}}
+{{--                <h1 class="col-md-12 mb">  <span style="color: #ee4416;">Popular</span> Used Bikes--}}
+{{--                    <small class="pull-right"><a href="/0/bikes">View all</a></small> </h1>--}}
 
-            </div>
-        </section>
+{{--                @foreach($bikes as $item)--}}
+{{--                <div class="col-md-3 col-sm-6 col-xs-12">--}}
+{{--                    <div class="img-box">--}}
+{{--                        <div class="featured-ribbon">--}}
+{{--                            <i class="fa fa-star"></i>--}}
+{{--                            Popular--}}
+{{--                        </div>--}}
+{{--                        <div class=" heart-o">--}}
+{{--                            <a href="#"><i class="fa fa-heart-o"></i></a>--}}
+{{--                            <div class=" heart-i">--}}
+{{--                                <a href="#"><i class="fa fa-heart"></i></a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="featured-ribbon featured-ribbon-price">--}}
+{{--                            Rs.{{$item->price}}--}}
+{{--                        </div>--}}
+{{--                        <div class="img-content img-valign">--}}
+{{--                            <a href="/0/bikes/{{$item->id}}"><img alt="New" class="lazy-car-slider pic" data-original="" rel="nofollow" src="{{url($item->photos()->first()->getPicture())}}" title="" style="display: inline;">--}}
+{{--                            </a>--}}
+{{--                            <div class="overlay"></div>--}}
+{{--                        </div>--}}
 
-        <!--New Bikes By Make-->
-        <section class="page-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="text-left mb" style="padding-left: 0; margin-left: 15px"> <span style="color: #ee4416;">New</span> Bikes by Make</h1>
-                        <div id="myCarousel3" class="carousel slide" data-ride="carousel">
-                            <!-- Indicators -->
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <ul class="make-list list-unstyled">
-                                        <li class="heading">
-                                            <a href="/bikes/search?brand=Hero&condition=new" id="amk_toyota4" title="Toyota Bikes in Pakistan">
-                                                <div class="pw-make-80 toyota"></div>
-                                                <h3 class="nomargin">Hero</h3>
+{{--                    </div>--}}
+{{--                    <div class="recent-vehicle-list-content">--}}
+{{--                        <h3 class="nomargin truncate"><a href="#" rel="nofollow">{{$item->name}}</a></h3>--}}
 
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="make-list list-unstyled">
-                                        <li class="heading">
-                                            <a href="/bikes/search?brand=Honda&condition=new" id="amk_honda1" title="Honda Bikes in Pakistan">
-                                                <div class="pw-make-80 honda"></div>
-                                                <h3 class="nomargin">Honda</h3>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="make-list list-unstyled">
-                                        <li class="heading">
-                                            <a href="/bikes/search?brand=Suzuki&condition=new" id="amk_suzuki2" title="Suzuki Bikes in Pakistan">
-                                                <div class="pw-make-80 suzuki"></div>
-                                                <h3 class="nomargin">Suzuki</h3>
+{{--                        <div class="generic-grey">{{$item->city}}</div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                @endforeach--}}
 
-                                            </a>
-                                        </li>
+{{--            </div>--}}
+{{--        </section>--}}
 
-                                    </ul>
-                                    <ul class="make-list list-unstyled">
-                                        <li class="heading">
-                                            <a href="/bikes/search?brand=Yamaha&condition=new" id="amk_bmw3" title="BMW Bikes in Pakistan">
-                                                <div class="pw-make-80 yamaha"></div>
-                                                <h3 class="nomargin">Yamaha</h3>
+        <!--TODO used bikes bt city-->
+{{--        <section class="page-section used-bikes">--}}
+{{--            <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-12">--}}
+{{--                        <h1 class="text-left mb" style="padding-left: 15px"> <span style="color: #ee4416;">Used</span> bikes by City</h1>--}}
 
-                                            </a>
-                                        </li>
+{{--                        <div class="col-md-3 col-sm-6 col-xs-6 city">--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <a class="lhr" href="/bikes/search?city=Lahore"><img src="images/lhr.jpg"> </a></div>--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <h3>Lahore</h3>--}}
+{{--                                <p>12000+ Used Bikes</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-3 col-sm-6 col-xs-6 city">--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <a class="lhr khi" href="/bikes/search?city=Karachi"><img src="images/khi.jpg"></a></div>--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <h3>karachi</h3>--}}
+{{--                                <p>12000+ Used Bikes</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-3 col-sm-6 col-xs-6 city">--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <a class="lhr isb" href="/bikes/search?city=Islamabad"><img src="images/isb.jpg"></a></div>--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <h3>Islamabad</h3>--}}
+{{--                                <p>12000+ Used Bikes</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-3 col-sm-6 col-xs-6 city">--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <a class="lhr isb" href="/bikes/search?city=Peshawer"><img src="images/peshawer.jpg"></a></div>--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <h3> Peshawer</h3>--}}
+{{--                                <p>12000+ Used Bikes</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                                    </ul>
-                                </div>
+{{--                        <div class="col-md-3 col-sm-6 col-xs-6 city">--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <a class="lhr" href="/bikes/search?city=Faislabad"><img src="images/multan.jpg"></a></div>--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <h3> Faislabad</h3>--}}
+{{--                                <p>12000+ Used Bikes</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-3 col-sm-6 col-xs-6 city">--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <a class="lhr khi" href="/bikes/search?city=Rawalpindi"><img src="images/bwp.jpg"></a></div>--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <h3> Rawalpindi</h3>--}}
+{{--                                <p>12000+ Used Bikes</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-3 col-sm-6 col-xs-6 city">--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <a class="lhr isb" href="/bikes/search?city=Gujranwala"><img src="images/gnw.jpg"></a></div>--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <h3> GNW</h3>--}}
+{{--                                <p>12000+ Used Bikes</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-3 col-sm-6 col-xs-6 city">--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <a class="lhr" href="/bikes/search?city=Sargodha"><img src="images/sialkot.jpg"></a></div>--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <h3> Sargodha</h3>--}}
+{{--                                <p>12000+ Used Bikes</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-3 col-sm-6 col-xs-6 city">--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <a class="lhr khi" href="/bikes/search?city=Sialkot"><img src="images/sukk.jpg"></a></div>--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <h3> Sialkot</h3>--}}
+{{--                                <p>12000+ Used Bikes</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-3 col-sm-6 col-xs-6 city">--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <a class="lhr khi" href="/bikes/search?city=Larkana"><img src="images/lhr.jpg"></a></div>--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <h3> Larkana</h3>--}}
+{{--                                <p>12000+ Used Bikes</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-3 col-sm-6 col-xs-6 city">--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <a class="lhr isb" href="/bikes/search?city=Quetta"><img src="images/sargodha.jpg"></a></div>--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <h3> Quetta</h3>--}}
+{{--                                <p>12000+ Used Bikes</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-3 col-sm-6 col-xs-6 city">--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <a class="lhr" href="/bikes/search?city=Bahawalpur"><img src="images/isb.jpg"></a></div>--}}
+{{--                            <div class="pull-left">--}}
+{{--                                <h3> Bahawalpur</h3>--}}
+{{--                                <p>12000+ Used Bikes</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </section>--}}
 
-                                <div class="item">
-                                    <ul class="make-list list-unstyled">
-                                        <li class="heading">
-                                            <a href="/bikes/search?brand=Super+Power&condition=new" id="amk_toyota5" title="Toyota Bikes in Pakistan">
-                                                <div class="pw-make-80 toyota"></div>
-                                                <h3 class="nomargin">Super Power</h3>
+        <!-- TODO Featured New Bikes-->
+{{--        <section class="page-section viewall">--}}
+{{--            <div class="container">--}}
+{{--                <h1 class="col-md-12 mb">  <span style="color: #ee4416;">Featured</span> New Bikes--}}
+{{--                    <small class="pull-right"><a href="/0/bikes">View all</a></small> </h1>--}}
 
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="make-list list-unstyled">
-                                        <li class="heading">
-                                            <a href="/bikes/search?brand=United&condition=new" id="amk_honda6" title="Honda Bikes in Pakistan">
-                                                <div class="pw-make-80 honda"></div>
-                                                <h3 class="nomargin">United</h3>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="make-list list-unstyled">
-                                        <li class="heading">
-                                            <a href="/bikes/search?brand=Unique&condition=new" id="amk_suzuki7" title="Suzuki Bikes in Pakistan">
-                                                <div class="pw-make-80 suzuki"></div>
-                                                <h3 class="nomargin">Unique</h3>
+{{--                @foreach($bikes as $item)--}}
+{{--                    <div class="col-md-3 col-sm-6 col-xs-12">--}}
+{{--                        <div class="img-box">--}}
+{{--                            <div class="featured-ribbon">--}}
+{{--                                <i class="fa fa-star"></i>--}}
+{{--                                FEATURED--}}
+{{--                            </div>--}}
+{{--                            <div class=" heart-o">--}}
+{{--                                <a href="#"><i class="fa fa-heart-o"></i></a>--}}
+{{--                                <div class=" heart-i">--}}
+{{--                                    <a href="#"><i class="fa fa-heart"></i></a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                                            </a>
-                                        </li>
 
-                                    </ul>
-                                    <ul class="make-list list-unstyled">
-                                        <li class="heading">
-                                            <a href="/bikes/search?brand=Kawasaki&condition=new" id="amk_bmw8" title="BMW Bikes in Pakistan">
-                                                <div class="pw-make-80 yamaha"></div>
-                                                <h3 class="nomargin">Kawasaki</h3>
+{{--                            <div class="featured-ribbon featured-ribbon-price">--}}
+{{--                                Rs.{{$item->price}}--}}
+{{--                            </div>--}}
+{{--                            <div class="img-content img-valign">--}}
+{{--                                <a href="{{'/0/bikes/'.$item->id}}"><img alt="New" class="lazy-car-slider pic" data-original=""--}}
+{{--                                                                         rel="nofollow" src="{{url($item->photos()->first()->getPicture())}}" title=""--}}
+{{--                                                                         style="display: inline;">--}}
+{{--                                </a>--}}
+{{--                                <div class="overlay"></div>--}}
+{{--                            </div>--}}
 
-                                            </a>
-                                        </li>
+{{--                        </div>--}}
+{{--                        <div class="recent-vehicle-list-content">--}}
+{{--                            <h3 class=" truncate"><a href="{{'/0/bikes/'.$item->id}}" rel="nofollow">{{$item->name}}</a></h3>--}}
 
-                                    </ul>
-                                </div>
+{{--                            <div class="generic-grey">{{$item->city}}</div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
 
-                            </div>
+{{--            </div>--}}
+{{--        </section>--}}
 
-                            <!-- Left and right controls -->
-                            <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="right carousel-control" href="#myCarousel3" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- container -->
-        </section>
+        <!--TODO New Bikes By Make-->
+{{--        <section class="page-section">--}}
+{{--            <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-12">--}}
+{{--                        <h1 class="text-left mb" style="padding-left: 0; margin-left: 15px"> <span style="color: #ee4416;">New</span> Bikes by Make</h1>--}}
+{{--                        <div id="myCarousel3" class="carousel slide" data-ride="carousel">--}}
+{{--                            <!-- Indicators -->--}}
+{{--                            <!-- Wrapper for slides -->--}}
+{{--                            <div class="carousel-inner">--}}
+{{--                                <div class="item active">--}}
+{{--                                    <ul class="make-list list-unstyled">--}}
+{{--                                        <li class="heading">--}}
+{{--                                            <a href="/bikes/search?brand=Hero&condition=new" id="amk_toyota4" title="Toyota Bikes in Pakistan">--}}
+{{--                                                <div class="pw-make-80 toyota"></div>--}}
+{{--                                                <h3 class="nomargin">Hero</h3>--}}
+
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                    <ul class="make-list list-unstyled">--}}
+{{--                                        <li class="heading">--}}
+{{--                                            <a href="/bikes/search?brand=Honda&condition=new" id="amk_honda1" title="Honda Bikes in Pakistan">--}}
+{{--                                                <div class="pw-make-80 honda"></div>--}}
+{{--                                                <h3 class="nomargin">Honda</h3>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                    <ul class="make-list list-unstyled">--}}
+{{--                                        <li class="heading">--}}
+{{--                                            <a href="/bikes/search?brand=Suzuki&condition=new" id="amk_suzuki2" title="Suzuki Bikes in Pakistan">--}}
+{{--                                                <div class="pw-make-80 suzuki"></div>--}}
+{{--                                                <h3 class="nomargin">Suzuki</h3>--}}
+
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+
+{{--                                    </ul>--}}
+{{--                                    <ul class="make-list list-unstyled">--}}
+{{--                                        <li class="heading">--}}
+{{--                                            <a href="/bikes/search?brand=Yamaha&condition=new" id="amk_bmw3" title="BMW Bikes in Pakistan">--}}
+{{--                                                <div class="pw-make-80 yamaha"></div>--}}
+{{--                                                <h3 class="nomargin">Yamaha</h3>--}}
+
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+
+{{--                                <div class="item">--}}
+{{--                                    <ul class="make-list list-unstyled">--}}
+{{--                                        <li class="heading">--}}
+{{--                                            <a href="/bikes/search?brand=Super+Power&condition=new" id="amk_toyota5" title="Toyota Bikes in Pakistan">--}}
+{{--                                                <div class="pw-make-80 toyota"></div>--}}
+{{--                                                <h3 class="nomargin">Super Power</h3>--}}
+
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                    <ul class="make-list list-unstyled">--}}
+{{--                                        <li class="heading">--}}
+{{--                                            <a href="/bikes/search?brand=United&condition=new" id="amk_honda6" title="Honda Bikes in Pakistan">--}}
+{{--                                                <div class="pw-make-80 honda"></div>--}}
+{{--                                                <h3 class="nomargin">United</h3>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                    <ul class="make-list list-unstyled">--}}
+{{--                                        <li class="heading">--}}
+{{--                                            <a href="/bikes/search?brand=Unique&condition=new" id="amk_suzuki7" title="Suzuki Bikes in Pakistan">--}}
+{{--                                                <div class="pw-make-80 suzuki"></div>--}}
+{{--                                                <h3 class="nomargin">Unique</h3>--}}
+
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+
+{{--                                    </ul>--}}
+{{--                                    <ul class="make-list list-unstyled">--}}
+{{--                                        <li class="heading">--}}
+{{--                                            <a href="/bikes/search?brand=Kawasaki&condition=new" id="amk_bmw8" title="BMW Bikes in Pakistan">--}}
+{{--                                                <div class="pw-make-80 yamaha"></div>--}}
+{{--                                                <h3 class="nomargin">Kawasaki</h3>--}}
+
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+
+{{--                            </div>--}}
+
+{{--                            <!-- Left and right controls -->--}}
+{{--                            <a class="left carousel-control" href="#myCarousel3" data-slide="prev">--}}
+{{--                                <span class="glyphicon glyphicon-chevron-left"></span>--}}
+{{--                                <span class="sr-only">Previous</span>--}}
+{{--                            </a>--}}
+{{--                            <a class="right carousel-control" href="#myCarousel3" data-slide="next">--}}
+{{--                                <span class="glyphicon glyphicon-chevron-right"></span>--}}
+{{--                                <span class="sr-only">Next</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div><!-- container -->--}}
+{{--        </section>--}}
 
         <!--coming soon-->
         <!--        <section class="page-section viewall">-->
@@ -597,72 +597,72 @@
         <!--            </div>-->
         <!--        </section>-->
 
-        <!--imported bikes-->
-        <section class="page-section viewall">
-            <div class="container">
-                <h1 class="col-md-12 mb">  <span style="color: #ee4416;">Imported</span> Bikes
-                    <small class="pull-right"><a href="/0/bikes">View all</a></small> </h1>
+        <!-- TODO imported bikes-->
+{{--        <section class="page-section viewall">--}}
+{{--            <div class="container">--}}
+{{--                <h1 class="col-md-12 mb">  <span style="color: #ee4416;">Imported</span> Bikes--}}
+{{--                    <small class="pull-right"><a href="/0/bikes">View all</a></small> </h1>--}}
 
-                <div id="myCarousel4" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel4" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel4" data-slide-to="1"></li>
-                        <li data-target="#myCarousel4" data-slide-to="2"></li>
-                    </ol>
+{{--                <div id="myCarousel4" class="carousel slide" data-ride="carousel">--}}
+{{--                    <!-- Indicators -->--}}
+{{--                    <ol class="carousel-indicators">--}}
+{{--                        <li data-target="#myCarousel4" data-slide-to="0" class="active"></li>--}}
+{{--                        <li data-target="#myCarousel4" data-slide-to="1"></li>--}}
+{{--                        <li data-target="#myCarousel4" data-slide-to="2"></li>--}}
+{{--                    </ol>--}}
 
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="col-md-4 col-sm-4 col-xs-6">
-                                <img class="img-responsive" src="images/bike1.jpg">
-                                <h3 class="nomargin">Bike</h3>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-6">
-                                <img class="img-responsive" src="images/bike2.jpg">
-                                <h3 class="nomargin">Bike</h3>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-6">
-                                <img class="img-responsive" src="images/bike3.jpg">
-                                <h3 class="nomargin">Bike</h3>
-                            </div>
+{{--                    <!-- Wrapper for slides -->--}}
+{{--                    <div class="carousel-inner">--}}
+{{--                        <div class="item active">--}}
+{{--                            <div class="col-md-4 col-sm-4 col-xs-6">--}}
+{{--                                <img class="img-responsive" src="images/bike1.jpg">--}}
+{{--                                <h3 class="nomargin">Bike</h3>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-4 col-sm-4 col-xs-6">--}}
+{{--                                <img class="img-responsive" src="images/bike2.jpg">--}}
+{{--                                <h3 class="nomargin">Bike</h3>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-4 col-sm-4 col-xs-6">--}}
+{{--                                <img class="img-responsive" src="images/bike3.jpg">--}}
+{{--                                <h3 class="nomargin">Bike</h3>--}}
+{{--                            </div>--}}
 
-                        </div>
-                        <div class="item">
-                            <div class="col-md-4 col-sm-4 col-xs-6">
-                                <img class="img-responsive" src="images/bike1.jpg">
-                                <h3 class="nomargin">Bike</h3>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-6">
-                                <img class="img-responsive" src="images/bike2.jpg">
-                                <h3 class="nomargin">Bike</h3>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-6">
-                                <img class="img-responsive" src="images/bike3.jpg">
-                                <h3 class="nomargin">Bike</h3>
-                            </div>
+{{--                        </div>--}}
+{{--                        <div class="item">--}}
+{{--                            <div class="col-md-4 col-sm-4 col-xs-6">--}}
+{{--                                <img class="img-responsive" src="images/bike1.jpg">--}}
+{{--                                <h3 class="nomargin">Bike</h3>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-4 col-sm-4 col-xs-6">--}}
+{{--                                <img class="img-responsive" src="images/bike2.jpg">--}}
+{{--                                <h3 class="nomargin">Bike</h3>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-4 col-sm-4 col-xs-6">--}}
+{{--                                <img class="img-responsive" src="images/bike3.jpg">--}}
+{{--                                <h3 class="nomargin">Bike</h3>--}}
+{{--                            </div>--}}
 
-                        </div>
-                        <div class="item">
-                            <div class="col-md-4 col-sm-4 col-xs-6">
-                                <img class="img-responsive" src="images/bike1.jpg">
-                                <h3 class="nomargin">Bike</h3>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-6">
-                                <img class="img-responsive" src="images/bike2.jpg">
-                                <h3 class="nomargin">Bike</h3>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-6">
-                                <img class="img-responsive" src="images/bike3.jpg">
-                                <h3 class="nomargin">Bike</h3>
-                            </div>
+{{--                        </div>--}}
+{{--                        <div class="item">--}}
+{{--                            <div class="col-md-4 col-sm-4 col-xs-6">--}}
+{{--                                <img class="img-responsive" src="images/bike1.jpg">--}}
+{{--                                <h3 class="nomargin">Bike</h3>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-4 col-sm-4 col-xs-6">--}}
+{{--                                <img class="img-responsive" src="images/bike2.jpg">--}}
+{{--                                <h3 class="nomargin">Bike</h3>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-4 col-sm-4 col-xs-6">--}}
+{{--                                <img class="img-responsive" src="images/bike3.jpg">--}}
+{{--                                <h3 class="nomargin">Bike</h3>--}}
+{{--                            </div>--}}
 
-                        </div>
-                    </div>
-                </div>
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
-            </div>
-        </section>
+{{--            </div>--}}
+{{--        </section>--}}
         <!--Bike comparison-->
         <!--        <section class="page-section comparison">-->
         <!--            <div class="container">-->
@@ -685,53 +685,53 @@
         <!--            </div>-->
         <!--        </section>-->
 
-        <!--Accessories-->
-        <section class="page-section viewall accessories">
-            <div class="container">
-                <h1 class="col-md-12 mb">  <span style="color: #ee4416;">Accessories</span> By Category
-                    <small class="pull-right"><a href="/0/accessories">View all</a></small> </h1>
-                <div class="row">
-                    @foreach($accessories as $item)
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="img-box">
-                                <div class="featured-ribbon">
-                                    <i class="fa fa-star"></i>
-                                    FEATURED
-                                </div>
-                                <div class=" heart-o">
-                                    <a href="#"><i class="fa fa-heart-o"></i></a>
-                                    <div class=" heart-i">
-                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class=" heart-o">
-                                    <a href="#"><i class="fa fa-heart-o"></i></a>
-                                    <div class=" heart-i">
-                                        <a href="#"><i class="fa fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="featured-ribbon featured-ribbon-price">
-                                    Rs.{{$item->price}}
-                                </div>
-                                <div class="img-content img-valign">
-                                    <a href="/0/accessories/{{$item->id}}"><img alt="New" class="lazy-car-slider pic" data-original="" rel="nofollow" src="{{url($item->photos()->first()->getPicture())}}" title="" style="display: inline;">
-                                    </a>
-                                    <div class="overlay"></div>
-                                </div>
+        <!--TODO Accessories-->
+{{--        <section class="page-section viewall accessories">--}}
+{{--            <div class="container">--}}
+{{--                <h1 class="col-md-12 mb">  <span style="color: #ee4416;">Accessories</span> By Category--}}
+{{--                    <small class="pull-right"><a href="/0/accessories">View all</a></small> </h1>--}}
+{{--                <div class="row">--}}
+{{--                    @foreach($accessories as $item)--}}
+{{--                        <div class="col-md-3 col-sm-6 col-xs-12">--}}
+{{--                            <div class="img-box">--}}
+{{--                                <div class="featured-ribbon">--}}
+{{--                                    <i class="fa fa-star"></i>--}}
+{{--                                    FEATURED--}}
+{{--                                </div>--}}
+{{--                                <div class=" heart-o">--}}
+{{--                                    <a href="#"><i class="fa fa-heart-o"></i></a>--}}
+{{--                                    <div class=" heart-i">--}}
+{{--                                        <a href="#"><i class="fa fa-heart"></i></a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class=" heart-o">--}}
+{{--                                    <a href="#"><i class="fa fa-heart-o"></i></a>--}}
+{{--                                    <div class=" heart-i">--}}
+{{--                                        <a href="#"><i class="fa fa-heart"></i></a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="featured-ribbon featured-ribbon-price">--}}
+{{--                                    Rs.{{$item->price}}--}}
+{{--                                </div>--}}
+{{--                                <div class="img-content img-valign">--}}
+{{--                                    <a href="/0/accessories/{{$item->id}}"><img alt="New" class="lazy-car-slider pic" data-original="" rel="nofollow" src="{{url($item->photos()->first()->getPicture())}}" title="" style="display: inline;">--}}
+{{--                                    </a>--}}
+{{--                                    <div class="overlay"></div>--}}
+{{--                                </div>--}}
 
-                            </div>
-                            <div class="recent-vehicle-list-content">
-                                <h3 class="nomargin truncate"><a href="/0/accessories" rel="nofollow">{{$item->name}}</a></h3>
+{{--                            </div>--}}
+{{--                            <div class="recent-vehicle-list-content">--}}
+{{--                                <h3 class="nomargin truncate"><a href="/0/accessories" rel="nofollow">{{$item->name}}</a></h3>--}}
 
-                                <div class="generic-grey">{{$item->city}}</div>
-                            </div>
-                        </div>
-                    @endforeach
+{{--                                <div class="generic-grey">{{$item->city}}</div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    @endforeach--}}
 
 
-                </div>
-            </div>
-        </section>
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </section>--}}
 
         @include('layouts.footer')
     </main>

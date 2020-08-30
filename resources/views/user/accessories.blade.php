@@ -143,7 +143,6 @@
                                     <small>{{$item->category}}</small>
                                 </div>
                                 <div class="h-over">
-                                    <a class="btn btn-default" href="#">Buy Now</a>
                                     <a class="btn btn-default" href="{{'/0/accessories/'.$item->id}}">View</a>
                                 </div>
                             </div>

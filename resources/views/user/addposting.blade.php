@@ -55,7 +55,7 @@
                     </div>
                     <div class="form-group col-md-7 amount">
                         <label>
-                            <input type="radio" name="price_type" value="amount" />Amount</label>
+                            <input type="radio" name="price_type" value="amount" required/>Amount</label>
                         <label>
                             <input type="radio" name="price_type" value="negotiable" />Negotiable</label>
                         <label>

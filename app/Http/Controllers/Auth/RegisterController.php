@@ -75,8 +75,8 @@ class RegisterController extends Controller
     protected function redirectTo()
     {
         if ( auth()->user()->isAdmin() ) {
-            return redirect('/admin/home');
+            return '/admin/home';
         }
-        return redirect('/');
+        return '/';
     }
 }

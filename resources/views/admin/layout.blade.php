@@ -6,7 +6,7 @@
 
 
 <body>
-<div class="skin-blue-light">
+<div class="skin-green">
 {{--    select admin panel main color from here--}}
     <div class="wrapper">
         @include('admin/header')

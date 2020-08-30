@@ -46,7 +46,10 @@ Route::get('admin/register', function () {
 });
 Route::get('admin/home', function () {
     return view('admin/home');
-});
+})->middleware('auth');;
 Route::get('/admin_bikes', 'BikeController@allBikes')->name('admin_bikes');
 Route::get('/admin_bikes/{bike}/edit', 'BikeController@edit');
 Route::post('/admin_bikes/{bike}', 'BikeController@update');
+Route::get('/admin_accessories', 'AccessoriesController@allAccessories')->name('admin_accessories');
+Route::get('/admin_accessories/{accessory}/edit', 'AccessoriesController@edit');
+Route::post('/admin_accessories/{accessory}', 'AccessoriesController@update');

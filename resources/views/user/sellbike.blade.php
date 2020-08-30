@@ -120,7 +120,7 @@
                                     <div class="freeformPrice ">
                                         <section class="range-slider align-content-center">
                                             <span class="rangeValues"></span>
-                                            <input value="0" min="0" max="5000" step="10" type="range" name="engine_capacity">
+                                            <input value="0" min="0" max="5000" step="5" type="range" name="engine_capacity">
                                         </section>
                                     </div>
                             </div>

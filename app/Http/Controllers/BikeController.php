@@ -13,7 +13,7 @@ class BikeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['create','store']);
+        $this->middleware('auth')->only(['create','store','edit','update','allBikes']);
     }
     /**
      * Display a listing of the resource.
@@ -69,10 +69,6 @@ class BikeController extends Controller
         return view('user/usedbikes', compact('bikes','filters'));
     }
 
-    public function allBikes(){
-        $bikes = Bike::where('isApproved', '=', false)->get();
-        return view('admin/bikes', compact('bikes'));
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -214,11 +210,11 @@ class BikeController extends Controller
             }
         }
         if ($bike->condition == 'new'){
-            return redirect()->back()->with('message', 'New Bike saved Successfully!!!');
+            return redirect()->back()->with('message', 'New Bike sent for approval Successfully!!!');
         }
         else
             {
-                return redirect()->back()->with('message', 'Used Bike saved Successfully!!!');
+                return redirect()->back()->with('message', 'Used Bike sent for approval Successfully!!!');
         }
     }
 
@@ -240,10 +236,17 @@ class BikeController extends Controller
      * @param  \App\Bike  $bike
      * @return \Illuminate\Http\Response
      */
+
+    public function allBikes(){
+        $bikes = Bike::where('isApproved', '=', false)->get();
+        return view('admin/bikes', compact('bikes'));
+    }
+
     public function edit(Bike $bike)
     {
         $product = $bike;
-        return view('admin/editBike', compact('product'));
+        $photos = BikePhotos::where('bike_id', '=', $bike->id)->get();
+        return view('admin/editBike', compact('product','photos'));
     }
 
     /**

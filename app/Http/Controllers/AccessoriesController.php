@@ -13,7 +13,7 @@ class AccessoriesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['create','store']);
+        $this->middleware('auth')->only(['create','store','edit','update','allAccessories']);
     }
     /**
      * Display a listing of the resource.
@@ -36,7 +36,7 @@ class AccessoriesController extends Controller
             'maxPrice'    => '',
             'dealer'=>''
         ];
-        $accessories = Accessories::where('type', '=', 'Accessory')->paginate(8);
+        $accessories = Accessories::where([['type', '=', 'Accessory'],['isApproved', '=', true]])->paginate(8);
         return view('user/accessories', compact('accessories','filters'));
     }
     public function autoParts(){
@@ -54,7 +54,7 @@ class AccessoriesController extends Controller
             'maxPrice'    => '',
             'dealer'=>''
         ];
-        $accessories = Accessories::where('type', '=', 'Auto Parts')->paginate(8);
+        $accessories = Accessories::where([['type', '=', 'Auto Parts'],['isApproved', '=', true]])->paginate(8);
         return view('user/autoparts', compact('accessories','filters'));
     }
 
@@ -105,10 +105,10 @@ class AccessoriesController extends Controller
             }
         }
         if ($accessory->type == 'Accessory'){
-            return redirect()->back()->with('message', 'Accessory saved Successfully!!!');
+            return redirect()->back()->with('message', 'Accessory sent for approval Successfully!!!');
         } else
         {
-            return redirect()->back()->with('message', 'Auto Part saved Successfully!!!');
+            return redirect()->back()->with('message', 'Auto Part sent for approval Successfully!!!');
         }
     }
     public function filter()
@@ -205,9 +205,16 @@ class AccessoriesController extends Controller
      * @param  \App\Accessories  $accessories
      * @return \Illuminate\Http\Response
      */
-    public function edit(Accessories $accessories)
+    public function allAccessories(){
+
+        $bikes = Accessories::where('isApproved', '=', false)->get();
+        return view('admin/accessories', compact('bikes'));
+    }
+    public function edit(Accessories $accessory)
     {
-        //
+        $product = $accessory;
+        $photos = AccessoryPhotos::where('accessories_id', '=', $accessory->id)->get();
+        return view('admin/editAccessory', compact('product','photos'));
     }
 
     /**
@@ -217,9 +224,28 @@ class AccessoriesController extends Controller
      * @param  \App\Accessories  $accessories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Accessories $accessories)
+    public function update(Request $request, Accessories $accessory)
     {
-        //
+        if (Input::get('submit') == 'approve'){
+            try {
+                $accessory->isApproved = true;
+                $accessory->update();
+                return redirect()->route('admin_accessories')->with('message', 'Accessory approved Successfully!!!');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('error', 'Accessory could not approve at this moment.Something wrong happened!!!');
+            }
+        }else if (Input::get('submit') == 'delete'){
+            try {
+                $accessory->delete();
+                return redirect()->route('admin_accessories')->with('message', 'Accessory deleted Successfully!!!');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('error', 'Accessory could not delete at this moment.Something wrong happened!!!');
+            }
+        }else{
+            $input = $request->all();
+            $accessory->fill($input)->save();
+            return back()->with('message', 'Accessory Updated Successfully!!!');
+        }
     }
 
     /**

@@ -1,6 +1,7 @@
 @extends('admin/layout')
 
 @section('content')
+    <link rel="stylesheet" href="{{asset('admin/plugins/ekko-lightbox/ekko-lightbox.css')}}">
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -16,6 +17,7 @@
 
         <!-- Main content -->
         <section class="content">
+            <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
 
@@ -85,6 +87,17 @@
 
 
                                 </div>
+                                <div class="form-group">
+                                    <label>Brand</label>
+                                    <select class="form-control" name="brand" required >
+                                        <option value="" > --- Please Select --- </option>
+                                        @foreach((array)config('constants.BRANDS') as $brand)
+                                            <option value="{{$brand}}"{{ $product->brand==$brand ? 'selected' : '' }}>
+                                                {{$brand}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col-lg-6">
 
 {{--                                    <div class="form-group">--}}
@@ -106,7 +119,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Seller Number</label>
-                                        <input  class="form-control" readonly value="{{$product->date}}">
+                                        <input  class="form-control" readonly value="{{$product->seller_phone}}">
                                     </div>
                                     <div class="form-group">
                                         <label>Body Type</label>
@@ -159,6 +172,27 @@
                                     </div>
 
                                 </div>
+                                <div class="col-12">
+                                        <div class="card card-primary">
+                                            <div class="card-header">
+                                                <div class="card-title">
+                                                    <h4>Bike Images</h4>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    @foreach($photos as $photo)
+                                                    <div class="col-sm-2">
+                                                        <a href="{{asset($photo->getPicture())}}" data-toggle="lightbox" data-title="Bike Image" data-gallery="gallery">
+                                                            <img style="width:200%;height:300px;" src="{{asset($photo->getPicture())}}" class="img-fluid mb-2" alt="white sample"/>
+                                                        </a>
+                                                    </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                             </div>
                             <div class="box-footer">
                                 <input type="submit" name="submit" value="approve"  class="btn btn-primary">
@@ -171,10 +205,12 @@
 
                 <!-- /.col-->
             </div>
+            </div>
             <!-- ./row -->
         </section>
         <!-- /.content -->
     </div>
+    <script src="{{asset('admin/plugins/ekko-lightbox/ekko-lightbox.min.js')}}"></script>
     <script>
         window.onload = function(){
             function getVals(){
@@ -254,5 +290,19 @@
             }
         }
 
+        $(function () {
+            $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox({
+                    alwaysShowClose: true
+                });
+            });
+
+            $('.filter-container').filterizr({gutterPixels: 3});
+            $('.btn[data-filter]').on('click', function() {
+                $('.btn[data-filter]').removeClass('active');
+                $(this).addClass('active');
+            });
+        })
     </script>
 @endsection
