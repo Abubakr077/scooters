@@ -5,16 +5,13 @@
     <script src="{{asset('js/jquery.flexslider.js')}}"></script>
 
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('#lightgallery').lightGallery();
-        });
-    </script>
     <script src="{{asset('js/lightgallery-all.min.js')}}"></script>
     <link href="{{asset('css/lightgallery.css')}}" rel="stylesheet">
     <!--<link rel="stylesheet" href="css/lightbox.min.css1">-->
 
     <link href="{{asset('css/flexslider.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('css/responsive.css')}}" rel="stylesheet">
 
     <section>
         <div class="container">
@@ -33,16 +30,33 @@
                     <!-- Post Content Column -->
                 </div>
 
-                <div class="col-md-8 slider">
-                    <div class="flexslider">
+                <div class="col-md-8">
+                    <div id="slider" class="flexslider">
                         <div class="demo-gallery">
                             <ul id="lightgallery" class="list-unstyled row slides">
                                 @foreach($photos as $photo)
                                     <li class="col-md-4 col-sm-4 col-xs-6"
                                         data-responsive="img/1-375.jpg 375, img/1-480.jpg 480, img/1.jpg 800"
-                                        data-src="images/light.jpg" data-sub-html="">
-                                        <a href="#">
-                                            <img class=" img-responsive" style="width:200%;height:300px;" src="{{asset($photo->getPicture())}}">
+                                        data-src="{{asset($photo->getPicture())}}" data-sub-html=""
+                                    >
+                                        <a href="{{asset($photo->getPicture())}}">
+                                            <img class=" img-responsive" style="width:200%;height:400px;" src="{{asset($photo->getPicture())}}">
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="carousel" class="flexslider">
+                        <div class="demo-gallery">
+                            <ul id="lightgallery" class="list-unstyled row slides">
+                                @foreach($photos as $photo)
+                                    <li class="col-md-4 col-sm-4 col-xs-6"
+                                        data-responsive="img/1-375.jpg 375, img/1-480.jpg 480, img/1.jpg 800"
+                                        data-src="{{asset($photo->getPicture())}}" data-sub-html=""
+                                    >
+                                        <a href="{{asset($photo->getPicture())}}">
+                                            <img class=" img-responsive"  src="{{asset($photo->getPicture())}}">
                                         </a>
                                     </li>
                                 @endforeach
@@ -107,22 +121,26 @@
 
     @include('layouts.footer')
 
-
     <script defer src="{{asset('js/jquery.flexslider.js')}}"></script>
     <script defer src="public/js/jquery.flexslider.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('.flexslider').flexslider({
+            $('#carousel').flexslider({
                 animation: "slide",
-                // animationLoop: false,
+                controlNav: false,
+                animationLoop: false,
+                slideshow: false,
                 itemWidth: 210,
                 itemMargin: 5,
-                maxItems:3,
-                minItems:1,
-                start: function(slider){
-                    $('body').removeClass('loading');
+                asNavFor: '#slider'
+            });
 
-                }
+            $('#slider').flexslider({
+                animation: "slide",
+                controlNav: true,
+                animationLoop: false,
+                slideshow: false,
+                sync: "#carousel"
             });
         });
     </script>
@@ -135,6 +153,26 @@
             });
         });
 
+    </script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/js/lightgallery.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-pager.js/master/dist/lg-pager.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-autoplay.js/master/dist/lg-autoplay.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-fullscreen.js/master/dist/lg-fullscreen.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-zoom.js/master/dist/lg-zoom.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-hash.js/master/dist/lg-hash.js"></script>
+    <script src="https://cdn.rawgit.com/sachinchoolur/lg-share.js/master/dist/lg-share.js"></script>
+    <script>
+        // lightGallery(document.getElementById('lightgallery'));
+        $("#lightgallery").lightGallery(
+            {
+                thumbnail:true,
+                cssEasing: 'cubic-bezier(0.680, -0.550, 0.265, 1.550)',
+                download: false,
+            }
+        );
+        $('body').on('contextmenu', '.lg-image', function(e){
+            e.preventDefault();
+        });
     </script>
 @endsection
 

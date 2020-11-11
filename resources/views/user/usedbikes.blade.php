@@ -16,6 +16,7 @@
                         @csrf
                     <ul>
                             <input type="text" name="keyword" id="keyword" value="{{$filters['keyword']}}" class="form-control" placeholder="Search">
+                        <input type="hidden" name="condition" value="used">
                         <li>
                             <h4>Brand</h4>
                             <select class="form-control" name="brand">
@@ -52,6 +53,7 @@
                             <h4>Registration City</h4>
                             <select class="form-control" name="regCity">
                                 <option value=""> --- Please Select --- </option>
+                                <option value="Un-Registered" >Un-Registered</option>
                                 @foreach((array)config('constants.CITIES') as $city)
                                     <option value="{{$city}}"
                                         {{ $filters['regCity'] == $city ? 'selected' : '' }}>
@@ -122,10 +124,18 @@
                             <section class="range-slider">
                                 <div class="range-slider-capacity">
                                 <span class="rangeValuesCapacity"></span>
-                                <input value="{{ $filters['minCapacity'] != '' ? $filters['minCapacity'] : '50' }}" min="50" max="5000" step="10" type="range" name="minCapacity">
-                                <input value="{{ $filters['maxCapacity'] != '' ? $filters['maxCapacity'] : '5000' }}" min="50" max="5000" step="10" type="range" name="maxCapacity">
+                                <input value="{{ $filters['minCapacity'] != '' ? $filters['minCapacity'] : '50' }}" min="50" max="2000" step="5" type="range" name="minCapacity">
+                                <input value="{{ $filters['maxCapacity'] != '' ? $filters['maxCapacity'] : '2000' }}" min="50" max="2000" step="5" type="range" name="maxCapacity">
                                 </div>
                             </section>
+                        </li>
+                        <li>
+                            <h4>Transmission</h4>
+                            <select class="form-control" name="transmission">
+                                <option value=""> --- Please Select --- </option>
+                                <option value="4 Stroke" {{ $filters['transmission']=='Self' ? 'selected' : '' }}>Self</option>
+                                <option value="2 Stroke" {{ $filters['transmission']=='Kick' ? 'selected' : '' }}>Kick</option>
+                            </select>
                         </li>
                         <li>
                             <h4>Body Type</h4>
@@ -135,14 +145,16 @@
                                 <option value="Cruiser" {{ $filters['bodyType']=='Cruiser' ? 'selected' : '' }}>Cruiser</option>
                                 <option value="Scooter" {{ $filters['bodyType']=='Scooter' ? 'selected' : '' }}>Scooter</option>
                                 <option value="Sports" {{ $filters['bodyType']=='Sports' ? 'selected' : '' }}>Sports</option>
-                                <option value="Standard" {{ $filters['bodyType']=='Standard' ? 'selected' : '' }}>Standard</option>
+                                <option value="Motorcycle" {{ $filters['bodyType']=='Motorcycle' ? 'selected' : '' }}>Motorcycle</option>
                                 <option value="Tourer" {{ $filters['bodyType']=='Tourer' ? 'selected' : '' }}>Tourer</option>
                                 <option value="Trail" {{ $filters['bodyType']=='Trail' ? 'selected' : '' }}>Trail</option>
                                 <option value="Others" {{ $filters['bodyType']=='Others' ? 'selected' : '' }}>Others</option>
                             </select>
                         </li>
-
-                        <button class="btn btn-default" type="submit">Submit</button>
+                        <li>
+                            <button class="btn btn-clear" type="submit" name="submit" value="clear">Clear</button>
+                        </li>
+                        <button class="btn btn-default" type="submit" name="submit" value="update">Submit</button>
                     </ul>
                     </form>
                 </div>

@@ -25,7 +25,6 @@ class CreateOrdersTable extends Migration
             $table->string('user_email');
             $table->integer('bikes_id')->unsigned();
             $table->foreign('bikes_id')->references('id')->on('bikes')->onDelete('cascade');;
-            $table->string('house');
             $table->string('city');
             $table->string('postcode');
             $table->string('address');

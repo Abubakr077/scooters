@@ -50,6 +50,9 @@
                                                     <div class="heading"><h5>
                                                             <a href="{{url()->current().'/'.$item->id}}">{{$item->name}}</a>
                                                         </h5>
+                                                        <div class=" trash-o">
+                                                            <a href="{{'/bike/delete/'.$item->id}}" ><i class="fa fa-trash heart-1"></i></a>
+                                                        </div>
                                                         <p>{{$item->price}}</p>
                                                         <p>{{$item->description}}</p>
                                                     </div>
@@ -63,6 +66,9 @@
                                                         <div class="heading"><h5>
                                                                 <a href="{{url()->current().'/'.$item->id}}">{{$item->name}}</a>
                                                             </h5>
+                                                            <div class=" trash-o">
+                                                                <a href="{{'/accessory/delete/'.$item->id}}" ><i class="fa fa-trash heart-1"></i></a>
+                                                            </div>
                                                             <p>{{$item->price}}</p>
                                                             <p>{{$item->description}}</p>
                                                         </div>
@@ -86,6 +92,9 @@
                                                         <div class="heading"><h5>
                                                                 <a href="{{url()->current().'/'.$item->id}}">{{$item->name}}</a>
                                                             </h5>
+                                                            <div class=" trash-o">
+                                                                <a href="{{'/fav/bike/delete/'.$item->id}}" ><i class="fa fa-trash heart-1"></i></a>
+                                                            </div>
                                                             <p>{{$item->price}}</p>
                                                             <p>{{$item->description}}</p>
                                                         </div>
@@ -101,6 +110,9 @@
                                                     <div class="heading"><h5>
                                                             <a href="{{url()->current().'/'.$item->id}}">{{$item->name}}</a>
                                                         </h5>
+                                                        <div class=" trash-o">
+                                                            <a href="{{'/fav/accessory/delete/'.$item->id}}" ><i class="fa fa-trash heart-1"></i></a>
+                                                        </div>
                                                         <p>{{$item->price}}</p>
                                                         <p>{{$item->description}}</p>
                                                     </div>

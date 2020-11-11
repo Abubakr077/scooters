@@ -46,7 +46,7 @@
             <div class="col-md-3 col-sm-3 col-xs-3">
                 <ul class="nomargin footer-links list-unstyled" id="footer-City">
                     <li><h5>About scooter.pk</h5></li>
-                    <li><a href="#" id="footer_Lahore"
+                    <li><a href="/feedback" id="footer_Lahore"
                            title="Bikes for Sale in Lahore">Contact Us</a></li>
                 </ul>
             </div>

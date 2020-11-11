@@ -1,5 +1,7 @@
 @extends('layouts/layout')
 @section('content')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <section class="popular sell-items">
         <div class="container">
             <div class="row">
@@ -20,6 +22,7 @@
                                 <label>Registration City</label>
                                 <select class="form-control" name="registration_city" required >
                                     <option value="" > --- Please Select --- </option>
+                                    <option value="Un-Registered" >Un-Registered</option>
                                     @foreach((array)config('constants.CITIES') as $city)
                                         <option value="{{$city}}">
                                             {{$city}}
@@ -102,7 +105,9 @@
                         </div>
                             <div class="col-md-12 cities">
                                 <label>Date of manufacture</label>
-                                <input class="form-control date" required  type="date" pattern="dd/mm/yyyy" value="{{ date("dd-mm-YYYY")}}"
+                                <input class="form-control date" required type="date"
+{{--                                       pattern="\d{1,2}/\d{1,2}/\d{4}"--}}
+                                       value="{{ date("dd-mm-yyyy") }}"
                                        list="rabbit-cities5" placeholder="Date of manufacture" name="date">
                             </div>
                         <div class="col-md-12 cities ">
@@ -120,7 +125,7 @@
                                     <div class="freeformPrice ">
                                         <section class="range-slider align-content-center">
                                             <span class="rangeValues"></span>
-                                            <input value="0" min="0" max="5000" step="5" type="range" name="engine_capacity">
+                                            <input value="0" min="0" max="2000" step="5" type="range" name="engine_capacity">
                                         </section>
                                     </div>
                             </div>
@@ -133,12 +138,20 @@
                                     <option value="Cruiser">Cruiser</option>
                                     <option value="Scooter">Scooter</option>
                                     <option value="Sports">Sports</option>
-                                    <option value="Standard">Standard</option>
+                                    <option value="Motorcycle">Motorcycle</option>
                                     <option value="Tourer">Tourer</option>
                                     <option value="Trail">Trail</option>
                                     <option value="Others">Others</option>
                                 </select>
                             </div>
+                                <div class="col-md-12 cities ">
+                                    <label>Transmission</label>
+                                    <select class="form-control" name="transmission" required >
+                                        <option value="" > --- Please Select --- </option>
+                                        <option value="ATV">Self</option>
+                                        <option value="Cruiser">Kick</option>
+                                    </select>
+                                </div>
 
                             <div class="col-md-12 cities">
                                 <label>Color</label>
@@ -165,12 +178,16 @@
                                 <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" required rows="10" name="description"></textarea>
                             </div>
                         </div>
-                            <div class="col-md-12 cities row">
+                            <div class="col-md-12 cities">
                                     <h3>Condition</h3>
-                                    <label>
-                                        <input type="radio" name="condition" value="new"/>New</label>
-                                    <label>
-                                        <input type="radio" name="condition" value="used"/>Used</label>
+{{--                                    <label>--}}
+{{--                                        <input type="radio" name="condition" value="new"/>New</label>--}}
+{{--                                    <label>--}}
+{{--                                        <input type="radio" name="condition" value="used"/>Used</label>--}}
+
+                                <div class="col-md-6"><label><input type="checkbox" name="condition" value="new"/> New </label></div>
+                                <div class="col-md-6"><label><input type="checkbox" name="condition" value="used"/> Used </label></div>
+
                             </div>
                         <div class="col-md-12 cities">
                             <h3>Additional Information</h3>
@@ -207,6 +224,7 @@
                                     <h3>Address</h3>
                                         <input type="text" name="city_area" id="city_area" value="{{ old('name', auth()->user()->city_area) }}" class="form-control" placeholder="Address">
                                     <br />
+                                    <br />
                                         <select class="form-control" name="city" required >
                                             <option value="" > --- Please Select City --- </option>
                                             @foreach((array)config('constants.CITIES') as $city)
@@ -240,6 +258,10 @@
     @include('layouts.footer')
     <script>
         window.onload = function(){
+            // $('.date').datetimepicker({
+            //     format: 'DD/MM/YYYY',
+            //     locale: 'en'
+            // });
             function getVals(){
                 // Get slider values
                 var parent = this.parentNode;
@@ -248,7 +270,6 @@
 
                 var displayElement = parent.getElementsByClassName("rangeValues")[0];
                 var type = document.getElementById("engine_type").value;
-                console.log('here',type);
                 if(type === 'Electric'){
                     displayElement.innerHTML = "W " + slide1 ;
                     // document.getElementById('price_range1').innerHTML = "W " + slide1;

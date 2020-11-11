@@ -40,10 +40,6 @@
                         </div>
                         <div class="panel-body">
                             <fieldset id="address" class="required">
-                                <div class="form-group">
-                                    <label for="input-payment-company" class="control-label">House</label>
-                                    <input type="text" class="form-control" id="input-payment-company" placeholder="House" required name="house">
-                                </div>
                                 <div class="form-group required">
                                     <label for="input-payment-address-1" class="control-label">Address</label>
                                     <input type="text" class="form-control" id="input-payment-address-1" placeholder="Address" value="{{ old('address', auth()->user()->city_area) }}" name="address">
@@ -141,7 +137,7 @@
                                                 <td class="text-center"><a href="#"><img width="60px" src="{{asset($item->options->picture)}}" alt="Xitefun Causal Wear Fancy Shoes" title="Xitefun Causal Wear Fancy Shoes" class="img-thumbnail"></a></td>
                                                 <td class="text-left"><a href="#">{{$item->name}}</a></td>
                                                 <td class="text-left"><div class="input-group btn-block checkout" style="min-width: 100px;">
-                                                        <input type="text"  value="{{$item->qty}}" size="1" class="form-control">
+                                                        <input type="text" disabled value="{{$item->qty}}" size="1" class="form-control">
                                                         <span class="input-group-btn">
 																											<button type="submit" data-toggle="tooltip" title="Update" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
 																											<button type="button" data-toggle="tooltip" title="Remove" class="btn btn-danger" onClick=""><i class="fa fa-times-circle"></i></button>

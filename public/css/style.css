@@ -348,6 +348,9 @@ h1.logo img{
 .btn-default{
     color: #fff;
 }
+.btn-clear{
+    color: #ef4416
+}
 .order-now .btn:active,.order-now .btn:focus{
     background: #ef4416 !important;
     outline: none;
@@ -2116,6 +2119,11 @@ input.inputError:focus {
     margin-bottom: 15px;
     float: left;
 }
+.fixed-div{
+    width:250px; /* or whatever width you want. */
+    max-width:250px; /* or whatever width you want. */
+    display: inline-block;
+}
 .h-over .btn{
     width: 80%;
     margin: 0 auto 10px;
@@ -2275,6 +2283,30 @@ li{ list-style: none !important;}
     font-size: 20px;
     border-radius:100%;
     text-align: center;
+
+}
+.trash-o{
+    position: absolute;
+    left: 5px;
+    background: none;
+    top: 20px;
+    color: #fff;
+    z-index: 150;
+    font-size: 20px;
+    border-radius:100%;
+    text-align: center;
+
+}
+.heart-o-p{
+    position: absolute;
+    right: 5px;
+    background: none;
+    top: 5px;
+    color: #ef4416;
+    z-index: 150;
+    font-size: 20px;
+    border-radius:100%;
+    text-align: center;
 }
 .list-view .heart-o i, .grid-view .heart-o i{
     color: #ccc;
@@ -2282,6 +2314,9 @@ li{ list-style: none !important;}
 .heart-i i{
      color: #ef4416 !important;
  }
+.heart-1{
+    color: #ef4416 !important;
+}
 .heart-o i{
     color: #fff;
     padding: 10px;

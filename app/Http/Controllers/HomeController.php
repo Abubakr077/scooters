@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use App\Accessories;
 use App\Bike;
 use App\FavAds;
+use App\Feedback;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-use function Sodium\add;
 
 class HomeController extends Controller
 {
@@ -59,10 +58,13 @@ class HomeController extends Controller
         } elseif ($ads === 'pending') {
             $favBikes = null;
             $bikes=auth()->user()->bikes()->where('isApproved', '=', false)->get()->take(5);
+            $accessories=auth()->user()->accessories()->where('isApproved', '=', false)->get()->take(5);
+
             return view('user/viewprofile',compact('bikes','accessories','favBikes','ads'));
         }elseif ($ads === 'live') {
             $favBikes = null;
             $bikes=auth()->user()->bikes()->where('isApproved', '=', true)->get()->take(5);
+            $accessories=auth()->user()->accessories()->where('isApproved', '=', true)->get()->take(5);
             return view('user/viewprofile',compact('bikes','accessories','favBikes','ads'));
         }
     }
@@ -70,6 +72,10 @@ class HomeController extends Controller
     public function profileSettings(){
         $user = \auth()->user();
         return view('user/profile-settings',compact('user'));
+    }
+    public function feedback(){
+        $user = \auth()->user();
+        return view('user/contact-us',compact('user'));
     }
 
     public function updateProfile(Request $request, User $user){
@@ -93,11 +99,52 @@ class HomeController extends Controller
         $user->update();
         return redirect()->back()->with('message', 'Profile Updated Successfully!!!');
     }
+    public function saveFeedback(Request $request){
+
+
+        $this->validate($request, [
+            'name' => 'required|min:3|max:50',
+            'email' => 'email',
+            'message' => 'required|min:30',
+        ]);
+        Feedback::create($request->all());
+        return redirect()->back()->with('message', 'Feedback Sent Successfully!!!');
+    }
+    public function getAllFeedback(){
+
+        $bikes = Feedback::all();
+        return view('admin/feedback', compact('bikes'));
+    }
     public function showMain()
     {
 //        $bikes=auth()->user()->bikes()->get()->take(12);
         $bikes=Bike::where('isApproved', '=', true)->get()->take(12);
         $accessories=Accessories::all()->take(12);
         return view('user/index',compact('bikes','accessories'));
+    }
+
+    public function getAllUsers()
+    {
+        $users = User::where('id', '!=', auth()->id())->get();
+        return view('admin/users',compact('users'));
+    }
+    public function editUser(User $user)
+    {
+        return view('admin/editUser', compact('user'));
+    }
+    public function updateUser(Request $request, USer $user)
+    {
+        if (Input::get('submit') == 'delete'){
+            try {
+                $user->delete();
+                return redirect()->route('admin_users')->with('message', 'User deleted Successfully!!!');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('error', 'User could not delete at this moment.Something wrong happened!!!');
+            }
+        }else{
+            $input = $request->all();
+            $user->fill($input)->save();
+            return back()->with('message', 'User Updated Successfully!!!');
+        }
     }
 }

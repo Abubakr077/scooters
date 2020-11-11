@@ -194,7 +194,6 @@ class AccessoriesController extends Controller
     {
 
         $bike = $accessory;
-
         $photos = AccessoryPhotos::where('accessories_id', '=', $accessory->id)->get();
         return view('user/showautopart',compact('bike','photos'));
     }
@@ -254,8 +253,14 @@ class AccessoriesController extends Controller
      * @param  \App\Accessories  $accessories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Accessories $accessories)
+    public function destroy(Accessories $accessory)
     {
-        //
+        try {
+            $accessory->delete();
+            return redirect()->back()->with('message', 'Accessory deleted Successfully!!!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Accessory could not delete at this moment.Something wrong happened!!!');
+        }
     }
+
 }
